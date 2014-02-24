@@ -1,4 +1,5 @@
-slogo
+SLogo README file
 =====
 
-Empty repository for SLogo project
+Front End: Grace Chen, Willy Chen
+Back End: Dennis Park, Ashley Qian
