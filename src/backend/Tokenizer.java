@@ -1,8 +1,8 @@
 package backend;
 
-public class Lexer {
+public class Tokenizer {
 
-	public Lexer(){
+	public Tokenizer(){
 
 	}
 

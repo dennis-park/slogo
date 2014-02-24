@@ -5,14 +5,14 @@ import java.util.Queue;
 
 //Tentative class name. The api to the backend
 public class Backend {
-	private Lexer myLexer;
+	private Tokenizer myLexer;
 	private Parser myParser;
-	private Translator myTranslator;
+	private Executor myTranslator;
 	
 	public Backend(){
-		myLexer = new Lexer();
+		myLexer = new Tokenizer();
 		myParser = new Parser();
-		myTranslator = new Translator();
+		myTranslator = new Executor();
 	}
 	
 	public Queue parse(String string){
