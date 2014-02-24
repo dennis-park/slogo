@@ -5,7 +5,7 @@ Front End (Ashley & Dennis)
 ===
 Our GUI will utilize Swing components. Packages are listed below:
 
--Send to backend information from the “console” (Possibly in a giant string). 
+-Send to backend information from the ï¿½consoleï¿½ (Possibly in a giant string). 
 We need to figure out how to represent line breaks?
 Should we preprocess the comments for the backend?
 
@@ -26,10 +26,14 @@ movements:
 	rotation/orientation
 	left, right
 	take in values
-	The turtle has a set movement method
-	Turtle keeps track of it’s own coordinates
-	There are methods that act on the turtle
-	The turtle has a set attribute method (for color maybe?)
+
+The turtle has a set movement method
+
+Turtle keeps track of itï¿½s own coordinates
+
+There are methods that act on the turtle
+
+The turtle has a set attribute method (for color maybe?)
 
 
 -Model:
@@ -59,9 +63,13 @@ History?
 BackEnd (Willy & Grace)
 ===
 Four main components:
---Tokenizer (class): splits strings from inputs into “tokens” of individual words/numbers/etc., split by white spaces
+
+--Tokenizer (class): splits strings from inputs into ï¿½tokensï¿½ of individual words/numbers/etc., split by white spaces
+
 --Parser (class): uses tokens to build commands, checks to see if each string is a start to a new command, a number, etc. and instantiate each command as appropriate, and create a list of commands (which will be passed into the Executor class)
+
 --Command (package of classes, each command represented by a class): defines each individual command (some may be recursively implemented, some commands call other commands, etc.); holds 
+
 --Executor (class): actually executing the commands in proper order as dictated by the user; will call commands in command package sequentially
 
 in browser UML : 
