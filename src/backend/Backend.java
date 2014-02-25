@@ -17,7 +17,7 @@ public class Backend {
 	
 	public Queue parse(String string){
 		myLexer.parse(string);
-		return new LinkedList<String>(); //May need to make a command class. Will have to figure out api with turtle
+		return new LinkedList<String>(); //May need to make a command class. Will have to figure out api with turtle. All this api stuff
 	}
 
 }

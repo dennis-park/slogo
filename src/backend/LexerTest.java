@@ -35,6 +35,17 @@ public class LexerTest {
 		List<String> ls2 = new ArrayList<String>(Arrays.asList(lexer.parse("a + b")));
 		assertEquals(ls1, ls2);
 	}
+	
+	@Test
+	public void testTokensNegative(){
+		Lexer lexer = new Lexer();
+		String[] s1 = {"a", "+", "-b"};
+		List<String> ls1 = new ArrayList<String>(Arrays.asList(s1));
+		List<String> ls2 = new ArrayList<String>(Arrays.asList(lexer.parse("a + -b")));
+		assertEquals(ls1, ls2);
+	}
+	
+	
 
 	@Test
 	public void testTokensSpiro() throws IOException{
