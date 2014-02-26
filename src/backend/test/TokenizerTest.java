@@ -33,7 +33,7 @@ public class TokenizerTest {
 	@Test
 	public void testTokensBasic(){
 		Tokenizer Tokenizer = new Tokenizer();
-		String[] s1 = {"a", "+", "b"};
+		String[] s1 = {"A", "+", "B"};
 		List<String> ls1 = new ArrayList<String>(Arrays.asList(s1));
 		List<String> ls2 = new ArrayList<String>(Arrays.asList(Tokenizer.tokenize("a + b")));
 		assertEquals(ls1, ls2);
@@ -42,7 +42,7 @@ public class TokenizerTest {
 	@Test
 	public void testTokensNegative(){
 		Tokenizer Tokenizer = new Tokenizer();
-		String[] s1 = {"a", "+", "-b"};
+		String[] s1 = {"A", "+", "-B"};
 		List<String> ls1 = new ArrayList<String>(Arrays.asList(s1));
 		List<String> ls2 = new ArrayList<String>(Arrays.asList(Tokenizer.tokenize("a + -b")));
 		assertEquals(ls1, ls2);

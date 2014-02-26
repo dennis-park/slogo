@@ -1,6 +1,6 @@
 package backend.command;
 
-import backend.command.turtle.FowardCommand;
+import backend.command.turtle.ForwardCommand;
 
 public class Parameter {
 	private double d;

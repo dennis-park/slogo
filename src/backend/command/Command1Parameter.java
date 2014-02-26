@@ -1,6 +1,6 @@
 package backend.command;
 
-import backend.command.turtle.FowardCommand;
+import backend.command.turtle.ForwardCommand;
 
 public class Command1Parameter extends Command {
 	protected final int myArgumentCount = 1; //Gotta figure out what's happening with this instance var
