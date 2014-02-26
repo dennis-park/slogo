@@ -2,12 +2,14 @@ package backend.command.turtle;
 
 import backend.command.Command;
 import backend.command.Command1Parameter;
+import backend.command.Parameter;
 
 
 public class FowardCommand extends Command1Parameter {
 	private final String name1 = "FOWARD";
 	private final String name2 = "FD";
 //	private final int myArgumentCount = 1;
+	private Parameter myArgumentP;
 	private double myArgument;
 	private Command myCommandArgument;
 	private String myName;
@@ -30,19 +32,28 @@ public class FowardCommand extends Command1Parameter {
 //	}
 	
 	public void addArgumentDouble(Double d){
-		myArgument = d;
+		myArgumentP = new Parameter(d);
+		//myArgument = d;
 	}
 	
 	public void addArgumentCommand(Command c){
-		myCommandArgument = c;
+		myArgumentP = new Parameter(c);
+		//myCommandArgument = c;
 	}
-
+	
 	public double execute(){
-		if(myCommandArgument != null){
-			return myCommandArgument.execute();
-		}
-		return myArgument;
+	if(!myArgumentP.isNumber()){
+		return myArgumentP.getCommand().execute();
 	}
+	return myArgumentP.getValue();
+}
+
+//	public double execute(){
+//		if(myCommandArgument != null){
+//			return myCommandArgument.execute();
+//		}
+//		return myArgument;
+//	}
 	
 	public boolean match(String str){
 		if(str.equalsIgnoreCase(name1) || str.equalsIgnoreCase(name2)){
@@ -63,7 +74,8 @@ public class FowardCommand extends Command1Parameter {
 	public boolean equals(Object obj) {
         if (obj instanceof FowardCommand){
         	FowardCommand f = (FowardCommand)obj;
-            return (myArgument == f.myArgument && ((myCommandArgument== null && f.myCommandArgument == null) ||myCommandArgument.equals(f.myCommandArgument)));
+        	return (myArgumentP.equals(f.myArgumentP));
+          //  return (myArgument == f.myArgument && ((myCommandArgument== null && f.myCommandArgument == null) ||myCommandArgument.equals(f.myCommandArgument)));
         }
         else
             return false;
