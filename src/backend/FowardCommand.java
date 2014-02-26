@@ -51,7 +51,16 @@ public class FowardCommand extends Command {
 		return myArgumentCount;
 	}
 	
-	public Command initialize(String name){
-		return new FowardCommand(name);
+	public Command initialize(){
+		return new FowardCommand();
 	}
+	
+	public boolean equals(Object obj) {
+        if (obj instanceof FowardCommand){
+        	FowardCommand f = (FowardCommand)obj;
+            return (myArgument == f.myArgument && ((myCommandArgument== null && f.myCommandArgument == null) ||myCommandArgument.equals(f.myCommandArgument)));
+        }
+        else
+            return false;
+    }
 }

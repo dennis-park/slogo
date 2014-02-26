@@ -1,6 +1,7 @@
 package backend;
 
 public class Command {
+	protected int myArgumentCount;
 	public Command(){
 		
 	}
@@ -23,6 +24,10 @@ public class Command {
 	
 	public Command initialize(){
 		return new Command();
+	}
+	
+	public int getArgumentCount(){
+		return myArgumentCount;
 	}
 	
 
