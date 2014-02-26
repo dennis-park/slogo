@@ -9,7 +9,7 @@ public class BuiltInCommands {
 	private HashMap<String, Command> commands;
 	public BuiltInCommands(){
 		commands = new HashMap<String, Command>();
-		commands.put("FOWARD", new ForwardCommand());
+		commands.put("FORWARD", new ForwardCommand());
 		commands.put("FD", new ForwardCommand());
 		commands.put("SUM", new SumCommand());
 	}
