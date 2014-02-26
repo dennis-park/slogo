@@ -1,34 +1,33 @@
 package backend.command;
 
+import backend.command.turtle.FowardCommand;
+
 public class Command1Parameter extends Command {
 	protected final int myArgumentCount = 1; //Gotta figure out what's happening with this instance var
-	
+	protected Parameter myArgument;
 	@Override
-	public void addArgumentDouble(Double d) {
-		// TODO Auto-generated method stub
-		
+	public void addArgumentDouble(Double d){
+		myArgument = new Parameter(d);
 	}
 
 	@Override
-	public void addArgumentCommand(Command c) {
-		// TODO Auto-generated method stub
-		
+	public void addArgumentCommand(Command c){
+		myArgument = new Parameter(c);
 	}
 
 	@Override
 	public double execute() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 0; //Override in subclasses
 	}
 
 	@Override
 	public Command initialize() {
-		// TODO Auto-generated method stub
-		return null;
+		return null; //Override in subclasses, should be removed after using reflection
 	}
-	
+
 	public int getArgumentCount(){
 		return myArgumentCount;
 	}
+
 
 }

@@ -8,76 +8,35 @@ import backend.command.Parameter;
 public class FowardCommand extends Command1Parameter {
 	private final String name1 = "FOWARD";
 	private final String name2 = "FD";
-//	private final int myArgumentCount = 1;
-	private Parameter myArgumentP;
-	private double myArgument;
-	private Command myCommandArgument;
-	private String myName;
-	
+
 	public FowardCommand(){
-		myArgument =0;
-		myCommandArgument = null;
 	}
 
-	public FowardCommand(String str) {
-		myName = str;
-	}
-	
-//	public void addArgument(String s){
-//		if(s is a number){
-//			addArgumentDouble(Double.parseDouble(s));
-//		}
-//		else
-//			
-//	}
-	
-	public void addArgumentDouble(Double d){
-		myArgumentP = new Parameter(d);
-		//myArgument = d;
-	}
-	
-	public void addArgumentCommand(Command c){
-		myArgumentP = new Parameter(c);
-		//myCommandArgument = c;
-	}
-	
+	//	public void addArgument(String s){ might use this if I decide to change up parsing readins
+	//		if(s is a number){
+	//			addArgumentDouble(Double.parseDouble(s));
+	//		}
+	//		else
+	//			
+	//	}
+
 	public double execute(){
-	if(!myArgumentP.isNumber()){
-		return myArgumentP.getCommand().execute();
-	}
-	return myArgumentP.getValue();
-}
-
-//	public double execute(){
-//		if(myCommandArgument != null){
-//			return myCommandArgument.execute();
-//		}
-//		return myArgument;
-//	}
-	
-	public boolean match(String str){
-		if(str.equalsIgnoreCase(name1) || str.equalsIgnoreCase(name2)){
-			return true;
+		if(!myArgument.isNumber()){
+			return myArgument.getCommand().execute();
 		}
-		return false;
+		return myArgument.getValue();
 	}
-	
-//	public int getArgumentCount(){
-//		return myArgumentCount;
-//	}
-	
-	
-	public Command initialize(){
+
+	public Command initialize(){ // will be removed by reflection, so only need to implmenent until thats done
 		return new FowardCommand();
 	}
-	
-	public boolean equals(Object obj) {
-        if (obj instanceof FowardCommand){
-        	FowardCommand f = (FowardCommand)obj;
-        	return (myArgumentP.equals(f.myArgumentP));
-          //  return (myArgument == f.myArgument && ((myCommandArgument== null && f.myCommandArgument == null) ||myCommandArgument.equals(f.myCommandArgument)));
-        }
-        else
-            return false;
-    }
+
+	public boolean equals(Object obj) { //Code for testing purposes, 
+		if (obj instanceof FowardCommand){
+			FowardCommand f = (FowardCommand)obj;
+			return (myArgument.equals(f.myArgument));
+		}
+		else
+			return false;
+	}
 }
