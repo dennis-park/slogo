@@ -1,4 +1,4 @@
-package backend;
+package backend.command;
 
 public class Command {
 	protected int myArgumentCount;

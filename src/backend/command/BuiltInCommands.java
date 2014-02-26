@@ -1,6 +1,9 @@
-package backend;
+package backend.command;
 
 import java.util.HashMap;
+
+import backend.command.math.SumCommand;
+import backend.command.turtle.FowardCommand;
 
 public class BuiltInCommands {
 	private HashMap<String, Command> commands;

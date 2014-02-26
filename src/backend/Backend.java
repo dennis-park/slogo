@@ -15,9 +15,10 @@ public class Backend {
 		myExecutor = new Executor();
 	}
 	
-	public Queue parse(String string){
-		myLexer.tokenize(string);
-		return new LinkedList<String>(); //May need to make a command class. Will have to figure out api with turtle. All this api stuff
+	public Boolean parse(String string){ //Will probably need to change for error checking returns
+		return myExecutor.executeCommands(myParser.parse(myLexer.tokenize(string)));
+		
+		//return new LinkedList<String>(); //May need to make a command class. Will have to figure out api with turtle. All this api stuff
 	}
 
 }

@@ -1,4 +1,7 @@
-package backend;
+package backend.command.math;
+
+import backend.command.Command;
+
 
 public class SumCommand extends Command{
 	private final String name = "SUM";

@@ -4,6 +4,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.regex.Pattern;
 
+import backend.command.BuiltInCommands;
+import backend.command.Command;
+
 
 //http://en.wikipedia.org/wiki/Parsing#Parser
 //http://en.wikipedia.org/wiki/Parse_tree

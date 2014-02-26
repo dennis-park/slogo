@@ -6,6 +6,9 @@ import java.util.LinkedList;
 
 import org.junit.Test;
 
+import backend.command.Command;
+import backend.command.turtle.FowardCommand;
+
 public class ParserTest {
 
 	@Test

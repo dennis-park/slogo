@@ -1,4 +1,7 @@
-package backend;
+package backend.command.turtle;
+
+import backend.command.Command;
+
 
 public class FowardCommand extends Command {
 	private final String name1 = "FOWARD";
