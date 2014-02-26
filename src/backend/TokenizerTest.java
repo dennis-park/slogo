@@ -22,26 +22,26 @@ public class TokenizerTest {
 
 	@Test
 	public void testWhiteSpaceTrim(){
-		Tokenizer lexer = new Tokenizer();
-		assertEquals(lexer.trimWhiteSpace("    a    a  \n  a "), "a a a");
-		assertEquals(lexer.trimWhiteSpace("[ a b c d ] "), "[ a b c d ]");
+		Tokenizer Tokenizer = new Tokenizer();
+		assertEquals(Tokenizer.trimWhiteSpace("    a    a  \n  a "), "a a a");
+		assertEquals(Tokenizer.trimWhiteSpace("[ a b c d ] "), "[ a b c d ]");
 	}
 
 	@Test
 	public void testTokensBasic(){
-		Tokenizer lexer = new Tokenizer();
+		Tokenizer Tokenizer = new Tokenizer();
 		String[] s1 = {"a", "+", "b"};
 		List<String> ls1 = new ArrayList<String>(Arrays.asList(s1));
-		List<String> ls2 = new ArrayList<String>(Arrays.asList(lexer.parse("a + b")));
+		List<String> ls2 = new ArrayList<String>(Arrays.asList(Tokenizer.tokenize("a + b")));
 		assertEquals(ls1, ls2);
 	}
 	
 	@Test
 	public void testTokensNegative(){
-		Lexer lexer = new Lexer();
+		Tokenizer Tokenizer = new Tokenizer();
 		String[] s1 = {"a", "+", "-b"};
 		List<String> ls1 = new ArrayList<String>(Arrays.asList(s1));
-		List<String> ls2 = new ArrayList<String>(Arrays.asList(lexer.parse("a + -b")));
+		List<String> ls2 = new ArrayList<String>(Arrays.asList(Tokenizer.tokenize("a + -b")));
 		assertEquals(ls1, ls2);
 	}
 	
@@ -49,11 +49,11 @@ public class TokenizerTest {
 
 	@Test
 	public void testTokensSpiro() throws IOException{
-		Tokenizer lexer = new Tokenizer();
+		Tokenizer tokenizer = new Tokenizer();
 		String[] s1 = {"home", "repeat", "30", "[", "repeat", "20", "[", "fd", "10", "rt", "10", "]","repeat", "10", "[", "fd", "20", "rt", "100",
 				"]","]"};
 		List<String> ls1 = new ArrayList<String>(Arrays.asList(s1));
-		List<String> ls2 = new ArrayList<String>(Arrays.asList(lexer.parse(readFile(FILELOCATION,Charset.defaultCharset()))));
+		List<String> ls2 = new ArrayList<String>(Arrays.asList(tokenizer.tokenize(readFile(FILELOCATION,Charset.defaultCharset()))));
 		assertEquals(ls1, ls2);
 	}
 
