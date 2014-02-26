@@ -7,22 +7,20 @@ import frontend.Canvas;
 
 //Tentative class name. The api to the backend
 public class Backend {
-	private Lexer myLexer;
+	private Tokenizer myTokenizer;
 	private Parser myParser;
-	private Translator myTranslator;
+	private Executor myExecutor;
 	
-	public Backend(Canvas n){
-		myLexer = new Lexer();
+	public Backend(){
+		myTokenizer = new Tokenizer();
 		myParser = new Parser();
-		myTranslator = new Translator();
-		
-		System.out.println("BACKEND");
-		n.move(4, 10);
+		myExecutor = new Executor();
 	}
 	
-	public Queue parse(String string){
-		myLexer.parse(string);
-		return new LinkedList<String>(); //May need to make a command class. Will have to figure out api with turtle
+	public Boolean parse(String string){ //Will probably need to change for error checking returns
+		return myExecutor.executeCommands(myParser.parse(myTokenizer.tokenize(string)));
+		
+		//return new LinkedList<String>(); //May need to make a command class. Will have to figure out api with turtle. All this api stuff
 	}
 
 	public void sendCommand(String s) {

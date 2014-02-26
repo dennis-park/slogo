@@ -24,7 +24,7 @@ public class Main {
 	// Constants
 	public static final String TITLE = "SLogo";
 	public static final Canvas CANVAS = new Canvas();
-	public static final Backend BACKEND = new Backend(CANVAS);
+	public static final Backend BACKEND = new Backend();
 	public static final JButton RUN = new JButton("Run");
 	public static final JButton PEN = new JButton("Change Pen Color");
 	public static final JButton TURTLE = new JButton("Upload A Turtle Image");
@@ -33,7 +33,7 @@ public class Main {
 	public static void main(String[]args) {
 		
 		// Initialize both frontend and backend
-		final Backend be = new Backend(CANVAS);
+		final Backend be = new Backend();
 		final Frontend fe = new Frontend(CANVAS, be);
 		
 	

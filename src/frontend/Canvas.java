@@ -8,7 +8,7 @@ import java.awt.Graphics;
 
 public class Canvas extends JPanel {
 	
-	Turtle derp = new Turtle();
+	Turtle derp = new Turtle(0, 0);
 	
 	public Canvas() {
         setBorder(BorderFactory.createLineBorder(Color.black));
@@ -25,11 +25,11 @@ public class Canvas extends JPanel {
     
     public void moveForward(double amount) {
     	// canvas has to be aware of turtle orientation
-    	repaint(derp.getX(), derp.getY(), 20, 20);
+    	repaint((int)derp.getX(), (int)derp.getY(), 20, 20);
     }
     
     public void moveBackward(double amount) {
     	
-    	repaint(derp.getX(), derp.getY(), 20, 20);
+    	repaint((int)derp.getX(), (int)derp.getY(), 20, 20);
     }
 }

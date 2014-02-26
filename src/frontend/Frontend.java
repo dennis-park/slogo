@@ -4,11 +4,10 @@ import backend.Backend;
 
 public class Frontend {
 	
-	Turtle derp = new Turtle();
+	Turtle derp = new Turtle(0, 0);
 	
 	public Frontend(Canvas n, Backend be){
 		System.out.println("FRONTEND");
-		n.move(100,100);
 	}
 	
 	
