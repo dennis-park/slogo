@@ -1,28 +1,38 @@
 package backend.command;
 
 public class Command2Parameter extends Command {
-
-	@Override
-	public void addArgumentDouble(Double d) {
-		// TODO Auto-generated method stub
-		
+	protected final int myArgumentCount = 2;
+	protected int currentParameters;
+	protected Parameter[] myParameters;
+	
+	public Command2Parameter(){
+		myParameters = new Parameter[2];
+		currentParameters =0;
+	}
+	
+	public void addArgumentDouble(Double d){
+		myParameters[currentParameters] = new Parameter(d);
+		currentParameters++;
 	}
 
-	@Override
-	public void addArgumentCommand(Command c) {
-		// TODO Auto-generated method stub
-		
+	public void addArgumentCommand(Command c){
+		myParameters[currentParameters] = new Parameter(c);
+		currentParameters++;
+	}
+	
+	public int getArgumentCount(){
+		return myArgumentCount;
 	}
 
 	@Override
 	public double execute() {
-		// TODO Auto-generated method stub
+		// Override in subclasses
 		return 0;
 	}
 
 	@Override
 	public Command initialize() {
-		// TODO Auto-generated method stub
+		// Override in subclasses, shouldn't need to be used
 		return null;
 	}
 

@@ -1,7 +1,5 @@
 package backend.command;
 
-import backend.command.turtle.FowardCommand;
-
 public class Parameter {
 	private double d;
 	private Command c;
@@ -27,6 +25,13 @@ public class Parameter {
 
 	public Command getCommand(){
 		return c;
+	}
+	
+	public Double execute(){
+		if(isNum)
+			return d;
+		else
+			return c.execute();
 	}
 
 	public boolean equals(Object obj){

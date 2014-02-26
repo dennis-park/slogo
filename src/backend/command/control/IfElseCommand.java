@@ -1,7 +1,13 @@
-package backend.command;
+package backend.command.control;
 
-public class Command3Parameter extends Command {
+import backend.command.Command;
+import backend.command.Parameter;
 
+public class IfElseCommand extends Command {
+	protected final int myArgumentCount = 3;
+	protected int currentParameters;
+	protected Parameter[] myParameters;
+	
 	@Override
 	public void addArgumentDouble(Double d) {
 		// TODO Auto-generated method stub
