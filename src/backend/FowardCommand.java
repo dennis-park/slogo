@@ -47,6 +47,10 @@ public class FowardCommand extends Command {
 		return false;
 	}
 	
+	public int getArgumentCount(){
+		return myArgumentCount;
+	}
+	
 	
 	public Command initialize(){
 		return new FowardCommand();
