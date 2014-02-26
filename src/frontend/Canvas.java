@@ -7,6 +7,9 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 
 public class Canvas extends JPanel {
+	
+	Turtle derp = new Turtle();
+	
 	public Canvas() {
         setBorder(BorderFactory.createLineBorder(Color.black));
     }
@@ -16,9 +19,17 @@ public class Canvas extends JPanel {
     }
 
     public void paintComponent(Graphics g) {
-        super.paintComponent(g);       
-
-        // Draw Text
-        g.drawString("This is my custom Panel!",10,20);
-    }  
+        super.paintComponent(g); 
+        derp.paint(g);
+    } 
+    
+    public void moveForward(double amount) {
+    	// canvas has to be aware of turtle orientation
+    	repaint(derp.getX(), derp.getY(), 20, 20);
+    }
+    
+    public void moveBackward(double amount) {
+    	
+    	repaint(derp.getX(), derp.getY(), 20, 20);
+    }
 }
