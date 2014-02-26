@@ -1,4 +1,4 @@
-package backend;
+package backend.test;
 
 import static org.junit.Assert.*;
 
@@ -6,6 +6,7 @@ import java.util.LinkedList;
 
 import org.junit.Test;
 
+import backend.Parser;
 import backend.command.Command;
 import backend.command.turtle.FowardCommand;
 

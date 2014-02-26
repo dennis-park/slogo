@@ -1,12 +1,13 @@
 package backend.command.turtle;
 
 import backend.command.Command;
+import backend.command.Command1Parameter;
 
 
-public class FowardCommand extends Command {
+public class FowardCommand extends Command1Parameter {
 	private final String name1 = "FOWARD";
 	private final String name2 = "FD";
-	private final int myArgumentCount = 1;
+//	private final int myArgumentCount = 1;
 	private double myArgument;
 	private Command myCommandArgument;
 	private String myName;
@@ -50,9 +51,9 @@ public class FowardCommand extends Command {
 		return false;
 	}
 	
-	public int getArgumentCount(){
-		return myArgumentCount;
-	}
+//	public int getArgumentCount(){
+//		return myArgumentCount;
+//	}
 	
 	
 	public Command initialize(){

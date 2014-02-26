@@ -1,34 +1,17 @@
 package backend.command;
 
-public class Command {
+public abstract class Command {
 	protected int myArgumentCount;
-	public Command(){
-		
-	}
 	
-	public Command(String str){
-		
-	}
+	abstract public void addArgumentDouble(Double d);
 	
-	public void addArgumentDouble(Double d){
-		
-	}
+	abstract public void addArgumentCommand(Command c);
 	
-	public void addArgumentCommand(Command c){
-		
-	}
+	abstract public double execute();
 	
-	public double execute(){
-		return 0;
-	}
-	
-	public Command initialize(){
-		return new Command();
-	}
+	abstract public Command initialize();
 	
 	public int getArgumentCount(){
 		return myArgumentCount;
 	}
-	
-
 }

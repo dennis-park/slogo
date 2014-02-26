@@ -1,4 +1,4 @@
-package backend;
+package backend.test;
 
 import static org.junit.Assert.*;
 
@@ -13,7 +13,10 @@ import java.nio.ByteBuffer;
 
 
 
+
 import org.junit.Test;
+
+import backend.Tokenizer;
 
 public class TokenizerTest {
 
