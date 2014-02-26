@@ -45,4 +45,19 @@ public class ParserTest {
 	assertEquals(parse.parse(fd50fd50), testCase);
 	}
 
+	@Test
+	public void testSumBasic(){
+		Parser parse = new Parser();
+		String[] sum = {"SUM", "50", "50"};
+		assertEquals(parse.parse(sum).remove().execute(), 100.0, 0.01);
+	}
+	
+	@Test
+	public void testSumNesting(){
+		Parser parse = new Parser();
+		String[] sum = {"sum", "sum", "10", "sum", "20", "30", "40"};
+		assertEquals(parse.parse(sum).remove().execute(), 110.0, 0.01);
+	}
+	
+
 }

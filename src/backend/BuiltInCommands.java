@@ -8,7 +8,7 @@ public class BuiltInCommands {
 		commands = new HashMap<String, Command>();
 		commands.put("FOWARD", new FowardCommand());
 		commands.put("FD", new FowardCommand());
-		
+		commands.put("SUM", new SumCommand());
 	}
 	
 	public boolean hasCommand(String token){
