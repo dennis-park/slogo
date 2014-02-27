@@ -7,9 +7,11 @@ package backend.command;
  * are commands that take one or more parameters.
  */
 public class Command {//A zero parameter class
+	
 	protected int myArgumentCount;
+	
 	public Command(){
-		myArgumentCount =0;
+		myArgumentCount = 0;
 	}
 	
 	public void addArgumentDouble(Double d) {
@@ -30,5 +32,9 @@ public class Command {//A zero parameter class
 	
 	public int getArgumentCount(){
 		return myArgumentCount;
+	}
+	
+	public double calculateDistance(double x1, double x2, double y1, double y2) {
+		return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 	}
 }
