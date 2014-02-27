@@ -4,17 +4,18 @@ import backend.command.Command;
 import backend.command.Command1Parameter;
 
 public class TurnLeftCommand extends Command1Parameter {
-
-	public TurnLeftCommand() {
-		
-	}
+	
+	private final String NAME_1 = "LEFT";
+	private final String NAME_2 = "LT";
 	
 	@Override
 	public double execute() {
-		if(!myArgument.isNumber()){
-			return myArgument.getCommand().execute();
-		}
-		return 360 - myArgument.getValue();
+		double myFinalArgument = myArgument.execute();
+//		Turtle.turnLeft(myFinalArgument);
+//		return myFinalArgument;
+		
+		//for now:
+		return myFinalArgument;
 	}
 	
 }

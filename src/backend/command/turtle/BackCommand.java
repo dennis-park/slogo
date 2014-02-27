@@ -8,15 +8,16 @@ import backend.command.Command1Parameter;
  * absolute orientation of the canvas)
  */
 public class BackCommand extends Command1Parameter {
-	public BackCommand() {
-	
-	}
+	private final String NAME_1 = "BACK";
+	private final String NAME_2 = "BK";
 
 	public double execute() {
-		if(!myArgument.isNumber()){
-			return -1 * myArgument.getCommand().execute();
-		}
-		return -1 * myArgument.getValue();
+		double myFinalArgument = myArgument.execute();
+//		Turtle.moveBack(myFinalArgument);
+//		return myFinalArgument;
+		
+		//for now:
+		return myFinalArgument;
 	}
 
 

@@ -7,9 +7,8 @@ import backend.command.Command1Parameter;
  * absolute orientation of the canvas)
  */
 public class ForwardCommand extends Command1Parameter {
-
-	public ForwardCommand(){
-	}
+	private final String NAME_1 = "FORWARD";
+	private final String NAME_2 = "FD";
 
 	//	public void addArgument(String s){ might use this if I decide to change up parsing readins
 	//		if(s is a number){
@@ -20,7 +19,12 @@ public class ForwardCommand extends Command1Parameter {
 	//	}
 
 	public double execute(){
-		return myArgument.execute();
+		double myFinalArgument = myArgument.execute();
+//		Turtle.moveForward(myFinalArgument);
+//		return myFinalArgument;
+		
+		//for now:
+		return myFinalArgument;
 	}
 
 
