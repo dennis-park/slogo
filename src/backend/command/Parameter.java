@@ -1,5 +1,9 @@
 package backend.command;
 
+/**
+ * The Parameter class has two constructors for the parameter object,
+ * allowing a parameter to be either a number or another command.
+ */
 public class Parameter {
 	private double d;
 	private Command c;

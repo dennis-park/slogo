@@ -1,5 +1,9 @@
 package backend.command;
 
+/**
+ * A subclass of Command, Command1Parameter provides a framework for
+ * commands that take one parameter (i.e. moving forward or backward).
+ */
 public class Command1Parameter extends Command {
 	protected final int myArgumentCount = 1; //Gotta figure out what's happening with this instance var
 	protected Parameter myArgument;

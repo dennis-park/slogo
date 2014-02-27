@@ -4,7 +4,10 @@ import backend.command.Command;
 import backend.command.Command1Parameter;
 import backend.command.Parameter;
 
-
+/**
+ * Moving the turtle forward (relative to its heading, not to the 
+ * absolute orientation of the canvas)
+ */
 public class ForwardCommand extends Command1Parameter {
 	private final String name1 = "FORWARD";
 	private final String name2 = "FD";

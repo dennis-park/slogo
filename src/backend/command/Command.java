@@ -1,5 +1,11 @@
 package backend.command;
 
+/**
+ * The Command superclass provides a framework for the different
+ * methods that can be called by the user. This superclass is to be
+ * used for commands that take no parameters; subclasses of Command
+ * are commands that take one or more parameters.
+ */
 public class Command {//A zero parameter class
 	protected int myArgumentCount;
 	public Command(){

@@ -5,7 +5,10 @@ import java.util.Queue;
 
 import frontend.Canvas;
 
-//Tentative class name. The api to the backend
+/**
+ * API to the back end, accessible by the front end when there
+ * is a string of user input to be compiled
+ */
 public class Backend {
 	private Tokenizer myTokenizer;
 	private Parser myParser;

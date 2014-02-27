@@ -1,5 +1,9 @@
 package backend.command;
 
+/**
+ * A subclass of Command, Command2Parameter provides a framework for
+ * commands that take two parameters (i.e. setting the turtle's position).
+ */
 public class Command2Parameter extends Command {
 	protected final int myArgumentCount = 2;
 	protected int currentParameters;
