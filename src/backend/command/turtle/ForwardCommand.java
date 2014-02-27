@@ -1,16 +1,12 @@
 package backend.command.turtle;
 
-import backend.command.Command;
 import backend.command.Command1Parameter;
-import backend.command.Parameter;
 
 /**
  * Moving the turtle forward (relative to its heading, not to the 
  * absolute orientation of the canvas)
  */
 public class ForwardCommand extends Command1Parameter {
-	private final String name1 = "FORWARD";
-	private final String name2 = "FD";
 
 	public ForwardCommand(){
 	}
@@ -25,15 +21,8 @@ public class ForwardCommand extends Command1Parameter {
 
 	public double execute(){
 		return myArgument.execute();
-//		if(!myArgument.isNumber()){
-//			return myArgument.getCommand().execute();
-//		}
-//		return myArgument.getValue();
 	}
 
-	public Command initialize(){ // will be removed by reflection, so only need to implmenent until thats done
-		return new ForwardCommand();
-	}
 
 	public boolean equals(Object obj) { //Code for testing purposes, 
 		if (obj instanceof ForwardCommand){

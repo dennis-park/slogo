@@ -24,9 +24,6 @@ public class Command {//A zero parameter class
 		return 0; //Override
 	}
 	
-	public Command initialize() {
-		return null; //override or will not be needed
-	}
 	
 	public int getArgumentCount(){
 		return myArgumentCount;

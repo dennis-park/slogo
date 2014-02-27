@@ -22,11 +22,6 @@ public class Command1Parameter extends Command {
 		return 0; //Override in subclasses
 	}
 
-	@Override
-	public Command initialize() {
-		return null; //Override in subclasses, should be removed after using reflection
-	}
-
 	public int getArgumentCount(){
 		return myArgumentCount;
 	}

@@ -20,10 +20,4 @@ public class Bracket extends Command {
 		return 0;
 	}
 
-	@Override
-	public Command initialize() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

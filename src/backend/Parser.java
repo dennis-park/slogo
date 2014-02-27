@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.regex.Pattern;
 
-import backend.command.BuiltInCommands;
+import backend.command.CommandFactory;
 import backend.command.Command;
 
 
@@ -13,13 +13,13 @@ import backend.command.Command;
 public class Parser {
 	private static final String NUMBER = "-?[0-9]+\\.?[0-9]*";
 	private static final String WORD = "[a-zA-z_]+(\\?)?";
-	private BuiltInCommands myCommands;
+	private CommandFactory myCommands;
 	private LinkedList<String> currentTokens;
 	private static final String LEFTBRACKET = "[";
 	private static final String RIGHTBRACKET = "]";
 	
 	public Parser(){
-		myCommands = new BuiltInCommands();
+		myCommands = new CommandFactory();
 		currentTokens = new LinkedList<String>();
 	}
 	
@@ -33,7 +33,7 @@ public class Parser {
 //	if double, return error
 	
 	
-	public Queue<Command> parse(String[] tokens){
+	public Queue<Command> parse(String[] tokens) throws InstantiationException, IllegalAccessException{
 		generateQueue(tokens);
 		LinkedList<Command> commands = new LinkedList<Command>();
 		while(!currentTokens.isEmpty()){ //clean up this loop later, could possibly refactor with later similar loop. Look into it.
@@ -64,18 +64,18 @@ public class Parser {
 //			else call add argument on command
 //return command created
 
-	private Command defineCommand(){
+	private Command defineCommand() throws InstantiationException, IllegalAccessException{
 		Command c;
 		String commandName = currentTokens.remove();
 		if(myCommands.hasCommand(commandName)){
-			c= myCommands.getCommand(commandName).initialize();
+			c= myCommands.getCommand(commandName);
 			completeCommand(c);
 			return c;
 		}
 		return null; //command not built in/defined, an error
 	}
 
-	private void completeCommand(Command c) {
+	private void completeCommand(Command c) throws InstantiationException, IllegalAccessException {
 		int numArguments = c.getArgumentCount();
 		for(int i =0; i < numArguments; i++){
 			if(currentTokens.peek() != null && Pattern.matches(NUMBER, currentTokens.peek())){

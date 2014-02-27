@@ -13,7 +13,7 @@ import backend.command.turtle.ForwardCommand;
 public class ParserTest {
 
 	@Test
-	public void testFoward() {
+	public void testFoward() throws InstantiationException, IllegalAccessException {
 		Parser parse = new Parser();
 		Command fd = new ForwardCommand();
 		fd.addArgumentDouble(50.0);
@@ -23,7 +23,7 @@ public class ParserTest {
 	}
 
 	@Test
-	public void testFowardFoward() {
+	public void testFowardFoward() throws InstantiationException, IllegalAccessException {
 		Parser parse = new Parser();
 		Command fd = new ForwardCommand();
 		Command fd1 = new ForwardCommand();
@@ -35,7 +35,7 @@ public class ParserTest {
 	}
 
 	@Test
-	public void testMultipleCommands(){
+	public void testMultipleCommands() throws InstantiationException, IllegalAccessException{
 		LinkedList<Command> testCase = new LinkedList<Command>();
 		Parser parse = new Parser();
 		Command fd = new ForwardCommand();
@@ -50,14 +50,14 @@ public class ParserTest {
 	}
 
 	@Test
-	public void testSumBasic(){
+	public void testSumBasic() throws InstantiationException, IllegalAccessException{
 		Parser parse = new Parser();
 		String[] sum = {"SUM", "50", "50"};
 		assertEquals(parse.parse(sum).remove().execute(), 100.0, 0.01);
 	}
 
 	@Test
-	public void testSumNesting(){
+	public void testSumNesting() throws InstantiationException, IllegalAccessException{
 		Parser parse = new Parser();
 		String[] sum = {"SUM", "SUM", "10", "SUM", "20", "30", "40"};
 		assertEquals(parse.parse(sum).remove().execute(), 100.0, 0.01);

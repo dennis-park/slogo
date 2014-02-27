@@ -15,10 +15,4 @@ public class SumCommand extends Command2Parameter{
 			return 0;//error
 		return myParameters[0].execute() + myParameters[1].execute();
 	}
-	
-	public Command initialize(){
-		return new SumCommand();
-	}
-	
-	
 }
