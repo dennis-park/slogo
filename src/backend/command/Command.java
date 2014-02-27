@@ -1,5 +1,6 @@
 package backend.command;
 
+
 /**
  * The Command superclass provides a framework for the different
  * methods that can be called by the user. This superclass is to be
@@ -12,6 +13,7 @@ public class Command {//A zero parameter class
 		myArgumentCount =0;
 	}
 	
+
 	public void addArgumentDouble(Double d) {
 		//Do nothing, no arguments
 	}

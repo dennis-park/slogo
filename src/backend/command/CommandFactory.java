@@ -10,6 +10,7 @@ public class CommandFactory {
 		commands.put("FORWARD", "backend.command.turtle.ForwardCommand");
 		commands.put("FD", "backend.command.turtle.ForwardCommand");
 		commands.put("SUM", "backend.command.math.SumCommand");
+		commands.put("[", "backend.command.Bracket");
 	}
 	
 	public boolean hasCommand(String token){

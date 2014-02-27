@@ -1,22 +1,30 @@
 package backend.command;
 
-public class Bracket extends Command {
+import java.util.ArrayList;
 
+public class Bracket extends Command {
+	private ArrayList<Parameter> commands;
+	
+	public Bracket(){
+		
+	}
+	
 	@Override
 	public void addArgumentDouble(Double d) {
-		// TODO Auto-generated method stub
+		// Should not happen. throw an error
 		
 	}
 
 	@Override
 	public void addArgumentCommand(Command c) {
-		// TODO Auto-generated method stub
-		
+		commands.add(new Parameter(c));
 	}
 
 	@Override
 	public double execute() {
-		// TODO Auto-generated method stub
+		for(Parameter p : commands){
+			p.execute();
+		}
 		return 0;
 	}
 

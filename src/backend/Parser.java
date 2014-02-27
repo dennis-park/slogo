@@ -37,16 +37,14 @@ public class Parser {
 		generateQueue(tokens);
 		LinkedList<Command> commands = new LinkedList<Command>();
 		while(!currentTokens.isEmpty()){ //clean up this loop later, could possibly refactor with later similar loop. Look into it.
-			if(Pattern.matches(NUMBER, currentTokens.peek())){
-				//Case where it is a number, should not happen in correct code. Return error however we decide upon errors
-			}
-			else if(Pattern.matches(WORD, currentTokens.peek())){
-				commands.add(defineCommand());
+			if(Pattern.matches(WORD, currentTokens.peek())){
+				commands.add(defineCommand(currentTokens.remove()));
 			}
 			else if(currentTokens.peek().equals(LEFTBRACKET)){
 				//BracketCase: commands.add(defineCommandBracket?;
 			}
 			else{
+				//numbers
 				//Should not be reached. error state. No commands probably
 			}
 		}
@@ -64,11 +62,11 @@ public class Parser {
 //			else call add argument on command
 //return command created
 
-	private Command defineCommand() throws InstantiationException, IllegalAccessException{
+	private Command defineCommand(String s) throws InstantiationException, IllegalAccessException{
 		Command c;
-		String commandName = currentTokens.remove();
-		if(myCommands.hasCommand(commandName)){
-			c= myCommands.getCommand(commandName);
+//		String commandName = currentTokens.remove();
+		if(myCommands.hasCommand(s)){
+			c= myCommands.getCommand(s);
 			completeCommand(c);
 			return c;
 		}
@@ -77,22 +75,32 @@ public class Parser {
 
 	private void completeCommand(Command c) throws InstantiationException, IllegalAccessException {
 		int numArguments = c.getArgumentCount();
-		for(int i =0; i < numArguments; i++){
-			if(currentTokens.peek() != null && Pattern.matches(NUMBER, currentTokens.peek())){
-				c.addArgumentDouble(Double.parseDouble(currentTokens.remove()));
+		int count =0;
+		String token = "emptyList";
+//		for(int i =0; i < numArguments; i++){
+		while(((count <numArguments) || isLeftBracket()) && !token.equals(RIGHTBRACKET)){
+			count++;
+			token = currentTokens.remove();
+			if(token != null && Pattern.matches(NUMBER, token)){
+				c.addArgumentDouble(Double.parseDouble(token));
 			}
-			else if(currentTokens.peek() != null && Pattern.matches(WORD, currentTokens.peek())){
-				c.addArgumentCommand(defineCommand());
+			else if((token != null && Pattern.matches(WORD, token)) || (token.equals(LEFTBRACKET))){
+				c.addArgumentCommand(defineCommand(token));
 			}
-			else if(currentTokens.peek().equals(LEFTBRACKET)){
-				//bracketcase: addcommandbracket?
-			}
+//			else if(currentTokens.peek().equals(LEFTBRACKET)){
+//				//bracketcase: addcommandbracket?
+//			}
 			else{
 				//return error, should not happen
 			}
 				
 		}
 	}
+
+	private boolean isLeftBracket() {
+		return !currentTokens.isEmpty() && currentTokens.peek().equals(LEFTBRACKET);
+	}
+	
 	
 	private void generateQueue(String[] tokens){
 		for(String s: tokens){
