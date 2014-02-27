@@ -25,11 +25,4 @@ public class IfElseCommand extends Command {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	@Override
-	public Command initialize() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

@@ -18,11 +18,4 @@ public class TurnLeftCommand extends Command1Parameter {
 		return myFinalArgument;
 	}
 	
-//	public Command initialize(){ 
-//	// will be removed by reflection, so only need to implmenent until thats done
-//		return new TurnLeftCommand();
-//	}
-	
-	
-	
 }

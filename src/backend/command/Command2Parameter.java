@@ -34,10 +34,4 @@ public class Command2Parameter extends Command {
 		return 0;
 	}
 
-	@Override
-	public Command initialize() {
-		// Override in subclasses, shouldn't need to be used
-		return null;
-	}
-
 }
