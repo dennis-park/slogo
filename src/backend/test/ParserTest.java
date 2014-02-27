@@ -36,17 +36,17 @@ public class ParserTest {
 
 	@Test
 	public void testMultipleCommands(){
-	LinkedList<Command> testCase = new LinkedList<Command>();
-	Parser parse = new Parser();
-	Command fd = new ForwardCommand();
-	Command fd1 = new ForwardCommand();
-	fd.addArgumentDouble(50.0);
-	fd1.addArgumentDouble(50.0);
-	testCase.add(fd);
-	testCase.add(fd1);
-	
-	String[] fd50fd50 = {"FD","50","FD","50"};
-	assertEquals(parse.parse(fd50fd50), testCase);
+		LinkedList<Command> testCase = new LinkedList<Command>();
+		Parser parse = new Parser();
+		Command fd = new ForwardCommand();
+		Command fd1 = new ForwardCommand();
+		fd.addArgumentDouble(50.0);
+		fd1.addArgumentDouble(50.0);
+		testCase.add(fd);
+		testCase.add(fd1);
+
+		String[] fd50fd50 = {"FD","50","FD","50"};
+		assertEquals(parse.parse(fd50fd50), testCase);
 	}
 
 	@Test
@@ -55,13 +55,13 @@ public class ParserTest {
 		String[] sum = {"SUM", "50", "50"};
 		assertEquals(parse.parse(sum).remove().execute(), 100.0, 0.01);
 	}
-	
+
 	@Test
 	public void testSumNesting(){
 		Parser parse = new Parser();
 		String[] sum = {"SUM", "SUM", "10", "SUM", "20", "30", "40"};
 		assertEquals(parse.parse(sum).remove().execute(), 100.0, 0.01);
 	}
-	
+
 
 }

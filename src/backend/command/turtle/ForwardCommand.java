@@ -24,10 +24,11 @@ public class ForwardCommand extends Command1Parameter {
 	//	}
 
 	public double execute(){
-		if(!myArgument.isNumber()){
-			return myArgument.getCommand().execute();
-		}
-		return myArgument.getValue();
+		return myArgument.execute();
+//		if(!myArgument.isNumber()){
+//			return myArgument.getCommand().execute();
+//		}
+//		return myArgument.getValue();
 	}
 
 	public Command initialize(){ // will be removed by reflection, so only need to implmenent until thats done
