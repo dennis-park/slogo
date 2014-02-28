@@ -111,6 +111,13 @@ public class CommandFactory {
 		commands.put("NOT", "backend.command.booleanops.NotCommand");
 		
 //control structs:
+		commands.put("REPEAT", "backend.command.control.RepeatCommand");
+		
+		commands.put("IF", "backend.command.control.IfCommand");
+		
+		commands.put("IFELSE", "backend.command.control.IfElseCommand");
+		
+//misc:
 		commands.put("[", "backend.command.Bracket");
 	}
 	
