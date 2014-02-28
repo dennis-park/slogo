@@ -43,8 +43,11 @@ public class CommandFactory {
 		
 		commands.put("CLEARSCREEN", "backend.command.turtle.ClearScreenCommand");
 		commands.put("CS", "backend.command.turtle.ClearScreenCommand");
+	
+//turtle queries:
 		
-//math commands:
+		
+//math ops:
 		commands.put("SUM", "backend.command.math.SumCommand");
 		commands.put("+", "backend.command.math.SumCommand");
 		
@@ -56,6 +59,26 @@ public class CommandFactory {
 		
 		commands.put("QUOTIENT", "backend.command.math.QuotientCommand");
 		commands.put("/", "backend.command.math.QuotientCommand");
+		
+		commands.put("REMAINDER", "backend.command.math.RemainderCommand");
+		commands.put("%", "backend.command.math.RemainderCommand");
+
+		commands.put("MINUS", "backend.command.math.MinusCommand");
+		commands.put("~", "backend.command.math.MinusCommand");
+		
+		commands.put("RANDOM", "backend.command.math.RandomCommand");
+		
+		commands.put("SIN", "backend.command.math.SinCommand");
+		
+		commands.put("COS", "backend.command.math.CosCommand");
+		
+		commands.put("TAN", "backend.command.math.TanCommand");
+		
+		commands.put("ATAN", "backend.command.math.ArcTanCommand");
+		
+		commands.put("LOG", "backend.command.math.LogCommand");
+		
+		commands.put("POW", "backend.command.math.PowCommand");
 		
 		
 		commands.put("[", "backend.command.Bracket");

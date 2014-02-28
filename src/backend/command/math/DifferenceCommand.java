@@ -3,11 +3,8 @@ package backend.command.math;
 import backend.command.Command2Parameter;
 
 public class DifferenceCommand extends Command2Parameter {
-
-	public DifferenceCommand(){
-		super();
-	}
 	
+	@Override
 	public double execute(){
 		if(currentParameters != myArgumentCount)
 			return 0;//error

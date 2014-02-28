@@ -52,19 +52,33 @@ public class ParserTest {
 		assertEquals(parse.parse(rt50rt50), testCase);
 	}
 
-	@Test
-	public void testDiffBasic() throws InstantiationException, IllegalAccessException{
-		Parser parse = new Parser();
-		String[] diff = {"DIFFERENCE", "60", "50"};
-		assertEquals(parse.parse(diff).remove().execute(), 10.0, 0.01);
-	}
+//	@Test
+//	public void testDiffBasic() throws InstantiationException, IllegalAccessException{
+//		Parser parse = new Parser();
+//		String[] diff = {"-", "60", "50"};
+//		assertEquals(parse.parse(diff).remove().execute(), 10.0, 0.01);
+//	}
 	
 	@Test
-	public void testSumBasic() throws InstantiationException, IllegalAccessException{
+	public void testProductBasic() throws InstantiationException, IllegalAccessException{
 		Parser parse = new Parser();
-		String[] sum = {"+", "60", "50"};
-		assertEquals(parse.parse(sum).remove().execute(), 110.0, 0.01);
+		String[] prod = {"PRODUCT", "6", "5"};
+		assertEquals(parse.parse(prod).remove().execute(), 30.0, 0.01);
 	}
+
+	@Test
+	public void testSinBasic() throws InstantiationException, IllegalAccessException{
+		Parser parse = new Parser();
+		String[] sin = {"SIN", "90"};
+		assertEquals(parse.parse(sin).remove().execute(), 1.0, 0.01);
+	}
+	
+//	@Test
+//	public void testSumBasic() throws InstantiationException, IllegalAccessException{
+//		Parser parse = new Parser();
+//		String[] sum = {"+", "60", "50"};
+//		assertEquals(parse.parse(sum).remove().execute(), 110.0, 0.01);
+//	}
 
 //	@Test
 //	public void testDiffNesting() throws InstantiationException, IllegalAccessException{
