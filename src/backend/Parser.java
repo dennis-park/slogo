@@ -40,9 +40,6 @@ public class Parser {
 			if(Pattern.matches(WORD, currentTokens.peek())){
 				commands.add(defineCommand(currentTokens.remove()));
 			}
-			else if(currentTokens.peek().equals(LEFTBRACKET)){
-				//BracketCase: commands.add(defineCommandBracket?;
-			}
 			else{
 				//numbers
 				//Should not be reached. error state. No commands probably
@@ -77,8 +74,7 @@ public class Parser {
 		int numArguments = c.getArgumentCount();
 		int count =0;
 		String token = "emptyList";
-//		for(int i =0; i < numArguments; i++){
-		while(((count <numArguments) || isLeftBracket()) && !token.equals(RIGHTBRACKET)){
+		while(((count <numArguments) || isLeftBracket(c)) && isNotRightBracket(token, c)){
 			count++;
 			token = currentTokens.remove();
 			if(token != null && Pattern.matches(NUMBER, token)){
@@ -87,9 +83,6 @@ public class Parser {
 			else if((token != null && Pattern.matches(WORD, token)) || (token.equals(LEFTBRACKET))){
 				c.addArgumentCommand(defineCommand(token));
 			}
-//			else if(currentTokens.peek().equals(LEFTBRACKET)){
-//				//bracketcase: addcommandbracket?
-//			}
 			else{
 				//return error, should not happen
 			}
@@ -97,8 +90,12 @@ public class Parser {
 		}
 	}
 
-	private boolean isLeftBracket() {
-		return !currentTokens.isEmpty() && currentTokens.peek().equals(LEFTBRACKET);
+	private boolean isLeftBracket(Command c) {
+		return !currentTokens.isEmpty() && currentTokens.peek().equals(LEFTBRACKET) || c.getClass().toString().endsWith("Bracket");
+	}
+	
+	private boolean isNotRightBracket(String token, Command c){
+		return !token.equals(RIGHTBRACKET) && !c.getClass().toString().endsWith("BracketClose");
 	}
 	
 	

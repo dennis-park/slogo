@@ -2,11 +2,14 @@ package backend.command;
 
 import java.util.ArrayList;
 
+
 public class Bracket extends Command {
 	private ArrayList<Parameter> commands;
+	private ArrayList<Double> values; 
 	
 	public Bracket(){
-		
+		commands = new ArrayList<Parameter>();
+		values = new ArrayList<Double>();
 	}
 	
 	@Override
@@ -23,9 +26,18 @@ public class Bracket extends Command {
 	@Override
 	public double execute() {
 		for(Parameter p : commands){
-			p.execute();
+			p.setRepCount(repcount);
+			values.add(p.execute());
 		}
-		return 0;
+		if(values.size() < 2)
+			return 0;
+		else
+			return values.get(values.size()-2);
 	}
-
+	
+	public boolean equals(Object obj){
+		Bracket s = (Bracket)obj;
+		return this.commands.equals(s.commands);
+	}
+	
 }

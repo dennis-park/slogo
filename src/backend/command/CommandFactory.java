@@ -119,6 +119,7 @@ public class CommandFactory {
 		
 //misc:
 		commands.put("[", "backend.command.Bracket");
+		commands.put("]", "backend.command.BracketClose");
 	}
 	
 	public boolean hasCommand(String token){
