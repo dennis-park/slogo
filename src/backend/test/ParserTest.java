@@ -8,9 +8,6 @@ import org.junit.Test;
 
 import backend.Parser;
 import backend.command.Command;
-import backend.command.turtle.ForwardCommand;
-import backend.command.turtle.BackCommand;
-import backend.command.turtle.TurnLeftCommand;
 import backend.command.turtle.TurnRightCommand;
 
 public class ParserTest {
@@ -71,6 +68,34 @@ public class ParserTest {
 		Parser parse = new Parser();
 		String[] sin = {"SIN", "90"};
 		assertEquals(parse.parse(sin).remove().execute(), 1.0, 0.01);
+	}
+	
+	@Test
+	public void testEqualBasic() throws InstantiationException, IllegalAccessException{
+		Parser parse = new Parser();
+		String[] equals = {"EQUALP", "80", "90"};
+		assertEquals(parse.parse(equals).remove().execute(), 0.0, 0.01);
+	}
+	
+	@Test
+	public void testNotBasic() throws InstantiationException, IllegalAccessException{
+		Parser parse = new Parser();
+		String[] not = {"NOT", "80"};
+		assertEquals(parse.parse(not).remove().execute(), 0.0, 0.01);
+	}
+	
+	@Test
+	public void testAndBasic() throws InstantiationException, IllegalAccessException{
+		Parser parse = new Parser();
+		String[] and = {"AND", "80", "90"};
+		assertEquals(parse.parse(and).remove().execute(), 1.0, 0.01);
+	}
+	
+	@Test
+	public void testAnd2Basic() throws InstantiationException, IllegalAccessException{
+		Parser parse = new Parser();
+		String[] and = {"AND", "80", "0"};
+		assertEquals(parse.parse(and).remove().execute(), 0.0, 0.01);
 	}
 	
 //	@Test

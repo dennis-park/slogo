@@ -5,7 +5,8 @@ import java.util.HashMap;
 public class CommandFactory {
 	private HashMap<String, String> commands;
 	//Need some sort of xml or whatever data form parser to take in data in this format.
-	public CommandFactory(){
+	public CommandFactory() {
+		
 		commands = new HashMap<String, String>();
 		
 //turtle commands:
@@ -45,7 +46,17 @@ public class CommandFactory {
 		commands.put("CS", "backend.command.turtle.ClearScreenCommand");
 	
 //turtle queries:
+		commands.put("XCOR", "backend.command.queries.XCorQuery");
+
+		commands.put("YCOR", "backend.command.queries.YCorQuery");
 		
+		commands.put("HEADING", "backend.command.queries.HeadingQuery");
+		
+		commands.put("PENDOWN?", "backend.command.queries.PenDownQuery");
+		commands.put("PENDOWNP", "backend.command.queries.PenDownQuery");
+		
+		commands.put("SHOWING?", "backend.command.queries.ShowingQuery");
+		commands.put("SHOWINGP", "backend.command.queries.ShowingQuery");
 		
 //math ops:
 		commands.put("SUM", "backend.command.math.SumCommand");
@@ -80,7 +91,26 @@ public class CommandFactory {
 		
 		commands.put("POW", "backend.command.math.PowCommand");
 		
+//boolean ops:
+		commands.put("LESS?", "backend.command.booleanops.LessThanCommand");
+		commands.put("LESSP", "backend.command.booleanops.LessThanCommand");
 		
+		commands.put("GREATER?", "backend.command.booleanops.GreaterThanCommand");
+		commands.put("GREATERP", "backend.command.booleanops.GreaterThanCommand");
+		
+		commands.put("EQUAL?", "backend.command.booleanops.EqualCommand");
+		commands.put("EQUALP", "backend.command.booleanops.EqualCommand");
+		
+		commands.put("NOTEQUAL?", "backend.command.booleanops.NotEqualCommand");
+		commands.put("NOTEQUALP", "backend.command.booleanops.NotEqualCommand");
+		
+		commands.put("AND", "backend.command.booleanops.AndCommand");
+		
+		commands.put("OR", "backend.command.booleanops.OrCommand");
+		
+		commands.put("NOT", "backend.command.booleanops.NotCommand");
+		
+//control structs:
 		commands.put("[", "backend.command.Bracket");
 	}
 	
