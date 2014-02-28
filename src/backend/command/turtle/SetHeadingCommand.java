@@ -1,13 +1,9 @@
 package backend.command.turtle;
 
-import backend.command.Command;
 import backend.command.Command1Parameter;
 
 public class SetHeadingCommand extends Command1Parameter {
 	
-	private final String NAME_1 = "SETHEADING";
-	private final String NAME_2 = "SETH";
-
 	public double execute() {
 		double myFinalArgument = myArgument.execute();
 		//double currentHeading = Turtle.getHeading();
@@ -19,10 +15,6 @@ public class SetHeadingCommand extends Command1Parameter {
 		
 		//for now:
 		return myFinalArgument;
-	}
-
-	public Command initialize(){ // will be removed by reflection, so only need to implmenent until thats done
-		return new SetHeadingCommand();
 	}
 
 }

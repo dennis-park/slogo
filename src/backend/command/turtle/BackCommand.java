@@ -1,6 +1,5 @@
 package backend.command.turtle;
 
-import backend.command.Command;
 import backend.command.Command1Parameter;
 
 /**
@@ -8,8 +7,6 @@ import backend.command.Command1Parameter;
  * absolute orientation of the canvas)
  */
 public class BackCommand extends Command1Parameter {
-	private final String NAME_1 = "BACK";
-	private final String NAME_2 = "BK";
 
 	public double execute() {
 		double myFinalArgument = myArgument.execute();
@@ -20,15 +17,12 @@ public class BackCommand extends Command1Parameter {
 		return myFinalArgument;
 	}
 
-
-//	public boolean equals(Object obj) { //Code for testing purposes, 
-//		if (obj instanceof BackCommand){
-//			BackCommand b = (BackCommand)obj;
-//			return (myArgument.equals(b.myArgument));
-//		}
-//		else
-//			return false;
-//	}
-
-
+	public boolean equals(Object obj) { //Code for testing purposes, 
+		if (obj instanceof BackCommand){
+			BackCommand b = (BackCommand)obj;
+			return (myArgument.equals(b.myArgument));
+		}
+		else
+			return false;
+	}
 }

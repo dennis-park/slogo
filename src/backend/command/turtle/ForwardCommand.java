@@ -8,17 +8,6 @@ import backend.command.Command1Parameter;
  */
 public class ForwardCommand extends Command1Parameter {
 
-	private final String NAME_1 = "FORWARD";
-	private final String NAME_2 = "FD";
-
-	//	public void addArgument(String s){ might use this if I decide to change up parsing readins
-	//		if(s is a number){
-	//			addArgumentDouble(Double.parseDouble(s));
-	//		}
-	//		else
-	//			
-	//	}
-
 	public double execute(){
 		double myFinalArgument = myArgument.execute();
 //		Turtle.moveForward(myFinalArgument);

@@ -9,59 +9,69 @@ import org.junit.Test;
 import backend.Parser;
 import backend.command.Command;
 import backend.command.turtle.ForwardCommand;
+import backend.command.turtle.BackCommand;
+import backend.command.turtle.TurnLeftCommand;
+import backend.command.turtle.TurnRightCommand;
 
 public class ParserTest {
 
 	@Test
-	public void testFoward() throws InstantiationException, IllegalAccessException {
+	public void testRight() throws InstantiationException, IllegalAccessException {
 		Parser parse = new Parser();
-		Command fd = new ForwardCommand();
-		fd.addArgumentDouble(50.0);
-		String[] fd50 = {"FD","50"};
-		parse.parse(fd50);
-		assertEquals(parse.parse(fd50).remove(),fd);
+		Command rt = new TurnRightCommand();
+		rt.addArgumentDouble(50.0);
+		String[] rt50 = {"RT","50"};
+		parse.parse(rt50);
+		assertEquals(parse.parse(rt50).remove(), rt);
 	}
 
 	@Test
-	public void testFowardFoward() throws InstantiationException, IllegalAccessException {
+	public void testRightRight() throws InstantiationException, IllegalAccessException {
 		Parser parse = new Parser();
-		Command fd = new ForwardCommand();
-		Command fd1 = new ForwardCommand();
-		fd1.addArgumentDouble(50.0);
-		fd.addArgumentCommand(fd1);
-		String[] fd50 = {"FD","FD","50"};
-		parse.parse(fd50);
-		assertEquals(parse.parse(fd50).remove(),fd);
+		Command rt = new TurnRightCommand();
+		Command rt1 = new TurnRightCommand();
+		rt1.addArgumentDouble(50.0);
+		rt.addArgumentCommand(rt1);
+		String[] rt50 = {"RT","RT","50"};
+		parse.parse(rt50);
+		assertEquals(parse.parse(rt50).remove(), rt);
 	}
 
 	@Test
 	public void testMultipleCommands() throws InstantiationException, IllegalAccessException{
 		LinkedList<Command> testCase = new LinkedList<Command>();
 		Parser parse = new Parser();
-		Command fd = new ForwardCommand();
-		Command fd1 = new ForwardCommand();
-		fd.addArgumentDouble(50.0);
-		fd1.addArgumentDouble(50.0);
-		testCase.add(fd);
-		testCase.add(fd1);
+		Command rt = new TurnRightCommand();
+		Command rt1 = new TurnRightCommand();
+		rt.addArgumentDouble(50.0);
+		rt1.addArgumentDouble(50.0);
+		testCase.add(rt);
+		testCase.add(rt1);
 
-		String[] fd50fd50 = {"FD","50","FD","50"};
-		assertEquals(parse.parse(fd50fd50), testCase);
+		String[] rt50rt50 = {"RT","50","RT","50"};
+		assertEquals(parse.parse(rt50rt50), testCase);
 	}
 
+	@Test
+	public void testDiffBasic() throws InstantiationException, IllegalAccessException{
+		Parser parse = new Parser();
+		String[] diff = {"DIFFERENCE", "60", "50"};
+		assertEquals(parse.parse(diff).remove().execute(), 10.0, 0.01);
+	}
+	
 	@Test
 	public void testSumBasic() throws InstantiationException, IllegalAccessException{
 		Parser parse = new Parser();
-		String[] sum = {"SUM", "50", "50"};
-		assertEquals(parse.parse(sum).remove().execute(), 100.0, 0.01);
+		String[] sum = {"+", "60", "50"};
+		assertEquals(parse.parse(sum).remove().execute(), 110.0, 0.01);
 	}
 
-	@Test
-	public void testSumNesting() throws InstantiationException, IllegalAccessException{
-		Parser parse = new Parser();
-		String[] sum = {"SUM", "SUM", "10", "SUM", "20", "30", "40"};
-		assertEquals(parse.parse(sum).remove().execute(), 100.0, 0.01);
-	}
+//	@Test
+//	public void testDiffNesting() throws InstantiationException, IllegalAccessException{
+//		Parser parse = new Parser();
+//		String[] diff = {"-", "-", "10", "-", "20", "30", "40"};
+//		assertEquals(parse.parse(diff).remove().execute(), 100.0, 0.01);
+//	}
 
 
 }
