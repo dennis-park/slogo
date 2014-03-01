@@ -16,7 +16,7 @@ public class Parser {
 	private static final String LEFTBRACKET = "[";
 	private static final String RIGHTBRACKET = "]";
 
-	public Parser(){
+	public Parser() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		myCommands = new CommandFactory();
 		currentTokens = new LinkedList<String>();
 	}

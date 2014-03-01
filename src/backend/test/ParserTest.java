@@ -15,9 +15,19 @@ import backend.command.turtle.ForwardCommand;
 import backend.command.turtle.TurnRightCommand;
 
 public class ParserTest {
+	@Test
+	public void testForward() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		Parser parse = new Parser();
+		Command fd = new ForwardCommand();
+		fd.addArgumentDouble(50.0);
+		String[] fd50 = {"FD","50"};
+		parse.parse(fd50);
+		assertEquals(parse.parse(fd50).remove(), fd);
+	}
+
 
 	@Test
-	public void testRight() throws InstantiationException, IllegalAccessException {
+	public void testRight() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		Parser parse = new Parser();
 		Command rt = new TurnRightCommand();
 		rt.addArgumentDouble(50.0);
@@ -27,7 +37,7 @@ public class ParserTest {
 	}
 
 	@Test
-	public void testRightRight() throws InstantiationException, IllegalAccessException {
+	public void testRightRight() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		Parser parse = new Parser();
 		Command rt = new TurnRightCommand();
 		Command rt1 = new TurnRightCommand();
@@ -39,7 +49,7 @@ public class ParserTest {
 	}
 
 	@Test
-	public void testMultipleCommands() throws InstantiationException, IllegalAccessException{
+	public void testMultipleCommands() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		LinkedList<Command> testCase = new LinkedList<Command>();
 		Parser parse = new Parser();
 		Command rt = new TurnRightCommand();
@@ -61,49 +71,49 @@ public class ParserTest {
 //	}
 	
 	@Test
-	public void testProductBasic() throws InstantiationException, IllegalAccessException{
+	public void testProductBasic() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		String[] prod = {"PRODUCT", "6", "5"};
 		assertEquals(parse.parse(prod).remove().execute(), 30.0, 0.01);
 	}
 
 	@Test
-	public void testSinBasic() throws InstantiationException, IllegalAccessException{
+	public void testSinBasic() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		String[] sin = {"SIN", "90"};
 		assertEquals(parse.parse(sin).remove().execute(), 1.0, 0.01);
 	}
 	
 	@Test
-	public void testEqualBasic() throws InstantiationException, IllegalAccessException{
+	public void testEqualBasic() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		String[] equals = {"EQUALP", "80", "90"};
 		assertEquals(parse.parse(equals).remove().execute(), 0.0, 0.01);
 	}
 	
 	@Test
-	public void testNotBasic() throws InstantiationException, IllegalAccessException{
+	public void testNotBasic() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		String[] not = {"NOT", "80"};
 		assertEquals(parse.parse(not).remove().execute(), 0.0, 0.01);
 	}
 	
 	@Test
-	public void testAndBasic() throws InstantiationException, IllegalAccessException{
+	public void testAndBasic() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		String[] and = {"AND", "80", "90"};
 		assertEquals(parse.parse(and).remove().execute(), 1.0, 0.01);
 	}
 	
 	@Test
-	public void testAnd2Basic() throws InstantiationException, IllegalAccessException{
+	public void testAnd2Basic() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		String[] and = {"AND", "80", "0"};
 		assertEquals(parse.parse(and).remove().execute(), 0.0, 0.01);
 	}
 	
 	@Test
-	public void testSumBasic() throws InstantiationException, IllegalAccessException{
+	public void testSumBasic() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		String[] sum = {"+", "60", "50"};
 		assertEquals(parse.parse(sum).remove().execute(), 110.0, 0.01);
@@ -117,7 +127,7 @@ public class ParserTest {
 //	}
 	
 	@Test
-	public void testBracket1() throws InstantiationException, IllegalAccessException{
+	public void testBracket1() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		Tokenizer token = new Tokenizer();
 		String[] b = token.tokenize("[ fd 50 fd 50 ]");
@@ -135,7 +145,7 @@ public class ParserTest {
 	}
 	
 	@Test
-	public void testBracket2()throws InstantiationException, IllegalAccessException{
+	public void testBracket2()throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		Tokenizer token = new Tokenizer();
 		String[] b = token.tokenize("[ fd 50 sum sum 10 20 30 ]");
@@ -143,7 +153,7 @@ public class ParserTest {
 	}
 	
 	@Test
-	public void testBracket3() throws InstantiationException, IllegalAccessException{
+	public void testBracket3() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		Tokenizer token = new Tokenizer();
 		String[] b = token.tokenize("[ fd [ sum sum 10 20 30 ] ]");
@@ -151,7 +161,7 @@ public class ParserTest {
 	}
 	
 	@Test
-	public void testBracket4() throws InstantiationException, IllegalAccessException{
+	public void testBracket4() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		Tokenizer token = new Tokenizer();
 		String[] b = token.tokenize("[ [ ] FD 50 ]");
@@ -159,7 +169,7 @@ public class ParserTest {
 	}
 	
 	@Test
-	public void testBracket5() throws InstantiationException, IllegalAccessException{
+	public void testBracket5() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		Tokenizer token = new Tokenizer();
 		String[] b = token.tokenize("sum [ ST ] [ ST ]");
@@ -167,7 +177,7 @@ public class ParserTest {
 	}
 	
 	@Test
-	public void testBracket6() throws InstantiationException, IllegalAccessException{
+	public void testBracket6() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		Tokenizer token = new Tokenizer();
 		String[] b = token.tokenize("[ sum [ sum sum 10 20 30 ] [ sum sum 10 20 30 ] ]");
@@ -177,7 +187,7 @@ public class ParserTest {
 	}
 	
 	@Test
-	public void testIf() throws InstantiationException, IllegalAccessException{
+	public void testIf() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		Tokenizer token = new Tokenizer();
 		String[] b = token.tokenize("if sum 50 50 sum 50 100");
@@ -187,7 +197,7 @@ public class ParserTest {
 	}
 	
 	@Test
-	public void testRepeat() throws InstantiationException, IllegalAccessException{
+	public void testRepeat() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		Tokenizer token = new Tokenizer();
 		String[] b = token.tokenize("REPEAT 20 REPCOUNT");
@@ -197,7 +207,7 @@ public class ParserTest {
 	}
 	
 	@Test
-	public void testIfElse() throws InstantiationException, IllegalAccessException{
+	public void testIfElse() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		Tokenizer token = new Tokenizer();
 		String[] b = token.tokenize("ifelse sum 50 50 [ sum 50 100 ] sum 100 100");

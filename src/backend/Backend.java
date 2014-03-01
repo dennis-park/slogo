@@ -14,7 +14,7 @@ public class Backend {
 	private Parser myParser;
 	private Executor myExecutor;
 	
-	public Backend(){
+	public Backend() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		myTokenizer = new Tokenizer();
 		myParser = new Parser();
 		myExecutor = new Executor();
