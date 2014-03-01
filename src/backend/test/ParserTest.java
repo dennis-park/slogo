@@ -175,6 +175,35 @@ public class ParserTest {
 		Double d = c.execute();
 		assertEquals(120.0, d, 0.01);
 	}
-
+	
+	@Test
+	public void testIf() throws InstantiationException, IllegalAccessException{
+		Parser parse = new Parser();
+		Tokenizer token = new Tokenizer();
+		String[] b = token.tokenize("if sum 50 50 sum 50 100");
+		String[] c = token.tokenize("if sum 50 -50 sum 50 100");
+		assertEquals(150.0, parse.parse(b).remove().execute(), 0.01);
+		assertEquals(0.0, parse.parse(c).remove().execute(), 0.01);
+	}
+	
+	@Test
+	public void testRepeat() throws InstantiationException, IllegalAccessException{
+		Parser parse = new Parser();
+		Tokenizer token = new Tokenizer();
+		String[] b = token.tokenize("REPEAT 20 REPCOUNT");
+		String[] c = token.tokenize("REPEAT 5 [ sum 10 repcount ]");
+		assertEquals(20.0, parse.parse(b).remove().execute(), 0.01);
+		assertEquals(15.0, parse.parse(c).remove().execute(), 0.01);
+	}
+	
+	@Test
+	public void testIfElse() throws InstantiationException, IllegalAccessException{
+		Parser parse = new Parser();
+		Tokenizer token = new Tokenizer();
+		String[] b = token.tokenize("ifelse sum 50 50 [ sum 50 100 ] sum 100 100");
+		String[] c = token.tokenize("ifelse sum 50 -50 sum 50 100 sum 100 100");
+		assertEquals(150.0, parse.parse(b).remove().execute(), 0.01);
+		assertEquals(200.0, parse.parse(c).remove().execute(), 0.01);
+	}
 
 }

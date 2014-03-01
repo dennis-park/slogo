@@ -21,6 +21,11 @@ public class Command1Parameter extends Command {
 	public double execute() {
 		return 0; //Override in subclasses
 	}
+	
+	public void setRepCount(int i){
+		super.setRepCount(i);
+		myArgument.setRepCount(i);
+	}
 
 	public int getArgumentCount(){
 		return myArgumentCount;

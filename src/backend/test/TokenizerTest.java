@@ -48,6 +48,15 @@ public class TokenizerTest {
 		assertEquals(ls1, ls2);
 	}
 	
+	@Test
+	public void testTokensNegative2(){
+		Tokenizer Tokenizer = new Tokenizer();
+		String[] s1 = {"SUM", "50", "-50"};
+		List<String> ls1 = new ArrayList<String>(Arrays.asList(s1));
+		List<String> ls2 = new ArrayList<String>(Arrays.asList(Tokenizer.tokenize("SUM 50 -50")));
+		assertEquals(ls1, ls2);
+	}
+	
 	
 
 	@Test

@@ -75,7 +75,7 @@ public class Parser {
 		int numArguments = c.getArgumentCount();
 		int count =0;
 		String token = "emptyList";
-		while(((count <numArguments) || isLeftBracket(c)) && isNotRightBracket(token, c)){
+		while(((count <numArguments) || isLeftBracket(c, count)) && isNotRightBracket(token, c)){
 			count++;
 			token = currentTokens.remove();
 			if(token != null && Pattern.matches(NUMBER, token)){
@@ -91,8 +91,8 @@ public class Parser {
 		}
 	}
 
-	private boolean isLeftBracket(Command c) {
-		return !currentTokens.isEmpty() && currentTokens.peek().equals(LEFTBRACKET) || c.getClass().toString().endsWith("Bracket");
+	private boolean isLeftBracket(Command c, int count) {
+		return (!currentTokens.isEmpty() && currentTokens.peek().equals(LEFTBRACKET) || c.getClass().toString().endsWith("Bracket")) && count < c.getArgumentCount();
 	}
 	
 	private boolean isNotRightBracket(String token, Command c){
