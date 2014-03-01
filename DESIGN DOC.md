@@ -1,4 +1,4 @@
-SLogo Design Document
+﻿SLogo Design Document
 =====
 
 Front End (Ashley & Dennis)
@@ -71,6 +71,20 @@ Four main components:
 --Command (package of classes, each command represented by a class): defines each individual command (some may be recursively implemented, some commands call other commands, etc.); holds 
 
 --Executor (class): actually executing the commands in proper order as dictated by the user; will call commands in command package sequentially
+
+
+To Add a New Command:
+===
+
+1) In the command package of the Backend package, create a class for the command in the appropriate sub-package.
+
+2) Be sure that the class extends either Command, Command1Parameter, or Command2Parameter; if it takes more than 2 parameters, a new superclass for commands that take 3 parameters will have to be created.
+
+3) Be sure to implement the method execute() in your new command class, which should return a double value as appropriate.
+
+4) In the CommandFactory class, add to the commands HashMap as appropriate; be sure to choose sensible calls as keys for the map.
+
+5) Use ParserTest in the test package to test your new command; add new tests as you see fit.
 
 in browser UML : 
 http://www.asciiflow.com/#Draw

@@ -37,6 +37,11 @@ public class Parameter {
 		else
 			return c.execute();
 	}
+	
+	public void setRepCount(int i){
+		if(!isNum)
+			c.setRepCount(i);
+	}
 
 	public boolean equals(Object obj){
 		if (obj instanceof Parameter){

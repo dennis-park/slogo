@@ -53,7 +53,7 @@ public class TokenizerTest {
 	@Test
 	public void testTokensSpiro() throws IOException{
 		Tokenizer tokenizer = new Tokenizer();
-		String[] s1 = {"home", "repeat", "30", "[", "repeat", "20", "[", "fd", "10", "rt", "10", "]","repeat", "10", "[", "fd", "20", "rt", "100",
+		String[] s1 = {"HOME", "REPEAT", "30", "[", "REPEAT", "20", "[", "FD", "10", "RT", "10", "]","REPEAT", "10", "[", "FD", "20", "RT", "100",
 				"]","]"};
 		List<String> ls1 = new ArrayList<String>(Arrays.asList(s1));
 		List<String> ls2 = new ArrayList<String>(Arrays.asList(tokenizer.tokenize(readFile(FILELOCATION,Charset.defaultCharset()))));

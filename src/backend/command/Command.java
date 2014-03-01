@@ -10,9 +10,11 @@ package backend.command;
 public class Command {//A zero parameter class
 	
 	protected int myArgumentCount;
+	protected int repcount;
 	
 	public Command(){
 		myArgumentCount = 0;
+		repcount =1;
 	}
 	
 
@@ -31,6 +33,10 @@ public class Command {//A zero parameter class
 	
 	public int getArgumentCount(){
 		return myArgumentCount;
+	}
+	
+	public void setRepCount(int i){
+		repcount = i;
 	}
 	
 	public double calculateDistance(double x1, double x2, double y1, double y2) {

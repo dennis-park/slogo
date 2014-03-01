@@ -13,6 +13,7 @@ import backend.command.Command;
 public class Parser {
 	private static final String NUMBER = "-?[0-9]+\\.?[0-9]*";
 	private static final String WORD = "[a-zA-z_]+(\\?)?";
+	private static final String OPERANDS = "[+-/%~*]";
 	private CommandFactory myCommands;
 	private LinkedList<String> currentTokens;
 	private static final String LEFTBRACKET = "[";
@@ -37,11 +38,8 @@ public class Parser {
 		generateQueue(tokens);
 		LinkedList<Command> commands = new LinkedList<Command>();
 		while(!currentTokens.isEmpty()){ //clean up this loop later, could possibly refactor with later similar loop. Look into it.
-			if(Pattern.matches(WORD, currentTokens.peek())){
+			if(Pattern.matches(WORD, currentTokens.peek()) || Pattern.matches(OPERANDS,currentTokens.peek())){
 				commands.add(defineCommand(currentTokens.remove()));
-			}
-			else if(currentTokens.peek().equals(LEFTBRACKET)){
-				//BracketCase: commands.add(defineCommandBracket?;
 			}
 			else{
 				//numbers
@@ -77,19 +75,15 @@ public class Parser {
 		int numArguments = c.getArgumentCount();
 		int count =0;
 		String token = "emptyList";
-//		for(int i =0; i < numArguments; i++){
-		while(((count <numArguments) || isLeftBracket()) && !token.equals(RIGHTBRACKET)){
+		while(((count <numArguments) || isLeftBracket(c)) && isNotRightBracket(token, c)){
 			count++;
 			token = currentTokens.remove();
 			if(token != null && Pattern.matches(NUMBER, token)){
 				c.addArgumentDouble(Double.parseDouble(token));
 			}
-			else if((token != null && Pattern.matches(WORD, token)) || (token.equals(LEFTBRACKET))){
+			else if((token != null && Pattern.matches(WORD, token) || Pattern.matches(OPERANDS,token)) || (token.equals(LEFTBRACKET))){
 				c.addArgumentCommand(defineCommand(token));
 			}
-//			else if(currentTokens.peek().equals(LEFTBRACKET)){
-//				//bracketcase: addcommandbracket?
-//			}
 			else{
 				//return error, should not happen
 			}
@@ -97,8 +91,12 @@ public class Parser {
 		}
 	}
 
-	private boolean isLeftBracket() {
-		return !currentTokens.isEmpty() && currentTokens.peek().equals(LEFTBRACKET);
+	private boolean isLeftBracket(Command c) {
+		return !currentTokens.isEmpty() && currentTokens.peek().equals(LEFTBRACKET) || c.getClass().toString().endsWith("Bracket");
+	}
+	
+	private boolean isNotRightBracket(String token, Command c){
+		return !token.equals(RIGHTBRACKET) && !c.getClass().toString().endsWith("BracketClose");
 	}
 	
 	

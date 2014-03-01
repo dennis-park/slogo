@@ -4,10 +4,7 @@ import backend.command.Command2Parameter;
 
 public class SumCommand extends Command2Parameter{
 	
-	public SumCommand(){
-		super();
-	}
-	
+	@Override
 	public double execute(){
 		if(currentParameters != myArgumentCount)
 			return 0;//error
