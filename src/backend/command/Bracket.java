@@ -10,6 +10,7 @@ public class Bracket extends Command {
 	public Bracket(){
 		commands = new ArrayList<Parameter>();
 		values = new ArrayList<Double>();
+		myArgumentCount = Integer.MAX_VALUE;
 	}
 	
 	@Override
@@ -33,6 +34,12 @@ public class Bracket extends Command {
 			return 0;
 		else
 			return values.get(values.size()-2);
+	}
+	
+	public void setRepCount(int i){
+		super.setRepCount(i);
+		for(Parameter p : commands)
+			p.setRepCount(i);
 	}
 	
 	public boolean equals(Object obj){

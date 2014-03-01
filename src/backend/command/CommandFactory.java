@@ -116,6 +116,7 @@ public class CommandFactory {
 		commands.put("IF", "backend.command.control.IfCommand");
 		
 		commands.put("IFELSE", "backend.command.control.IfElseCommand");
+		commands.put("REPCOUNT", "backend.command.control.RepcountCommand");
 		
 //misc:
 		commands.put("[", "backend.command.Bracket");

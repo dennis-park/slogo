@@ -27,6 +27,13 @@ public class Command2Parameter extends Command {
 	public int getArgumentCount(){
 		return myArgumentCount;
 	}
+	
+	public void setRepCount(int i){
+		super.setRepCount(i);
+		for(Parameter p: myParameters){
+			p.setRepCount(i);
+		}
+	}
 
 	@Override
 	public double execute() {
