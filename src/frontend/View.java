@@ -39,11 +39,13 @@ public class View extends JFrame{
 
 	private JLabel myPosition, myHeading;
 	private Turtle myTurtle;
+	private JTextArea myInfo;
 	
 	private JComponent makeInfoPanel() {
 		JPanel myTurtleInfo = new JPanel();
 		myTurtleInfo.setLayout(new BorderLayout());	
-
+		myInfo = new JTextArea();
+		
 		myPosition = new JLabel();
 		myHeading = new JLabel();
 
@@ -57,7 +59,7 @@ public class View extends JFrame{
 	}
 	
 	private JLabel myHistory;
-	private JTextArea myHistoryArea;
+	private JTextArea myHistoryTextArea;
 	private JScrollPane myScrollable;
 	private static final int DEFAULT_FIELD = 30;
 
@@ -70,10 +72,10 @@ public class View extends JFrame{
 		myHistory = new JLabel(myResources.getString(getName()));
 		
         myCommandHistory.add(myHistory, BorderLayout.CENTER);
-        myHistoryArea = new JTextArea(DEFAULT_FIELD, DEFAULT_FIELD);
-        myHistoryArea.setEditable(false);
+        myHistoryTextArea = new JTextArea(DEFAULT_FIELD, DEFAULT_FIELD);
+        myHistoryTextArea.setEditable(false);
         
-        myScrollable = new JScrollPane(myHistoryArea);
+        myScrollable = new JScrollPane(myHistoryTextArea);
         
         myCommandHistory.add(myScrollable);
         myCommandHistory.add(myScrollable, BorderLayout.CENTER);
@@ -82,14 +84,20 @@ public class View extends JFrame{
 	}
 
 	private void updatePosition(double x, double y) {
-		// TODO Auto-generated method stub
-		
+		myInfo.setText("Position: x=" + x + "\t y=" + y);
 	}
 
 	private void updateHeading(double heading) {
-		// TODO Auto-generated method stub
-		
+		myInfo.setText("Heading=" + heading);
 	}
+	
+	//we can replace this with message Dialog (popup from JFrame), 
+	//take in parameter ResourceBundle/Constants file and search for Error message string
+	public void showMessage (String message) {
+        myHistoryTextArea.append(message + "\n");
+    }
 
-
+    public void clearCommands () {
+    	myHistoryTextArea.append("");
+    }
 }
