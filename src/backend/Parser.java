@@ -13,6 +13,7 @@ import backend.command.Command;
 public class Parser {
 	private static final String NUMBER = "-?[0-9]+\\.?[0-9]*";
 	private static final String WORD = "[a-zA-z_]+(\\?)?";
+	private static final String OPERANDS = "[+-/%~*]";
 	private CommandFactory myCommands;
 	private LinkedList<String> currentTokens;
 	private static final String LEFTBRACKET = "[";
@@ -37,7 +38,7 @@ public class Parser {
 		generateQueue(tokens);
 		LinkedList<Command> commands = new LinkedList<Command>();
 		while(!currentTokens.isEmpty()){ //clean up this loop later, could possibly refactor with later similar loop. Look into it.
-			if(Pattern.matches(WORD, currentTokens.peek())){
+			if(Pattern.matches(WORD, currentTokens.peek()) || Pattern.matches(OPERANDS,currentTokens.peek())){
 				commands.add(defineCommand(currentTokens.remove()));
 			}
 			else{
@@ -80,7 +81,7 @@ public class Parser {
 			if(token != null && Pattern.matches(NUMBER, token)){
 				c.addArgumentDouble(Double.parseDouble(token));
 			}
-			else if((token != null && Pattern.matches(WORD, token)) || (token.equals(LEFTBRACKET))){
+			else if((token != null && Pattern.matches(WORD, token) || Pattern.matches(OPERANDS,token)) || (token.equals(LEFTBRACKET))){
 				c.addArgumentCommand(defineCommand(token));
 			}
 			else{

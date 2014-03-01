@@ -102,12 +102,12 @@ public class ParserTest {
 		assertEquals(parse.parse(and).remove().execute(), 0.0, 0.01);
 	}
 	
-//	@Test
-//	public void testSumBasic() throws InstantiationException, IllegalAccessException{
-//		Parser parse = new Parser();
-//		String[] sum = {"+", "60", "50"};
-//		assertEquals(parse.parse(sum).remove().execute(), 110.0, 0.01);
-//	}
+	@Test
+	public void testSumBasic() throws InstantiationException, IllegalAccessException{
+		Parser parse = new Parser();
+		String[] sum = {"+", "60", "50"};
+		assertEquals(parse.parse(sum).remove().execute(), 110.0, 0.01);
+	}
 
 //	@Test
 //	public void testDiffNesting() throws InstantiationException, IllegalAccessException{
