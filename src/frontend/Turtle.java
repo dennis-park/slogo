@@ -11,6 +11,8 @@ public class Turtle {
 	private Image myImage;
 
 	private static double DEFAULT_ANGLE = 90.0;
+	private static int DEFAULT_WIDTH = 10;
+	private static int DEFAULT_HEIGHT = 10;
 
 	public Turtle(double x, double y) {
 		this(x, y, DEFAULT_ANGLE);
@@ -50,11 +52,18 @@ public class Turtle {
 		myAngle = myAngle + newAngle;
 	}
 
+	public void changeTurtle(Image newTurtle) {
+		myImage = newTurtle;
+	}
+	
 	public void paint(Graphics g) {
-		g.setColor(Color.RED);
-        g.fillRect((int)myX,(int)myY,4,4);
-        g.setColor(Color.BLACK);
-        g.drawRect((int)myX,(int)myY,4,4); 	
+		if(myImage == null){
+			g.setColor(Color.RED);
+	        g.fillRect((int)myX,(int)myY,4,4);
+	        g.setColor(Color.BLACK);
+	        g.drawRect((int)myX,(int)myY,4,4); 	
+		}
+		g.drawImage(myImage, (int)myX, (int)myY, Color.WHITE, null);
 	}
 	
 }

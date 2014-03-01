@@ -5,6 +5,7 @@ import javax.swing.BorderFactory;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Image;
 
 public class Canvas extends JPanel {
 	
@@ -30,6 +31,11 @@ public class Canvas extends JPanel {
     
     public void rotate(double angle) {
     	DEFAULT.rotate(angle);
+    	repaint();
+    }
+    
+    public void changeTurtle(Image image){
+    	DEFAULT.changeTurtle(image);
     	repaint();
     }
 }
