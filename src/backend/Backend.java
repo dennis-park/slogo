@@ -26,8 +26,5 @@ public class Backend {
 		//return new LinkedList<String>(); //May need to make a command class. Will have to figure out api with turtle. All this api stuff
 	}
 
-	public void sendCommand(String s) {
-		
-	}
 
 }
