@@ -5,10 +5,11 @@ import javax.swing.BorderFactory;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Image;
 
 public class Canvas extends JPanel {
 	
-	Turtle derp = new Turtle(0, 0);
+	public Turtle DEFAULT = new Turtle(100, 100);
 	
 	public Canvas() {
         setBorder(BorderFactory.createLineBorder(Color.black));
@@ -20,16 +21,21 @@ public class Canvas extends JPanel {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g); 
-        derp.paint(g);
+        DEFAULT.paint(g);
     } 
     
-    public void moveForward(double amount) {
-    	// canvas has to be aware of turtle orientation
-    	repaint((int)derp.getX(), (int)derp.getY(), 20, 20);
+    public void move(double amount) {
+    	DEFAULT.move(amount);
+    	repaint();
     }
     
-    public void moveBackward(double amount) {
-    	
-    	repaint((int)derp.getX(), (int)derp.getY(), 20, 20);
+    public void rotate(double angle) {
+    	DEFAULT.rotate(angle);
+    	repaint();
+    }
+    
+    public void changeTurtle(Image image){
+    	DEFAULT.changeTurtle(image);
+    	repaint();
     }
 }
