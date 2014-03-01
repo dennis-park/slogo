@@ -7,33 +7,34 @@ import java.awt.Image;
 public class Turtle {
 	// turtle id --> private int myId;
 	private double myX, myY;
-	private double myAngle;
 	private Image myImage;
 
-	private static double DEFAULT_ANGLE = 90.0;
 	private static int DEFAULT_WIDTH = 10;
 	private static int DEFAULT_HEIGHT = 10;
+	
+	private double myHeading;
+	private static double DEFAULT_HEADING = 90.0;
 
 	public Turtle(double x, double y) {
-		this(x, y, DEFAULT_ANGLE);
+		this(x, y, DEFAULT_HEADING);
 	}
-	
-	public Turtle(double x, double y, double angle) {
+
+	public Turtle(double x, double y, double heading) {
 		myX = x;
 		myY = y;
-		myAngle = angle;
+		myHeading = heading;
 	}
 	
-	public Turtle(double x, double y, double angle, Image image) {
+	public Turtle(double x, double y, double heading, Image image) {
 		myX = x;
 		myY = y;
-		myAngle = angle;
+		myHeading = heading;
 		myImage = image;
 	}
 	
 	public void move(double amount) {
-		myX = myX + amount * Math.cos(Math.toRadians(myAngle));
-		myY = myY + amount * Math.sin(Math.toRadians(myAngle));
+		myX = myX + amount * Math.cos(Math.toRadians(myHeading));
+		myY = myY + amount * Math.sin(Math.toRadians(myHeading));
 	}
 
 	public double getX() {
@@ -44,12 +45,13 @@ public class Turtle {
 		return myY;
 	}
 
-	public double getAngle() {
-		return myAngle;
+	public double getHeading() {
+		return myHeading;
 	}
 
-	public void rotate(double newAngle) {
-		myAngle = myAngle + newAngle;
+
+	public void rotate(double newHeading) {
+		myHeading = newHeading;
 	}
 
 	public void changeTurtle(Image newTurtle) {
