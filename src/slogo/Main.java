@@ -25,6 +25,7 @@ import frontend.Frontend;
 public class Main {
 	
 	// Constants
+	public static final double DEFAULT_UNIT = 1.0; 
 	public static final String TITLE = "SLogo";
 	public static final Canvas CANVAS = new Canvas();
 	public static final JButton RUN = new JButton("Run");
@@ -72,8 +73,31 @@ public class Main {
        	 
             public void actionPerformed(ActionEvent e)
             {
-            	System.out.println("WHAT THE FUCK I AM CLICKED");
-            	CANVAS.moveForward(2.0);
+            	CANVAS.move(DEFAULT_UNIT);
+            }
+        });
+		
+		BK.addActionListener(new ActionListener() {
+	       	 
+            public void actionPerformed(ActionEvent e)
+            {
+            	CANVAS.move(-DEFAULT_UNIT);
+            }
+        });
+		
+		LT.addActionListener(new ActionListener() {
+	       	 
+            public void actionPerformed(ActionEvent e)
+            {
+            	CANVAS.rotate(DEFAULT_UNIT);
+            }
+        });
+		
+		RT.addActionListener(new ActionListener() {
+	       	 
+            public void actionPerformed(ActionEvent e)
+            {
+            	CANVAS.rotate(-DEFAULT_UNIT);
             }
         });
 		
@@ -91,7 +115,6 @@ public class Main {
 	        p.setLayout(new BorderLayout());
 	        p1.setLayout(new GridLayout(0,1));
 	        p2.setLayout(new GridLayout(2,2));
-	        
 	        
 	        p.add(CONSOLE);
 	        

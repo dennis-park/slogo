@@ -2,11 +2,13 @@ package frontend;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 
 public class Turtle {
 	// turtle id --> private int myId;
 	private double myX, myY;
 	private double myAngle;
+	private Image myImage;
 
 	private static double DEFAULT_ANGLE = 90.0;
 
@@ -20,15 +22,16 @@ public class Turtle {
 		myAngle = angle;
 	}
 	
-	public void moveFoward(double amount) {
-		System.out.println(myX);
-		myX = myX + amount * Math.cos(Math.toRadians(myAngle));
-		System.out.println(myX);
-		myY = myY + amount * Math.sin(Math.toRadians(myAngle));
+	public Turtle(double x, double y, double angle, Image image) {
+		myX = x;
+		myY = y;
+		myAngle = angle;
+		myImage = image;
 	}
 	
-	public void moveBackward(double amount){
-		
+	public void move(double amount) {
+		myX = myX + amount * Math.cos(Math.toRadians(myAngle));
+		myY = myY + amount * Math.sin(Math.toRadians(myAngle));
 	}
 
 	public double getX() {
@@ -44,7 +47,7 @@ public class Turtle {
 	}
 
 	public void rotate(double newAngle) {
-		myAngle = newAngle;
+		myAngle = myAngle + newAngle;
 	}
 
 	public void paint(Graphics g) {

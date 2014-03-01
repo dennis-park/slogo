@@ -23,14 +23,13 @@ public class Canvas extends JPanel {
         DEFAULT.paint(g);
     } 
     
-    public void moveForward(double amount) {
-    	// canvas has to be aware of turtle orientation
-    	System.out.println("I, THE CANVAS HAVE BEEN ORDERED TO MOVE THE TURTLE FORWARD");
-    	DEFAULT.moveFoward(amount);
-    	repaint((int)DEFAULT.getX(), (int)DEFAULT.getY(), 20, 20);
+    public void move(double amount) {
+    	DEFAULT.move(amount);
+    	repaint();
     }
     
-    public void moveBackward(double amount) {
-    	repaint((int)DEFAULT.getX(), (int)DEFAULT.getY(), 20, 20);
+    public void rotate(double angle) {
+    	DEFAULT.rotate(angle);
+    	repaint();
     }
 }
