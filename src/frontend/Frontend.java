@@ -8,7 +8,5 @@ public class Frontend {
 	
 	public Frontend(Canvas n, Backend be){
 		System.out.println("FRONTEND");
-	}
-	
-	
+	}	
 }

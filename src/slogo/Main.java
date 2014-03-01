@@ -66,24 +66,23 @@ public class Main {
         });
 		
 	}
-	
+
 	private static void createAndShowGUI() {		
-    
-	        JFrame f = new JFrame(TITLE);
-	        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	 
-	        JPanel p = new JPanel();
-	        JPanel p1 = new JPanel();
-	        p1.setLayout(new GridLayout(0,1));
-	        p.setLayout(new BorderLayout());
-	        p.add(CONSOLE);
-	        p1.add(RUN);
-	        p1.add(PEN);
-	        p1.add(TURTLE);
-	        f.add(CANVAS, BorderLayout.NORTH);
-	        f.add(p1, BorderLayout.EAST);
-	        f.add(p, BorderLayout.WEST);
-	        f.pack();
-	        f.setVisible(true);
-   }
+		JFrame f = new JFrame(TITLE);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		JPanel p = new JPanel();
+		JPanel p1 = new JPanel();
+		p1.setLayout(new GridLayout(0,1));
+		p.setLayout(new BorderLayout());
+		p.add(CONSOLE);
+		p1.add(RUN);
+		p1.add(PEN);
+		p1.add(TURTLE);
+		f.add(CANVAS, BorderLayout.NORTH);
+		f.add(p1, BorderLayout.EAST);
+		f.add(p, BorderLayout.WEST);
+		f.pack();
+		f.setVisible(true);
+	}
 }

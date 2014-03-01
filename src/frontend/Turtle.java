@@ -6,17 +6,17 @@ import java.awt.Graphics;
 public class Turtle {
 	// turtle id --> private int myId;
 	private double myX, myY;
-	private double myAngle;
+	private double myHeading;
 
-	private static double DEFAULT_ANGLE = 90.0;
+	private static double DEFAULT_HEADING = 90.0;
 
 	public Turtle(double x, double y) {
-		this(x, y, DEFAULT_ANGLE);
+		this(x, y, DEFAULT_HEADING);
 	}
-	public Turtle(double x, double y, double angle) {
+	public Turtle(double x, double y, double heading) {
 		myX = x;
 		myY = y;
-		myAngle = angle;
+		myHeading = heading;
 	}
 
 	public double getX() {
@@ -27,12 +27,12 @@ public class Turtle {
 		return myY;
 	}
 
-	public double getAngle() {
-		return myAngle;
+	public double getHeading() {
+		return myHeading;
 	}
 
-	public void rotate(double newAngle) {
-		myAngle = newAngle;
+	public void rotate(double newHeading) {
+		myHeading = newHeading;
 	}
 	
 
