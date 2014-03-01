@@ -8,7 +8,7 @@ import java.awt.Graphics;
 
 public class Canvas extends JPanel {
 	
-	Turtle derp = new Turtle(0, 0);
+	public Turtle DEFAULT = new Turtle(100, 100);
 	
 	public Canvas() {
         setBorder(BorderFactory.createLineBorder(Color.black));
@@ -20,16 +20,17 @@ public class Canvas extends JPanel {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g); 
-        derp.paint(g);
+        DEFAULT.paint(g);
     } 
     
     public void moveForward(double amount) {
     	// canvas has to be aware of turtle orientation
-    	repaint((int)derp.getX(), (int)derp.getY(), 20, 20);
+    	System.out.println("I, THE CANVAS HAVE BEEN ORDERED TO MOVE THE TURTLE FORWARD");
+    	DEFAULT.moveFoward(amount);
+    	repaint((int)DEFAULT.getX(), (int)DEFAULT.getY(), 20, 20);
     }
     
     public void moveBackward(double amount) {
-    	
-    	repaint((int)derp.getX(), (int)derp.getY(), 20, 20);
+    	repaint((int)DEFAULT.getX(), (int)DEFAULT.getY(), 20, 20);
     }
 }

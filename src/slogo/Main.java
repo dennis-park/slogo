@@ -2,6 +2,7 @@ package slogo;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Frame;
 import java.awt.GridLayout;
 
 import javax.swing.GroupLayout;
@@ -30,6 +31,10 @@ public class Main {
 	public static final JButton PEN = new JButton("Change Pen Color");
 	public static final JButton TURTLE = new JButton("Upload A Turtle Image");
 	public static final JTextArea CONSOLE = new JTextArea(5, 15);
+	public static final JButton FD = new JButton("Foward");
+	public static final JButton BK = new JButton("Backward");
+	public static final JButton LT = new JButton("Left");
+	public static final JButton RT = new JButton("Right");
 	
 	public static void main(String[]args) {
 		
@@ -41,9 +46,7 @@ public class Main {
 		// Initialize GUI
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-            	
                 createAndShowGUI();
-                
             }
         });
 		
@@ -65,6 +68,15 @@ public class Main {
             }
         });
 		
+		FD.addActionListener(new ActionListener() {
+       	 
+            public void actionPerformed(ActionEvent e)
+            {
+            	System.out.println("WHAT THE FUCK I AM CLICKED");
+            	CANVAS.moveForward(2.0);
+            }
+        });
+		
 	}
 	
 	private static void createAndShowGUI() {		
@@ -74,15 +86,29 @@ public class Main {
 	 
 	        JPanel p = new JPanel();
 	        JPanel p1 = new JPanel();
-	        p1.setLayout(new GridLayout(0,1));
+	        JPanel p2 = new JPanel();
+	        
 	        p.setLayout(new BorderLayout());
+	        p1.setLayout(new GridLayout(0,1));
+	        p2.setLayout(new GridLayout(2,2));
+	        
+	        
 	        p.add(CONSOLE);
+	        
 	        p1.add(RUN);
 	        p1.add(PEN);
 	        p1.add(TURTLE);
+	        
+	        p2.add(FD);
+	        p2.add(BK);
+	        p2.add(LT);
+	        p2.add(RT);
+	        
 	        f.add(CANVAS, BorderLayout.NORTH);
-	        f.add(p1, BorderLayout.EAST);
 	        f.add(p, BorderLayout.WEST);
+	        f.add(p1, BorderLayout.EAST);
+	        f.add(p2, BorderLayout.SOUTH);
+	        
 	        f.pack();
 	        f.setVisible(true);
    }

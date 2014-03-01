@@ -13,10 +13,22 @@ public class Turtle {
 	public Turtle(double x, double y) {
 		this(x, y, DEFAULT_ANGLE);
 	}
+	
 	public Turtle(double x, double y, double angle) {
 		myX = x;
 		myY = y;
 		myAngle = angle;
+	}
+	
+	public void moveFoward(double amount) {
+		System.out.println(myX);
+		myX = myX + amount * Math.cos(Math.toRadians(myAngle));
+		System.out.println(myX);
+		myY = myY + amount * Math.sin(Math.toRadians(myAngle));
+	}
+	
+	public void moveBackward(double amount){
+		
 	}
 
 	public double getX() {
@@ -34,7 +46,6 @@ public class Turtle {
 	public void rotate(double newAngle) {
 		myAngle = newAngle;
 	}
-	
 
 	public void paint(Graphics g) {
 		g.setColor(Color.RED);
@@ -43,8 +54,4 @@ public class Turtle {
         g.drawRect((int)myX,(int)myY,4,4); 	
 	}
 	
-	public void move(double x, double y) {
-		myX = x;
-		myY = y;
-	}
 }
