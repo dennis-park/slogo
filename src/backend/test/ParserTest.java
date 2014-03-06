@@ -15,6 +15,9 @@ import backend.command.turtle.ForwardCommand;
 import backend.command.turtle.TurnRightCommand;
 
 public class ParserTest {
+	
+	private String language = "english";
+	
 	@Test
 	public void testForward() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		Parser parse = new Parser();

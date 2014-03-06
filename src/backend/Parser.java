@@ -11,13 +11,16 @@ public class Parser {
 	private static final String NUMBER = "-?[0-9]+\\.?[0-9]*";
 	private static final String WORD = "[a-zA-z_]+(\\?)?";
 	private static final String OPERANDS = "[+-/%~*]";
-	private CommandFactory myCommands;
+	private CommandFactory myInputCommands;
+	private CommandFactory myMasterCommands;
+	private static final String MASTER_FILE = "master";
 	private LinkedList<String> currentTokens;
 	private static final String LEFTBRACKET = "[";
 	private static final String RIGHTBRACKET = "]";
 
 	public Parser() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 //		myCommands = new CommandFactory();
+		myMasterCommands = new CommandFactory(MASTER_FILE);
 		currentTokens = new LinkedList<String>();
 	}
 
@@ -33,7 +36,7 @@ public class Parser {
 	 */
 	public Queue<Command> parse(String[] tokens, String language) throws InstantiationException, IllegalAccessException {
 		try {
-			myCommands = new CommandFactory(language);
+			myInputCommands = new CommandFactory(language);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -53,8 +56,8 @@ public class Parser {
 	private Command defineCommand(String s) throws InstantiationException, IllegalAccessException{
 		Command c;
 //		String commandName = currentTokens.remove();
-		if(myCommands.hasCommand(s)){
-			c = myCommands.getCommand(s);
+		if(myInputCommands.hasCommand(s)){
+			c = myInputCommands.getCommand(s);
 			completeCommand(c);
 			return c;
 		}
