@@ -24,8 +24,8 @@ public class ParserTest {
 		Command fd = new ForwardCommand();
 		fd.addArgumentDouble(50.0);
 		String[] fd50 = {"FD","50"};
-		parse.parse(fd50);
-		assertEquals(parse.parse(fd50).remove(), fd);
+		parse.parse(fd50, language);
+		assertEquals(parse.parse(fd50, language).remove(), fd);
 	}
 
 
@@ -35,8 +35,8 @@ public class ParserTest {
 		Command rt = new TurnRightCommand();
 		rt.addArgumentDouble(50.0);
 		String[] rt50 = {"RT","50"};
-		parse.parse(rt50);
-		assertEquals(parse.parse(rt50).remove(), rt);
+		parse.parse(rt50, language);
+		assertEquals(parse.parse(rt50, language).remove(), rt);
 	}
 
 	@Test
@@ -47,8 +47,8 @@ public class ParserTest {
 		rt1.addArgumentDouble(50.0);
 		rt.addArgumentCommand(rt1);
 		String[] rt50 = {"RT","RT","50"};
-		parse.parse(rt50);
-		assertEquals(parse.parse(rt50).remove(), rt);
+		parse.parse(rt50, language);
+		assertEquals(parse.parse(rt50, language).remove(), rt);
 	}
 
 	@Test
@@ -63,7 +63,7 @@ public class ParserTest {
 		testCase.add(rt1);
 
 		String[] rt50rt50 = {"RT","50","RT","50"};
-		assertEquals(parse.parse(rt50rt50), testCase);
+		assertEquals(parse.parse(rt50rt50, language), testCase);
 	}
 
 //	@Test
@@ -77,49 +77,49 @@ public class ParserTest {
 	public void testProductBasic() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		String[] prod = {"PRODUCT", "6", "5"};
-		assertEquals(parse.parse(prod).remove().execute(), 30.0, 0.01);
+		assertEquals(parse.parse(prod, language).remove().execute(), 30.0, 0.01);
 	}
 
 	@Test
 	public void testSinBasic() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		String[] sin = {"SIN", "90"};
-		assertEquals(parse.parse(sin).remove().execute(), 1.0, 0.01);
+		assertEquals(parse.parse(sin, language).remove().execute(), 1.0, 0.01);
 	}
 	
 	@Test
 	public void testEqualBasic() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		String[] equals = {"EQUALP", "80", "90"};
-		assertEquals(parse.parse(equals).remove().execute(), 0.0, 0.01);
+		assertEquals(parse.parse(equals, language).remove().execute(), 0.0, 0.01);
 	}
 	
 	@Test
 	public void testNotBasic() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		String[] not = {"NOT", "80"};
-		assertEquals(parse.parse(not).remove().execute(), 0.0, 0.01);
+		assertEquals(parse.parse(not, language).remove().execute(), 0.0, 0.01);
 	}
 	
 	@Test
 	public void testAndBasic() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		String[] and = {"AND", "80", "90"};
-		assertEquals(parse.parse(and).remove().execute(), 1.0, 0.01);
+		assertEquals(parse.parse(and, language).remove().execute(), 1.0, 0.01);
 	}
 	
 	@Test
 	public void testAnd2Basic() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		String[] and = {"AND", "80", "0"};
-		assertEquals(parse.parse(and).remove().execute(), 0.0, 0.01);
+		assertEquals(parse.parse(and, language).remove().execute(), 0.0, 0.01);
 	}
 	
 	@Test
 	public void testSumBasic() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser();
 		String[] sum = {"+", "60", "50"};
-		assertEquals(parse.parse(sum).remove().execute(), 110.0, 0.01);
+		assertEquals(parse.parse(sum, language).remove().execute(), 110.0, 0.01);
 	}
 
 //	@Test
@@ -143,7 +143,7 @@ public class ParserTest {
 		br.addArgumentCommand(fd1);
 		br.addArgumentCommand(fd2);
 		br.addArgumentCommand(bc);
-		Bracket a = (Bracket) parse.parse(b).remove();
+		Bracket a = (Bracket) parse.parse(b, language).remove();
 		assertEquals(a, br);
 	}
 	
@@ -152,7 +152,7 @@ public class ParserTest {
 		Parser parse = new Parser();
 		Tokenizer token = new Tokenizer();
 		String[] b = token.tokenize("[ fd 50 sum sum 10 20 30 ]");
-		assertEquals(60.0, parse.parse(b).remove().execute(), 0.01);
+		assertEquals(60.0, parse.parse(b, language).remove().execute(), 0.01);
 	}
 	
 	@Test
@@ -160,7 +160,7 @@ public class ParserTest {
 		Parser parse = new Parser();
 		Tokenizer token = new Tokenizer();
 		String[] b = token.tokenize("[ fd [ sum sum 10 20 30 ] ]");
-		assertEquals(60.0, parse.parse(b).remove().execute(), 0.01);
+		assertEquals(60.0, parse.parse(b, language).remove().execute(), 0.01);
 	}
 	
 	@Test
@@ -168,7 +168,7 @@ public class ParserTest {
 		Parser parse = new Parser();
 		Tokenizer token = new Tokenizer();
 		String[] b = token.tokenize("[ [ ] FD 50 ]");
-		assertEquals(50.0, parse.parse(b).remove().execute(), 0.01);
+		assertEquals(50.0, parse.parse(b, language).remove().execute(), 0.01);
 	}
 	
 	@Test
@@ -176,7 +176,7 @@ public class ParserTest {
 		Parser parse = new Parser();
 		Tokenizer token = new Tokenizer();
 		String[] b = token.tokenize("sum [ ST ] [ ST ]");
-		assertEquals(2.0, parse.parse(b).remove().execute(), 0.01);
+		assertEquals(2.0, parse.parse(b, language).remove().execute(), 0.01);
 	}
 	
 	@Test
@@ -184,7 +184,7 @@ public class ParserTest {
 		Parser parse = new Parser();
 		Tokenizer token = new Tokenizer();
 		String[] b = token.tokenize("[ sum [ sum sum 10 20 30 ] [ sum sum 10 20 30 ] ]");
-		Command c = parse.parse(b).remove();
+		Command c = parse.parse(b, language).remove();
 		Double d = c.execute();
 		assertEquals(120.0, d, 0.01);
 	}
@@ -195,8 +195,8 @@ public class ParserTest {
 		Tokenizer token = new Tokenizer();
 		String[] b = token.tokenize("if sum 50 50 sum 50 100");
 		String[] c = token.tokenize("if sum 50 -50 sum 50 100");
-		assertEquals(150.0, parse.parse(b).remove().execute(), 0.01);
-		assertEquals(0.0, parse.parse(c).remove().execute(), 0.01);
+		assertEquals(150.0, parse.parse(b, language).remove().execute(), 0.01);
+		assertEquals(0.0, parse.parse(c, language).remove().execute(), 0.01);
 	}
 	
 	@Test
@@ -205,8 +205,8 @@ public class ParserTest {
 		Tokenizer token = new Tokenizer();
 		String[] b = token.tokenize("REPEAT 20 REPCOUNT");
 		String[] c = token.tokenize("REPEAT 5 [ sum 10 repcount ]");
-		assertEquals(20.0, parse.parse(b).remove().execute(), 0.01);
-		assertEquals(15.0, parse.parse(c).remove().execute(), 0.01);
+		assertEquals(20.0, parse.parse(b, language).remove().execute(), 0.01);
+		assertEquals(15.0, parse.parse(c, language).remove().execute(), 0.01);
 	}
 	
 	@Test
@@ -215,8 +215,8 @@ public class ParserTest {
 		Tokenizer token = new Tokenizer();
 		String[] b = token.tokenize("ifelse sum 50 50 [ sum 50 100 ] sum 100 100");
 		String[] c = token.tokenize("ifelse sum 50 -50 sum 50 100 sum 100 100");
-		assertEquals(150.0, parse.parse(b).remove().execute(), 0.01);
-		assertEquals(200.0, parse.parse(c).remove().execute(), 0.01);
+		assertEquals(150.0, parse.parse(b, language).remove().execute(), 0.01);
+		assertEquals(200.0, parse.parse(c, language).remove().execute(), 0.01);
 	}
 
 }

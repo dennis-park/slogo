@@ -1,13 +1,15 @@
 package backend.command;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 import backend.PropertiesParser;
 //import backend.XMLParser;
 
 public class CommandFactory {
-	private HashMap<String, String[]> commands;
+	private Map<String, String> commands;
 	private String myLanguage;
 	
 	//private HashMap<String, String> commands;
@@ -21,9 +23,13 @@ public class CommandFactory {
 //		reader.read("src\\backend\\command\\BuiltInCommands.xml", commands);
 		
 		myLanguage = language;
-		commands = new HashMap<String, String[]>();
+		commands = new HashMap<String, String>();
 		PropertiesParser parser = new PropertiesParser();
-		parser.read(myLanguage, commands);
+		try {
+			parser.read(myLanguage, commands);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public boolean hasCommand(String token){
@@ -32,13 +38,14 @@ public class CommandFactory {
 	
 	public Command getCommand(String token) throws InstantiationException, IllegalAccessException{
 		try {
-			String commandName = "";
+			String className = "";
 			for(String key : commands.keySet()) {
-				if(Arrays.asList(commands.get(key)).contains(token)) {
-					commandName = key;
+				if(key.equals(token)) {
+					className = commands.get(key);
+					System.out.println("\nkey: " + className);
 				}
 			}
-			Class c = Class.forName(commandName);
+			Class c = Class.forName(className);
 			Command newCommand = (Command) c.newInstance();
 			return newCommand;
 		} catch (ClassNotFoundException e) {
