@@ -78,5 +78,10 @@ public class Turtle {
 		}
 		g.drawImage(myImage, (int)myX, (int)myY, Color.WHITE, null);
 	}
+
+	public boolean isActive() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

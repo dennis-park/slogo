@@ -2,11 +2,11 @@ package slogo;
 
 import backend.Backend;
 import frontend.Frontend;
-import frontend.TurtleController;
+import frontend.TurtleManager;
 
 public class Controller {
 	
-	private TurtleController myTurtleControl;
+	private TurtleManager myTurtleManager;
 	private Backend myBackend;
 	private Frontend myFrontend;
 	
