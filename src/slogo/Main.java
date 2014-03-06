@@ -26,7 +26,6 @@ public class Main {
 				createAndShowGUI();
 			}
 		});
-
 	}
 
 	private static void createAndShowGUI() {

@@ -2,7 +2,10 @@ package frontend;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Rectangle2D;
 
 public class Turtle {
 	// turtle id --> private int myId;
@@ -11,12 +14,11 @@ public class Turtle {
 
 	private static int DEFAULT_WIDTH = 10;
 	private static int DEFAULT_HEIGHT = 10;
-	
-	private double myHeading;
-	private static double DEFAULT_HEADING = 90.0;
+
+	private static double myHeading = 90.0;
 
 	public Turtle(double x, double y) {
-		this(x, y, DEFAULT_HEADING);
+		this(x, y, myHeading);
 	}
 
 	public Turtle(double x, double y, double heading) {
@@ -26,7 +28,7 @@ public class Turtle {
 		myY = y;
 		myHeading = heading;
 	}
-	
+
 	public Turtle(double x, double y, double heading, Image image) {
 		myPrevX = x;
 		myPrevY = y;
@@ -35,7 +37,7 @@ public class Turtle {
 		myHeading = heading;
 		myImage = image;
 	}
-	
+
 	public double getX() {
 		return myX;
 	}
@@ -54,7 +56,7 @@ public class Turtle {
 		myX = myX + amount * Math.cos(Math.toRadians(myHeading));
 		myY = myY + amount * Math.sin(Math.toRadians(myHeading));
 	}
-	
+
 	public void rotate(double newHeading) {
 		System.out.println(newHeading);
 		myHeading = myHeading + newHeading;
@@ -63,15 +65,22 @@ public class Turtle {
 	public void changeTurtle(Image newTurtle) {
 		myImage = newTurtle;
 	}
-	
+
 	public void paint(Graphics g) {
+		Graphics2D g2 = (Graphics2D) g;
+		AffineTransform at = g2.getTransform();
+		AffineTransform rotate = AffineTransform.getRotateInstance(Math.toRadians(myHeading),myX,myY); 
+		Rectangle2D r = new Rectangle2D.Double(myX, myY, DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		if(myImage == null){
-			g.setColor(Color.RED);
-	        g.fillRect((int)myX,(int)myY,4,4);
-	        g.setColor(Color.BLACK);
-	        g.drawRect((int)myX,(int)myY,4,4);
+			g2.setColor(Color.BLACK);
+			g2.transform(rotate);
+			g2.draw(r);
+			g2.setTransform(at);
+		} else {
+			g2.transform(rotate);
+			g2.drawImage(myImage, (int)myX, (int)myY, Color.WHITE, null);
+			g2.setTransform(at);
 		}
-		g.drawImage(myImage, (int)myX, (int)myY, Color.WHITE, null);
 	}
-	
+
 }

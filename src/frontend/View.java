@@ -33,8 +33,8 @@ public class View extends JFrame{
 	private ResourceBundle myResources;
 	private String myTitle;
 	private Controller myController;
-	
-	
+
+
 	public static final double DEFAULT_UNIT = 1.0; 
 
 	public static final Canvas CANVAS = new Canvas();
@@ -59,54 +59,66 @@ public class View extends JFrame{
 		myTabs = new JTabbedPane();
 		myController = c;
 		this.getContentPane().add(myTabs);
-		
-		//other methods after refactoring ie. initGUI()
 
-		JPanel p = new JPanel();
-		JPanel p1 = new JPanel();
-		JPanel p2 = new JPanel();
+		JComponent infoPanel = makeInfoPanel();
+		// JComponent commandHistory = makeCommandHistory();
+		JComponent movementButtons = makeMovementButtons();
+		JComponent consolePanel = makeConsolePanel();
 		
-		p.setLayout(new BorderLayout());
-		p1.setLayout(new GridLayout(0,1));
-		p2.setLayout(new GridLayout(2,2));
-		
-		p.add(CONSOLE);
-		
-		p1.add(RUN);
-		p1.add(PEN);
-		p1.add(TURTLE);
+		CANVAS.setView(this);
 
-		p2.add(FD);
-		p2.add(BK);
-		p2.add(LT);
-		p2.add(RT);
-		
 		this.add(CANVAS, BorderLayout.NORTH);
-		this.add(p, BorderLayout.WEST);
-		this.add(p1, BorderLayout.EAST);
-		this.add(p2, BorderLayout.SOUTH);
+		this.add(consolePanel, BorderLayout.CENTER);
+		this.add(movementButtons, BorderLayout.SOUTH);
+		this.add(infoPanel, BorderLayout.EAST);
 		CANVAS.setEnabled(isEnabled());
 		buttonListeners();
 	}
 
 	private JLabel myPosition, myHeading;
-	private Turtle myTurtle;
-	private JTextArea myInfo;
+
+	private JComponent makeConsolePanel() {
+		JPanel myConsolePanel = new JPanel();
+		JPanel myConsole = new JPanel();
+		JPanel myControls = new JPanel();
+		
+		myConsolePanel.setLayout(new BorderLayout());
+		myControls.setLayout(new GridLayout (0,1));
+		
+		myConsole.add(CONSOLE);
+		myControls.add(RUN);
+		myControls.add(PEN);
+		myControls.add(TURTLE);
+		
+		myConsolePanel.add(myConsole, BorderLayout.WEST);
+		myConsolePanel.add(myControls, BorderLayout.EAST);
+		
+		return myConsolePanel;
+	}
+
+	private JComponent makeMovementButtons() {
+		JPanel myMovementButtons = new JPanel();
+		myMovementButtons.setLayout(new GridLayout(2,2));
+		myMovementButtons.add(FD);
+		myMovementButtons.add(BK);
+		myMovementButtons.add(LT);
+		myMovementButtons.add(RT);
+		return myMovementButtons;
+	}
 
 	private JComponent makeInfoPanel() {
 		JPanel myTurtleInfo = new JPanel();
-		myTurtleInfo.setLayout(new BorderLayout());	
-		myInfo = new JTextArea();
-
+		myTurtleInfo.setLayout(new GridLayout(2,0));	
+		
 		myPosition = new JLabel();
 		myHeading = new JLabel();
-
+		
+		updateHeading(CANVAS.getTurtle().getHeading());
+		updatePosition(CANVAS.getTurtle().getX(), CANVAS.getTurtle().getY());
+		
 		myTurtleInfo.add(myPosition);
 		myTurtleInfo.add(myHeading);
-
-		updateHeading(myTurtle.getHeading());
-		updatePosition(myTurtle.getX(), myTurtle.getY());
-
+		
 		return myTurtleInfo;
 	}
 
@@ -135,12 +147,12 @@ public class View extends JFrame{
 		return myCommandHistory;
 	}
 
-	private void updatePosition(double x, double y) {
-		myInfo.setText("Position: x=" + x + "\t y=" + y);
+	public void updatePosition(double x, double y) {
+		myPosition.setText("<html> Turtle x = " + x + "<br/>" + "Turtle y = " + y + "</html>");
 	}
 
-	private void updateHeading(double heading) {
-		myInfo.setText("Heading=" + heading);
+	public void updateHeading(double heading) {
+		myHeading.setText("Heading = " + heading);
 	}
 
 	private void buttonListeners() {
@@ -158,7 +170,7 @@ public class View extends JFrame{
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
+
 			}
 		});
 
