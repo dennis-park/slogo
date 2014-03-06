@@ -34,6 +34,7 @@ public class View extends JFrame{
 	private Controller myController;
 	private JLabel myPosition, myHeading, myId;
 
+	public static int DEFAULT_ID = 0;
 	public static final double DEFAULT_UNIT = 1.0; 
 	private static int DEFAULT_WIDTH = 500;
 	private static int DEFAULT_HEIGHT = 500;
@@ -115,9 +116,9 @@ public class View extends JFrame{
 		myHeading = new JLabel();
 		myId = new JLabel();
 
-		updateId(CANVAS.getTurtle(0).getId());
-		updateHeading(CANVAS.getTurtle(0).getHeading());
-		updatePosition(CANVAS.getTurtle(0).getX()-(WIDTH_OFFSET), HEIGHT_OFFSET-CANVAS.getTurtle(0).getY());
+		updateId(CANVAS.getTurtle(DEFAULT_ID).getId());
+		updateHeading(CANVAS.getTurtle(DEFAULT_ID).getHeading());
+		updatePosition(CANVAS.getTurtle(DEFAULT_ID).getX()-(WIDTH_OFFSET), HEIGHT_OFFSET-CANVAS.getTurtle(DEFAULT_ID).getY());
 
 		myTurtleInfo.add(myPosition);
 		myTurtleInfo.add(myHeading);
@@ -188,7 +189,7 @@ public class View extends JFrame{
 			{
 				Color newColor = JColorChooser.showDialog(new JFrame(), "Pick your color", Color.PINK);
 				if (newColor != null) {
-				    CANVAS.getTurtle(0).getPen().changeColor(newColor);
+				    CANVAS.getTurtle(DEFAULT_ID).getPen().changeColor(newColor);
 				}
 			}
 		});
@@ -203,7 +204,7 @@ public class View extends JFrame{
 					BufferedImage img = null;
 					try {
 						img = ImageIO.read(new File(chooser.getSelectedFile().getAbsolutePath()));
-						CANVAS.changeTurtle(img, 0);
+						CANVAS.getTurtle(DEFAULT_ID).changeTurtle(img);
 					} catch (IOException e1) {
 					}
 				}            
@@ -222,7 +223,8 @@ public class View extends JFrame{
 
 			public void actionPerformed(ActionEvent e)
 			{
-				CANVAS.move(DEFAULT_UNIT, 0);
+				CANVAS.getTurtle(DEFAULT_ID).move(DEFAULT_UNIT);
+				CANVAS.repaint();
 			}
 		});
 
@@ -230,7 +232,9 @@ public class View extends JFrame{
 
 			public void actionPerformed(ActionEvent e)
 			{
-				CANVAS.move(-DEFAULT_UNIT, 0);
+				CANVAS.getTurtle(DEFAULT_ID).move(-DEFAULT_UNIT);
+				CANVAS.repaint();
+				
 			}
 		});
 
@@ -238,7 +242,8 @@ public class View extends JFrame{
 
 			public void actionPerformed(ActionEvent e)
 			{
-				CANVAS.rotate(DEFAULT_UNIT, 0);
+				CANVAS.getTurtle(DEFAULT_ID).rotate(-DEFAULT_UNIT);
+				CANVAS.repaint();
 			}
 		});
 
@@ -246,7 +251,8 @@ public class View extends JFrame{
 
 			public void actionPerformed(ActionEvent e)
 			{
-				CANVAS.rotate(-DEFAULT_UNIT, 0);
+				CANVAS.getTurtle(DEFAULT_ID).rotate(DEFAULT_UNIT);
+				CANVAS.repaint();
 			}
 		});
 	}

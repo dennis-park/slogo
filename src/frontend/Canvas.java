@@ -42,30 +42,19 @@ public class Canvas extends JPanel {
 	} 
 
 	public void move(double amount, int id) {
-		turtles.get(id).move(amount);
-		repaint();
 		myView.updatePosition(turtles.get(id).getX()-WIDTH_OFFSET, HEIGHT_OFFSET-turtles.get(id).getY());
 	}
 
 	public void rotate(double angle, int id) {
-		turtles.get(id).rotate(angle);
-		repaint();
 		myView.updateHeading(turtles.get(id).getHeading());
 	}
 	
 	public void setHeading(double newHeading, int id){
-		turtles.get(id).setHeading(newHeading);
-		repaint();
 		myView.updateHeading(turtles.get(id).getHeading());
 	}
 
 	public Turtle getTurtle(int id) {
 		return turtles.get(id);
-	}
-
-	public void changeTurtle(Image image, int id){
-		turtles.get(id).changeTurtle(image);
-		repaint();
 	}
 
 	public void setView(View v) {
@@ -75,4 +64,10 @@ public class Canvas extends JPanel {
 	public void addTurtle() {
 		turtles.add(new Turtle(DEFAULT_WIDTH/2, DEFAULT_HEIGHT/2, turtles.size()+1));
 	}
+
+	public void clear() {
+		turtles.removeAll(turtles);
+		turtles.add(DEFAULT_TURTLE);
+	}
+
 }

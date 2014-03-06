@@ -1,5 +1,7 @@
 package slogo;
 
+import java.awt.Color;
+
 import frontend.View;
 import backend.Backend;
 
@@ -19,30 +21,33 @@ public class Controller {
 	}
 	
 	public void move(double amount, int id) {
-		myView.getCanvas().move(amount, id);
+		myView.getCanvas().getTurtle(id).move(amount);
 	}
 	
 	public void rotate(double angle, int id) {
-		myView.getCanvas().rotate(angle, id);
+		myView.getCanvas().getTurtle(id).rotate(angle);
 	}
 	
 	public void setHeading(double angle, int id){
-		myView.getCanvas().setHeading(angle, id);
+		myView.getCanvas().getTurtle(id).setHeading(angle);
+		myView.getCanvas().repaint();
 	}
 	
 	public void setXY(double x, double y, int id){
-		
+		myView.getCanvas().getTurtle(id).setXY(x, y);
 	}
 	
-	// backend to frontend
-	// move
-	// rotate
-	// set heading
-	// set xy (move turtle)
-	// pen
-	// show/hide
-	// clear
+	public void togglePen(boolean toggle, int id){
+		myView.getCanvas().getTurtle(id).getPen().toggle(toggle);
+	}
 	
+	public void setPenColor(Color c, int id){
+		myView.getCanvas().getTurtle(id).getPen().changeColor(c);
+	}
+	
+	public void clearAll() {
+		myView.getCanvas().clear();
+	}
 	
 	// frontend to backend
 	// variables

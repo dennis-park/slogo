@@ -8,14 +8,23 @@ import java.util.List;
 public class Pen {
 	
 	private List<Coords> myPath = new ArrayList<Coords>();
-	private Color myColor = Color.BLACK; 
+	private Color myColor = Color.BLACK;
+	private boolean PEN_UP = true;
 	
 	public Pen(Turtle t) {
-		myPath.add(new Coords(t.getX(), t.getY()));
+		if(PEN_UP){
+			myPath.add(new Coords(t.getX(), t.getY()));
+		}
 	}
 	
 	public void addTurtleCoords(double x, double y) {
-		myPath.add(new Coords(x,y));
+		if(PEN_UP){
+			myPath.add(new Coords(x,y));
+		}
+	}
+	
+	public void toggle(boolean toggle){
+		PEN_UP = toggle;
 	}
 	
 	public void changeColor(Color c) {

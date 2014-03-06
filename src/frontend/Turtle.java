@@ -80,6 +80,15 @@ public class Turtle {
 		myHeading = newHeading;
 	}
 	
+	public void setXY(double x, double y) {
+		myX = x;
+		myY =y;
+	}
+	
+	public void togglePen(boolean toggle) {
+		myPen.toggle(toggle);
+	}
+	
 	public void changeTurtle(Image newTurtle) {
 		myImage = newTurtle;
 	}
