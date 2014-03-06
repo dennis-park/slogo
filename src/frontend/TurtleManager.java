@@ -30,21 +30,5 @@ public class TurtleManager {
 		return null;
 	}
 	
-	
-	public void 
-	
-	public class RotateCommand implements Commandable{
-		
-		@Override
-		public double move() throws Exception {
-			return 0;
-		}
 
-		@Override
-		public double execute(int turtleID) throws Exception {
-			Workspace workspace = getWorkspace();
-			workspace.getTurtle(turtleID);
-			return 0;
-		}
-	}
 }

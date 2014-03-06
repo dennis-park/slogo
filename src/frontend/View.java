@@ -26,7 +26,6 @@ import javax.swing.JTextArea;
 import slogo.Controller;
 
 public class View extends JFrame{
-
 	private JTabbedPane myTabs;
 	private int myWorkspaceCount = 0;
 	private Dimension myBounds;

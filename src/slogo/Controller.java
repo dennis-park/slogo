@@ -26,7 +26,8 @@ public class Controller {
 	}
 	
 	
-	// backend to frontend
+	// COMMANDS TO BACKEND TO PARSE & EVAL
+	     // and TO VIEW TO UPDATE (or both)
 	// move
 	// rotate
 	// set heading
