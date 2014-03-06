@@ -13,7 +13,7 @@ public class Canvas extends JPanel {
 
 	private View myView;
 	private List<Turtle> turtles = new ArrayList<Turtle>(); 
-	private Turtle DEFAULT;
+	private Turtle DEFAULT_TURTLE;
 	private static int DEFAULT_WIDTH;
 	private static int DEFAULT_HEIGHT;
 	private static int WIDTH_OFFSET;
@@ -25,8 +25,8 @@ public class Canvas extends JPanel {
 		WIDTH_OFFSET = DEFAULT_WIDTH/2;
 		HEIGHT_OFFSET = DEFAULT_HEIGHT/2;
 		setBorder(BorderFactory.createLineBorder(Color.black));
-		DEFAULT = new Turtle(DEFAULT_WIDTH/2, DEFAULT_HEIGHT/2, turtles.size()+1);
-		turtles.add(DEFAULT);
+		DEFAULT_TURTLE = new Turtle(DEFAULT_WIDTH/2, DEFAULT_HEIGHT/2, turtles.size()+1);
+		turtles.add(DEFAULT_TURTLE);
 	}
 
 	public Dimension getPreferredSize() {
@@ -37,6 +37,7 @@ public class Canvas extends JPanel {
 		super.paintComponent(g);
 		for(int i = 0; i < turtles.size(); i++){
 			turtles.get(i).paint(g);
+			turtles.get(i).getPen().paint(g);
 		}
 	} 
 

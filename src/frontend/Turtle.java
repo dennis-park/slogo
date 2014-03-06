@@ -8,6 +8,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 
 public class Turtle {
+	private Pen myPen;
 	private int myId;
 	private double myX, myY, myPrevX, myPrevY;
 	private Image myImage;
@@ -19,6 +20,7 @@ public class Turtle {
 
 	public Turtle(double x, double y, int id) {
 		this(x, y, myHeading, id);
+		myPen = new Pen(this);
 	}
 
 	public Turtle(double x, double y, double heading, int id) {
@@ -28,6 +30,7 @@ public class Turtle {
 		myX = x;
 		myY = y;
 		myHeading = heading;
+		myPen = new Pen(this);
 	}
 
 	public Turtle(double x, double y, double heading, Image image, int id) {
@@ -38,6 +41,7 @@ public class Turtle {
 		myY = y;
 		myHeading = heading;
 		myImage = image;
+		myPen = new Pen(this);
 	}
 
 	public double getX() {
@@ -55,12 +59,17 @@ public class Turtle {
 	public int getId() {
 		return myId;
 	}
+	
+	public Pen getPen(){
+		return myPen;
+	}
 
 	public void move(double amount) {
 		myPrevX = myX;
 		myPrevY = myY;
 		myX = myX + amount * Math.cos(Math.toRadians(myHeading));
 		myY = myY + amount * Math.sin(Math.toRadians(myHeading));
+		myPen.addTurtleCoords(myX, myY);
 	}
 
 	public void rotate(double newHeading) {
