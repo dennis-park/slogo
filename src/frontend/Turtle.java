@@ -22,6 +22,7 @@ public class Turtle {
 	}
 
 	public Turtle(double x, double y, double heading, int id) {
+		myId = id;
 		myPrevX = x;
 		myPrevY = y;
 		myX = x;
@@ -30,6 +31,7 @@ public class Turtle {
 	}
 
 	public Turtle(double x, double y, double heading, Image image, int id) {
+		myId = id;
 		myPrevX = x;
 		myPrevY = y;
 		myX = x;
@@ -48,6 +50,10 @@ public class Turtle {
 
 	public double getHeading() {
 		return myHeading;
+	}
+	
+	public int getId() {
+		return myId;
 	}
 
 	public void move(double amount) {
@@ -73,6 +79,7 @@ public class Turtle {
 		Rectangle2D r = new Rectangle2D.Double(myX, myY, DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		if(myImage == null){
 			g2.setColor(Color.BLACK);
+			g2.drawString(myId+"", (int)myX, (int)myY - DEFAULT_HEIGHT);
 			g2.transform(rotate);
 			g2.draw(r);
 			g2.setTransform(at);

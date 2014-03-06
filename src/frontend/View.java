@@ -39,7 +39,7 @@ public class View extends JFrame{
 	private static int DEFAULT_HEIGHT = 500;
 	private static int WIDTH_OFFSET = DEFAULT_WIDTH/2;
 	private static int HEIGHT_OFFSET = DEFAULT_HEIGHT/2;
-	
+
 	public static final Canvas CANVAS = new Canvas(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 
 	public static final JTextArea CONSOLE = new JTextArea(5, 15);
@@ -66,7 +66,7 @@ public class View extends JFrame{
 		// JComponent commandHistory = makeCommandHistory();
 		JComponent movementButtons = makeMovementButtons();
 		JComponent consolePanel = makeConsolePanel();
-		
+
 		CANVAS.setView(this);
 
 		this.add(CANVAS, BorderLayout.NORTH);
@@ -81,19 +81,19 @@ public class View extends JFrame{
 		JPanel myConsolePanel = new JPanel();
 		JPanel myConsole = new JPanel();
 		JPanel myControls = new JPanel();
-		
+
 		myConsolePanel.setLayout(new BorderLayout());
 		myControls.setLayout(new GridLayout (0,1));
-		
+
 		myConsole.add(CONSOLE);
 		myControls.add(RUN);
 		myControls.add(PEN);
 		myControls.add(TURTLE);
 		myControls.add(ADD_TURTLE);
-		
+
 		myConsolePanel.add(myConsole, BorderLayout.WEST);
 		myConsolePanel.add(myControls, BorderLayout.EAST);
-		
+
 		return myConsolePanel;
 	}
 
@@ -109,17 +109,20 @@ public class View extends JFrame{
 
 	private JComponent makeInfoPanel() {
 		JPanel myTurtleInfo = new JPanel();
-		myTurtleInfo.setLayout(new GridLayout(2,0));	
-		
+		myTurtleInfo.setLayout(new GridLayout(3,0));	
+
 		myPosition = new JLabel();
 		myHeading = new JLabel();
-		
+		myId = new JLabel();
+
+		updateId(CANVAS.getTurtle(0).getId());
 		updateHeading(CANVAS.getTurtle(0).getHeading());
 		updatePosition(CANVAS.getTurtle(0).getX()-(WIDTH_OFFSET), HEIGHT_OFFSET-CANVAS.getTurtle(0).getY());
-		
+
 		myTurtleInfo.add(myPosition);
 		myTurtleInfo.add(myHeading);
-		
+		myTurtleInfo.add(myId);
+
 		return myTurtleInfo;
 	}
 
@@ -146,6 +149,10 @@ public class View extends JFrame{
 		myCommandHistory.add(myScrollable, BorderLayout.CENTER);
 
 		return myCommandHistory;
+	}
+
+	private void updateId(int id) {
+		myId.setText("Turtle Id = " + id);
 	}
 
 	public void updatePosition(double x, double y) {
@@ -199,7 +206,7 @@ public class View extends JFrame{
 				}            
 			}
 		});
-		
+
 		ADD_TURTLE.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e)
