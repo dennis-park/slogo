@@ -1,10 +1,9 @@
 package frontend;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-
-import slogo.Commandable;
-import slogo.Workspace;
 
 public class TurtleManager {
 	private Map<Integer, Turtle> myTurtleMap;
@@ -14,7 +13,11 @@ public class TurtleManager {
 		
 	}
 	
-	public void addTurtle (Turtle t) {
+	public void update() {
+		//notify that state has been changed
+	}
+	
+	public void add(Turtle t) {
 		myTurtleMap.put(t.getID(), t);
 	}
 	
@@ -25,10 +28,25 @@ public class TurtleManager {
 		}
 	}
 	
-	public Workspace getWorkspace() {
-		// TODO Auto-generated method stub
-		return null;
+	private void makeActive(List<Integer> IDlist) {
+		
 	}
+	
+	private Turtle myCurr;
+	
+	public Turtle getCurrentTurtle() {
+		return myCurr;
+	}
+	
+	private void setCurrentTurtle(Turtle curr) {
+		myCurr = curr;
+	}
+	
+	public List<Turtle> getTurtles() {
+		ArrayList<Turtle> turtles = new ArrayList<Turtle>(myTurtleMap.values());
+		return turtles;
+	}
+	
 	
 
 }
