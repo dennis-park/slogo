@@ -49,4 +49,8 @@ public class Command {//A zero parameter class
 		// TODO Auto-generated method stub
 		//bad coding practice please fix
 	}
+	public Parameter get(int index){
+		//return commands.get(index);
+		return new Parameter(0.0); // fix when refactoring
+	}
 }

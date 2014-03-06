@@ -47,4 +47,8 @@ public class Bracket extends Command {
 		return this.commands.equals(s.commands);
 	}
 	
+	public Parameter get(int index){
+		return commands.get(index);
+	}
+	
 }
