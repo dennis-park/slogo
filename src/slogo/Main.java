@@ -1,53 +1,24 @@
 package slogo;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Frame;
-import java.awt.GridLayout;
-
-import javax.imageio.ImageIO;
-import javax.swing.GroupLayout;
-import javax.swing.JButton;
-import javax.swing.JColorChooser;
-import javax.swing.JFileChooser;
+import java.awt.Dimension;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
 import backend.Backend;
 
-import frontend.Canvas;
 import frontend.Frontend;
+import frontend.View;
 
 public class Main {
+		
+	public static View VIEW;
 
-	// Constants
-	public static final double DEFAULT_UNIT = 1.0; 
-	public static final String TITLE = "SLogo";
-	public static final Canvas CANVAS = new Canvas();
-	public static final JButton RUN = new JButton("Run");
-	public static final JButton PEN = new JButton("Change Pen Color");
-	public static final JButton TURTLE = new JButton("Upload A Turtle Image");
-	public static final JTextArea CONSOLE = new JTextArea(5, 15);
-	public static final JButton FD = new JButton("Foward");
-	public static final JButton BK = new JButton("Backward");
-	public static final JButton LT = new JButton("Left");
-	public static final JButton RT = new JButton("Right");
-
-	public static void main(String[]args) {
+	public static void main(String[]args) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 
 		// Initialize both frontend and backend
-		final Backend be = new Backend();
-		final Frontend fe = new Frontend(CANVAS, be);
-
+		final Controller c = new Controller();
+		final Backend be = new Backend(c);
+		final Frontend fe = new Frontend(c);
+		c.instantiate(be, fe);
+		VIEW =  new View(fe, c, new Dimension(500,500));
 
 		// Initialize GUI
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
@@ -56,105 +27,11 @@ public class Main {
 			}
 		});
 
-		// Button listens for mouse click
-		RUN.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e)
-			{
-				String s = CONSOLE.getText();
-				be.sendCommand(s);
-			}
-		});
-
-		PEN.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e)
-			{
-				JColorChooser.showDialog(new JFrame(), "Pick your color", Color.PINK);
-			}
-		});
-
-		TURTLE.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e)
-			{
-				JFileChooser chooser = new JFileChooser();
-				int returnVal = chooser.showOpenDialog(CANVAS);
-				if (returnVal == JFileChooser.APPROVE_OPTION) {
-					BufferedImage img = null;
-					try {
-						img = ImageIO.read(new File(chooser.getSelectedFile().getAbsolutePath()));
-						CANVAS.changeTurtle(img);
-					} catch (IOException e1) {
-					}
-				}            
-			}
-		});
-
-		FD.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e)
-			{
-				CANVAS.move(DEFAULT_UNIT);
-			}
-		});
-
-		BK.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e)
-			{
-				CANVAS.move(-DEFAULT_UNIT);
-			}
-		});
-
-		LT.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e)
-			{
-				CANVAS.rotate(DEFAULT_UNIT);
-			}
-		});
-
-		RT.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e)
-			{
-				CANVAS.rotate(-DEFAULT_UNIT);
-			}
-		});
-
 	}
 
-	private static void createAndShowGUI() {		
-		
-		JFrame f = new JFrame(TITLE);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		JPanel p = new JPanel();
-		JPanel p1 = new JPanel();
-		JPanel p2 = new JPanel();
-
-		p.setLayout(new BorderLayout());
-		p1.setLayout(new GridLayout(0,1));
-		p2.setLayout(new GridLayout(2,2));
-
-		p.add(CONSOLE);
-
-		p1.add(RUN);
-		p1.add(PEN);
-		p1.add(TURTLE);
-
-		p2.add(FD);
-		p2.add(BK);
-		p2.add(LT);
-		p2.add(RT);
-
-		f.add(CANVAS, BorderLayout.NORTH);
-		f.add(p, BorderLayout.WEST);
-		f.add(p1, BorderLayout.EAST);
-		f.add(p2, BorderLayout.SOUTH);
-
-		f.pack();
-		f.setVisible(true);
+	private static void createAndShowGUI() {
+		VIEW.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		VIEW.pack();
+		VIEW.setVisible(true);
 	}
 }

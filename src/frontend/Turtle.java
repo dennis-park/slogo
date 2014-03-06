@@ -6,7 +6,7 @@ import java.awt.Image;
 
 public class Turtle {
 	// turtle id --> private int myId;
-	private double myX, myY;
+	private double myX, myY, myPrevX, myPrevY;
 	private Image myImage;
 
 	private static int DEFAULT_WIDTH = 10;
@@ -20,23 +20,22 @@ public class Turtle {
 	}
 
 	public Turtle(double x, double y, double heading) {
+		myPrevX = x;
+		myPrevY = y;
 		myX = x;
 		myY = y;
 		myHeading = heading;
 	}
 	
 	public Turtle(double x, double y, double heading, Image image) {
+		myPrevX = x;
+		myPrevY = y;
 		myX = x;
 		myY = y;
 		myHeading = heading;
 		myImage = image;
 	}
 	
-	public void move(double amount) {
-		myX = myX + amount * Math.cos(Math.toRadians(myHeading));
-		myY = myY + amount * Math.sin(Math.toRadians(myHeading));
-	}
-
 	public double getX() {
 		return myX;
 	}
@@ -49,9 +48,16 @@ public class Turtle {
 		return myHeading;
 	}
 
-
+	public void move(double amount) {
+		myPrevX = myX;
+		myPrevY = myY;
+		myX = myX + amount * Math.cos(Math.toRadians(myHeading));
+		myY = myY + amount * Math.sin(Math.toRadians(myHeading));
+	}
+	
 	public void rotate(double newHeading) {
-		myHeading = newHeading;
+		System.out.println(newHeading);
+		myHeading = myHeading + newHeading;
 	}
 
 	public void changeTurtle(Image newTurtle) {
@@ -63,7 +69,7 @@ public class Turtle {
 			g.setColor(Color.RED);
 	        g.fillRect((int)myX,(int)myY,4,4);
 	        g.setColor(Color.BLACK);
-	        g.drawRect((int)myX,(int)myY,4,4); 	
+	        g.drawRect((int)myX,(int)myY,4,4);
 		}
 		g.drawImage(myImage, (int)myX, (int)myY, Color.WHITE, null);
 	}

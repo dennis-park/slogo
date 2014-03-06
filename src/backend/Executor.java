@@ -10,10 +10,12 @@ public class Executor { //Will need to add some error checking code most likely
 		
 	}
 	
-	public boolean executeCommands(Queue<Command> commands){
+	public double executeCommands(Queue<Command> commands){
+		double returnValue = 0.0;
 		while(!commands.isEmpty()){
-			commands.remove().execute();
+			returnValue = commands.remove().execute();
+			
 		}
-		return true;
+		return returnValue;
 	}
 }
