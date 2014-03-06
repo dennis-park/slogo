@@ -2,10 +2,11 @@ package slogo;
 
 import backend.Backend;
 import frontend.Frontend;
-import frontend.Turtle;
+import frontend.TurtleController;
 
 public class Controller {
 	
+	private TurtleController myTurtleControl;
 	private Backend myBackend;
 	private Frontend myFrontend;
 	
@@ -22,48 +23,6 @@ public class Controller {
 	public void update() {
 		// turtle list
 		// parse and evaluate commands
-	}
-	
-	
-	
-	
-	public Workspace getWorkspace() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	public class MoveCommand implements Commandable{
-
-		@Override
-		public double move() throws Exception {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-
-		@Override
-		public double execute(int turtleID) throws Exception {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-		
-	}
-	public class RotateCommand implements Commandable{
-		
-		@Override
-		public double move() throws Exception {
-			return 0;
-		}
-
-		@Override
-		public double execute(int turtleID) throws Exception {
-			Workspace workspace = getWorkspace();
-			workspace.getTurtle(turtleID);
-			return 0;
-		}
-		
-		
-		
-		
 	}
 	
 	

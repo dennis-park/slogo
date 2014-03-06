@@ -11,6 +11,7 @@ public class Turtle {
 
 	private static int DEFAULT_WIDTH = 10;
 	private static int DEFAULT_HEIGHT = 10;
+	private int myID;
 	
 	private double myHeading;
 	private static double DEFAULT_HEADING = 90.0;
@@ -34,6 +35,10 @@ public class Turtle {
 		myY = y;
 		myHeading = heading;
 		myImage = image;
+	}
+	
+	public int getID() {
+		return myID;
 	}
 	
 	public double getX() {
