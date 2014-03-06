@@ -1,5 +1,6 @@
 package frontend;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -7,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -22,10 +24,16 @@ public class MenuView extends JMenuBar{
 	private JMenu myHelp;
 	private Canvas myCanvas;
 
+	//ignore for now
 	public MenuView(View v) {
 		myView = v;
 		myCanvas = v.CANVAS;
 		addMenus();
+	}
+	
+	public MenuView(String title) {
+		super();
+		
 	}
 
 	private void addMenus() {
@@ -35,18 +43,29 @@ public class MenuView extends JMenuBar{
     }
 
 	private JMenu createHelpMenu() {
-
+		myHelp = new JMenu("Help");
+        
 		return myHelp;
-
 	}
 
     private JMenu createPreferencesMenu() {
-		// TODO Auto-generated method stub
-		return null;
+    	myPreferences = new JMenu("Preferences");
+        
+    	final JMenuItem PREF_COLOR = new JMenuItem("Change pen color");
+    	PREF_COLOR.addActionListener(new ActionListener() {
+    		@Override
+    		public void actionPerformed(ActionEvent e)
+			{
+				JColorChooser.showDialog(new JFrame(), "Pick your color", Color.PINK);
+			}
+    	});
+    	
+		return myPreferences;
 	}
 
+    
 	private JMenu createFilesMenu() {
-        JMenu menu = new JMenu("Files");
+        myFiles = new JMenu("Files");
         
         final JMenuItem FILES_LOAD = new JMenuItem("Load file");
         FILES_LOAD.addActionListener(new ActionListener() {
@@ -75,7 +94,7 @@ public class MenuView extends JMenuBar{
             }
         });
         
-        return menu;
+        return myFiles;
     }
 
     protected void initUI() {

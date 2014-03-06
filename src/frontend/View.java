@@ -228,5 +228,6 @@ public class View extends JFrame{
 	public void clearCommands () {
 		myHistoryTextArea.append("");
 	}
+	
 
 }
