@@ -8,7 +8,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 
 public class Turtle {
-	// turtle id --> private int myId;
+	private int myId;
 	private double myX, myY, myPrevX, myPrevY;
 	private Image myImage;
 
@@ -17,11 +17,11 @@ public class Turtle {
 
 	private static double myHeading = 270.0;
 
-	public Turtle(double x, double y) {
-		this(x, y, myHeading);
+	public Turtle(double x, double y, int id) {
+		this(x, y, myHeading, id);
 	}
 
-	public Turtle(double x, double y, double heading) {
+	public Turtle(double x, double y, double heading, int id) {
 		myPrevX = x;
 		myPrevY = y;
 		myX = x;
@@ -29,7 +29,7 @@ public class Turtle {
 		myHeading = heading;
 	}
 
-	public Turtle(double x, double y, double heading, Image image) {
+	public Turtle(double x, double y, double heading, Image image, int id) {
 		myPrevX = x;
 		myPrevY = y;
 		myX = x;

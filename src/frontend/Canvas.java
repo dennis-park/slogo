@@ -6,10 +6,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Canvas extends JPanel {
 
 	private View myView;
+	private List<Turtle> turtles = new ArrayList<Turtle>(); 
 	private Turtle DEFAULT;
 	private static int DEFAULT_WIDTH;
 	private static int DEFAULT_HEIGHT;
@@ -22,7 +25,8 @@ public class Canvas extends JPanel {
 		WIDTH_OFFSET = DEFAULT_WIDTH/2;
 		HEIGHT_OFFSET = DEFAULT_HEIGHT/2;
 		setBorder(BorderFactory.createLineBorder(Color.black));
-		DEFAULT  = new Turtle(DEFAULT_WIDTH/2, DEFAULT_HEIGHT/2);
+		DEFAULT = new Turtle(DEFAULT_WIDTH/2, DEFAULT_HEIGHT/2, turtles.size()+1);
+		turtles.add(DEFAULT);
 	}
 
 	public Dimension getPreferredSize() {
@@ -30,32 +34,38 @@ public class Canvas extends JPanel {
 	}
 
 	public void paintComponent(Graphics g) {
-		super.paintComponent(g); 
-		DEFAULT.paint(g);
+		super.paintComponent(g);
+		for(int i = 0; i < turtles.size(); i++){
+			turtles.get(i).paint(g);
+		}
 	} 
 
-	public void move(double amount) {
-		DEFAULT.move(amount);
+	public void move(double amount, int id) {
+		turtles.get(id).move(amount);
 		repaint();
-		myView.updatePosition(DEFAULT.getX()-WIDTH_OFFSET, HEIGHT_OFFSET-DEFAULT.getY());
+		myView.updatePosition(turtles.get(id).getX()-WIDTH_OFFSET, HEIGHT_OFFSET-turtles.get(id).getY());
 	}
 
-	public void rotate(double angle) {
-		DEFAULT.rotate(angle);
+	public void rotate(double angle, int id) {
+		turtles.get(id).rotate(angle);
 		repaint();
-		myView.updateHeading(DEFAULT.getHeading());
+		myView.updateHeading(turtles.get(id).getHeading());
 	}
 
-	public Turtle getTurtle() {
-		return DEFAULT;
+	public Turtle getTurtle(int id) {
+		return turtles.get(id);
 	}
 
-	public void changeTurtle(Image image){
-		DEFAULT.changeTurtle(image);
+	public void changeTurtle(Image image, int id){
+		turtles.get(id).changeTurtle(image);
 		repaint();
 	}
 
 	public void setView(View v) {
 		myView = v;
+	}
+
+	public void addTurtle() {
+		turtles.add(new Turtle(DEFAULT_WIDTH/2, DEFAULT_HEIGHT/2, turtles.size()+1));
 	}
 }

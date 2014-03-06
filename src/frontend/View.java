@@ -25,15 +25,14 @@ import javax.swing.JTextArea;
 
 import slogo.Controller;
 
+@SuppressWarnings("serial")
 public class View extends JFrame{
 
 	private JTabbedPane myTabs;
 	private int myWorkspaceCount = 0;
-	private Dimension myBounds;
 	private ResourceBundle myResources;
-	private String myTitle;
 	private Controller myController;
-	private JLabel myPosition, myHeading;
+	private JLabel myPosition, myHeading, myId;
 
 	public static final double DEFAULT_UNIT = 1.0; 
 	private static int DEFAULT_WIDTH = 500;
@@ -49,6 +48,7 @@ public class View extends JFrame{
 	public static final JButton RUN = new JButton("Run");
 	public static final JButton PEN = new JButton("Change Pen Color");
 	public static final JButton TURTLE = new JButton("Upload A Turtle Image");
+	public static final JButton ADD_TURTLE = new JButton("Add a Turtle");
 	public static final JButton FD = new JButton("Foward");
 	public static final JButton BK = new JButton("Backward");
 	public static final JButton LT = new JButton("Left");
@@ -57,8 +57,6 @@ public class View extends JFrame{
 	//private List<Workspace> myWorkSpaces = new ArrayList<Workspace>();
 
 	public View (Frontend fe, Controller c, Dimension bounds) {
-		myBounds = bounds;
-		myTitle = "";
 		//myResources = ResourceBundle.getBundle();
 		myTabs = new JTabbedPane();
 		myController = c;
@@ -91,6 +89,7 @@ public class View extends JFrame{
 		myControls.add(RUN);
 		myControls.add(PEN);
 		myControls.add(TURTLE);
+		myControls.add(ADD_TURTLE);
 		
 		myConsolePanel.add(myConsole, BorderLayout.WEST);
 		myConsolePanel.add(myControls, BorderLayout.EAST);
@@ -115,8 +114,8 @@ public class View extends JFrame{
 		myPosition = new JLabel();
 		myHeading = new JLabel();
 		
-		updateHeading(CANVAS.getTurtle().getHeading());
-		updatePosition(CANVAS.getTurtle().getX()-(WIDTH_OFFSET), HEIGHT_OFFSET-CANVAS.getTurtle().getY());
+		updateHeading(CANVAS.getTurtle(0).getHeading());
+		updatePosition(CANVAS.getTurtle(0).getX()-(WIDTH_OFFSET), HEIGHT_OFFSET-CANVAS.getTurtle(0).getY());
 		
 		myTurtleInfo.add(myPosition);
 		myTurtleInfo.add(myHeading);
@@ -194,10 +193,18 @@ public class View extends JFrame{
 					BufferedImage img = null;
 					try {
 						img = ImageIO.read(new File(chooser.getSelectedFile().getAbsolutePath()));
-						CANVAS.changeTurtle(img);
+						CANVAS.changeTurtle(img, 0);
 					} catch (IOException e1) {
 					}
 				}            
+			}
+		});
+		
+		ADD_TURTLE.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e)
+			{
+				CANVAS.addTurtle();         
 			}
 		});
 
@@ -205,7 +212,7 @@ public class View extends JFrame{
 
 			public void actionPerformed(ActionEvent e)
 			{
-				CANVAS.move(DEFAULT_UNIT);
+				CANVAS.move(DEFAULT_UNIT, 0);
 			}
 		});
 
@@ -213,7 +220,7 @@ public class View extends JFrame{
 
 			public void actionPerformed(ActionEvent e)
 			{
-				CANVAS.move(-DEFAULT_UNIT);
+				CANVAS.move(-DEFAULT_UNIT, 0);
 			}
 		});
 
@@ -221,7 +228,7 @@ public class View extends JFrame{
 
 			public void actionPerformed(ActionEvent e)
 			{
-				CANVAS.rotate(DEFAULT_UNIT);
+				CANVAS.rotate(DEFAULT_UNIT, 0);
 			}
 		});
 
@@ -229,7 +236,7 @@ public class View extends JFrame{
 
 			public void actionPerformed(ActionEvent e)
 			{
-				CANVAS.rotate(-DEFAULT_UNIT);
+				CANVAS.rotate(-DEFAULT_UNIT, 0);
 			}
 		});
 	}
