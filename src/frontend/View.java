@@ -33,11 +33,15 @@ public class View extends JFrame{
 	private ResourceBundle myResources;
 	private String myTitle;
 	private Controller myController;
-
+	private JLabel myPosition, myHeading;
 
 	public static final double DEFAULT_UNIT = 1.0; 
-
-	public static final Canvas CANVAS = new Canvas();
+	private static int DEFAULT_WIDTH = 500;
+	private static int DEFAULT_HEIGHT = 500;
+	private static int WIDTH_OFFSET = DEFAULT_WIDTH/2;
+	private static int HEIGHT_OFFSET = DEFAULT_HEIGHT/2;
+	
+	public static final Canvas CANVAS = new Canvas(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 
 	public static final JTextArea CONSOLE = new JTextArea(5, 15);
 
@@ -74,8 +78,6 @@ public class View extends JFrame{
 		CANVAS.setEnabled(isEnabled());
 		buttonListeners();
 	}
-
-	private JLabel myPosition, myHeading;
 
 	private JComponent makeConsolePanel() {
 		JPanel myConsolePanel = new JPanel();
@@ -114,7 +116,7 @@ public class View extends JFrame{
 		myHeading = new JLabel();
 		
 		updateHeading(CANVAS.getTurtle().getHeading());
-		updatePosition(CANVAS.getTurtle().getX(), CANVAS.getTurtle().getY());
+		updatePosition(CANVAS.getTurtle().getX()-(WIDTH_OFFSET), HEIGHT_OFFSET-CANVAS.getTurtle().getY());
 		
 		myTurtleInfo.add(myPosition);
 		myTurtleInfo.add(myHeading);

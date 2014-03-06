@@ -15,7 +15,7 @@ public class Turtle {
 	private static int DEFAULT_WIDTH = 10;
 	private static int DEFAULT_HEIGHT = 10;
 
-	private static double myHeading = 90.0;
+	private static double myHeading = 270.0;
 
 	public Turtle(double x, double y) {
 		this(x, y, myHeading);
