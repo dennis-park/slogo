@@ -15,21 +15,21 @@ public class MenuView extends JMenuBar{
 	}
 
 	private void addMenus() {
-		this.add(fileMenu());
+		this.add(createFileMenu());
 		this.add(preferencesMenu());
-		this.add(helpMenu());
+		this.add(createHelpMenu());
 	}
 	private JMenu preferencesMenu() {
 		// TODO Auto-generated method stub
 		return myPreferences;
 	}
 
-	private JMenu fileMenu() {
+	private JMenu createFileMenu() {
 
 		return myFiles;
 
 	}
-	private JMenu helpMenu() {
+	private JMenu createHelpMenu() {
 
 		return myHelp;
 
