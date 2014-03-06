@@ -7,8 +7,8 @@ public class DoTimesCommand extends Command2Parameter {
 //		myParameters[0].getCommand().get(0); //variable
 //		myParameters[0].getCommand().get(1).execute(); // limit
 //		myParameters[1].execute(); //Commands to be executed 
-		
-		for(double i =0; i < myParameters[0].getCommand().get(1).execute(); i++){
+		double limit = myParameters[0].getCommand().get(1).execute();
+		for(double i =0; i < limit; i++){
 			myParameters[0].getCommand().get(0).getCommand().setValue(i);
 			myParameters[1].execute();
 		}
