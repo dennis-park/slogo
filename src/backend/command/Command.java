@@ -42,4 +42,11 @@ public class Command {//A zero parameter class
 	public double calculateDistance(double x1, double x2, double y1, double y2) {
 		return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 	}
+
+
+	public double setValue(Double execute) {
+		return 0.0;
+		// TODO Auto-generated method stub
+		//bad coding practice please fix
+	}
 }

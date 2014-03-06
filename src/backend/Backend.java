@@ -1,5 +1,7 @@
 package backend;
 
+import java.util.HashMap;
+
 import slogo.Controller;
 
 /**
@@ -11,11 +13,13 @@ public class Backend {
 	private Parser myParser;
 	private Executor myExecutor;
 	private String myLanguage = "english"; //default is English
+	public static HashMap<String, Double> variables;
 	
 	public Backend(Controller c) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		myTokenizer = new Tokenizer();
 		myParser = new Parser();
 		myExecutor = new Executor();
+		variables = new HashMap<String, Double>();
 	}
 	
 	/**

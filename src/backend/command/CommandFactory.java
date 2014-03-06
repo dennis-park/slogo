@@ -38,7 +38,7 @@ public class CommandFactory {
 	
 	public Command getCommand(String token) throws InstantiationException, IllegalAccessException{
 		try {
-			String className = "";
+			String className = "";	
 			for(String key : commands.keySet()) {
 				if(key.equals(token)) {
 					className = commands.get(key);
@@ -47,6 +47,7 @@ public class CommandFactory {
 			}
 			Class c = Class.forName(className);
 			Command newCommand = (Command) c.newInstance();
+			//maybe pass in instance of backend/controller/whatever here
 			return newCommand;
 		} catch (ClassNotFoundException e) {
 			System.out.println("This command is not in the library of commands.");
