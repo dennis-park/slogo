@@ -5,7 +5,6 @@ import javax.swing.BorderFactory;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,11 +62,13 @@ public class Canvas extends JPanel {
 
 	public void addTurtle() {
 		turtles.add(new Turtle(DEFAULT_WIDTH/2, DEFAULT_HEIGHT/2, turtles.size()+1));
+		repaint();
 	}
 
 	public void clear() {
 		turtles.removeAll(turtles);
 		turtles.add(DEFAULT_TURTLE);
+		repaint();
 	}
 
 }

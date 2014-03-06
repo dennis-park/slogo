@@ -10,7 +10,7 @@ import java.awt.geom.Rectangle2D;
 public class Turtle {
 	private Pen myPen;
 	private int myId;
-	private double myX, myY, myPrevX, myPrevY;
+	private double myX, myY;
 	private Image myImage;
 
 	private static int DEFAULT_WIDTH = 10;
@@ -25,8 +25,6 @@ public class Turtle {
 
 	public Turtle(double x, double y, double heading, int id) {
 		myId = id;
-		myPrevX = x;
-		myPrevY = y;
 		myX = x;
 		myY = y;
 		myHeading = heading;
@@ -35,8 +33,6 @@ public class Turtle {
 
 	public Turtle(double x, double y, double heading, Image image, int id) {
 		myId = id;
-		myPrevX = x;
-		myPrevY = y;
 		myX = x;
 		myY = y;
 		myHeading = heading;
@@ -65,8 +61,6 @@ public class Turtle {
 	}
 
 	public void move(double amount) {
-		myPrevX = myX;
-		myPrevY = myY;
 		myX = myX + amount * Math.cos(Math.toRadians(myHeading));
 		myY = myY + amount * Math.sin(Math.toRadians(myHeading));
 		myPen.addTurtleCoords(myX, myY);

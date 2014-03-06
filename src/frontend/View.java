@@ -205,6 +205,7 @@ public class View extends JFrame{
 					try {
 						img = ImageIO.read(new File(chooser.getSelectedFile().getAbsolutePath()));
 						CANVAS.getTurtle(DEFAULT_ID).changeTurtle(img);
+						CANVAS.repaint();
 					} catch (IOException e1) {
 					}
 				}            
@@ -215,7 +216,7 @@ public class View extends JFrame{
 
 			public void actionPerformed(ActionEvent e)
 			{
-				CANVAS.addTurtle();         
+				CANVAS.addTurtle();
 			}
 		});
 
