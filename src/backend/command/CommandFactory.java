@@ -8,19 +8,22 @@ import backend.PropertiesParser;
 
 public class CommandFactory {
 	private HashMap<String, String[]> commands;
-	private String language;
+	private String myLanguage;
+	
 	//private HashMap<String, String> commands;
 	//Need some sort of xml or whatever data form parser to take in data in this format.
-	public CommandFactory(String lan) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		
+
+//	public CommandFactory() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+	public CommandFactory(String language) throws InstantiationException, IllegalAccessException, ClassNotFoundException {	
+
 //		commands = new HashMap<String, String>();
 //		XMLParser reader = new XMLParser();
 //		reader.read("src\\backend\\command\\BuiltInCommands.xml", commands);
 		
-		language = lan;
+		myLanguage = language;
 		commands = new HashMap<String, String[]>();
 		PropertiesParser parser = new PropertiesParser();
-		parser.read("src/language/", language, commands);
+		parser.read(myLanguage, commands);
 	}
 	
 	public boolean hasCommand(String token){

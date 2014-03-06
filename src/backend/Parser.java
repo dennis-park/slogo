@@ -13,25 +13,30 @@ public class Parser {
 	private static final String OPERANDS = "[+-/%~*]";
 	private CommandFactory myCommands;
 	private LinkedList<String> currentTokens;
-	private String myLanguage;
 	private static final String LEFTBRACKET = "[";
 	private static final String RIGHTBRACKET = "]";
 
 	public Parser() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
-		myCommands = new CommandFactory(myLanguage);
+//		myCommands = new CommandFactory();
 		currentTokens = new LinkedList<String>();
 	}
 
 	/**
 	 * 
-	 * @param tokens, String array of commands and parameters
-	 * @param language, language in which commands/parameters were entered
+	 * @param tokens, a String array of commands and parameters
+	 * @param language, the language in which commands/parameters were entered
 	 * @return Queue of commands, translated into commands that the commands of the 
 	 * commands package will respond to
 	 * @throws InstantiationException
 	 * @throws IllegalAccessException
+	 * @throws ClassNotFoundException 
 	 */
-	public Queue<Command> parse(String[] tokens) throws InstantiationException, IllegalAccessException{
+	public Queue<Command> parse(String[] tokens, String language) throws InstantiationException, IllegalAccessException {
+		try {
+			myCommands = new CommandFactory(language);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		generateQueue(tokens);
 		LinkedList<Command> commands = new LinkedList<Command>();
 		while(!currentTokens.isEmpty()){ //clean up this loop later, could possibly refactor with later similar loop. Look into it.
@@ -47,14 +52,14 @@ public class Parser {
 	
 	private Command defineCommand(String s) throws InstantiationException, IllegalAccessException{
 		Command c;
-		//		String commandName = currentTokens.remove();
+//		String commandName = currentTokens.remove();
 		if(myCommands.hasCommand(s)){
 			c = myCommands.getCommand(s);
 			completeCommand(c);
 			return c;
 		}
 		//Display error message
-		return null; //command not built in/defined, an error
+		return null; //command not built in or is undefined, an error
 	}
 
 	private void completeCommand(Command c) throws InstantiationException, IllegalAccessException {
