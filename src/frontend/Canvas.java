@@ -52,6 +52,12 @@ public class Canvas extends JPanel {
 		repaint();
 		myView.updateHeading(turtles.get(id).getHeading());
 	}
+	
+	public void setHeading(double newHeading, int id){
+		turtles.get(id).setHeading(newHeading);
+		repaint();
+		myView.updateHeading(turtles.get(id).getHeading());
+	}
 
 	public Turtle getTurtle(int id) {
 		return turtles.get(id);

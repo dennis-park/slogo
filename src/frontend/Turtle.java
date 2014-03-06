@@ -72,11 +72,14 @@ public class Turtle {
 		myPen.addTurtleCoords(myX, myY);
 	}
 
-	public void rotate(double newHeading) {
-		System.out.println(newHeading);
-		myHeading = myHeading + newHeading;
+	public void rotate(double angle) {
+		myHeading = myHeading + angle;
 	}
 
+	public void setHeading(double newHeading) {
+		myHeading = newHeading;
+	}
+	
 	public void changeTurtle(Image newTurtle) {
 		myImage = newTurtle;
 	}

@@ -56,7 +56,7 @@ public class View extends JFrame{
 
 	//private List<Workspace> myWorkSpaces = new ArrayList<Workspace>();
 
-	public View (Frontend fe, Controller c, Dimension bounds) {
+	public View (Controller c, Dimension bounds) {
 		//myResources = ResourceBundle.getBundle();
 		myTabs = new JTabbedPane();
 		myController = c;
@@ -186,7 +186,10 @@ public class View extends JFrame{
 
 			public void actionPerformed(ActionEvent e)
 			{
-				JColorChooser.showDialog(new JFrame(), "Pick your color", Color.PINK);
+				Color newColor = JColorChooser.showDialog(new JFrame(), "Pick your color", Color.PINK);
+				if (newColor != null) {
+				    CANVAS.getTurtle(0).getPen().changeColor(newColor);
+				}
 			}
 		});
 
@@ -257,5 +260,8 @@ public class View extends JFrame{
 	public void clearCommands () {
 		myHistoryTextArea.append("");
 	}
-
+	
+	public Canvas getCanvas(){
+		return CANVAS;
+	}
 }

@@ -1,21 +1,37 @@
 package slogo;
 
-import frontend.Frontend;
+import frontend.View;
 import backend.Backend;
 
 public class Controller {
 	
 	private Backend myBackend;
-	private Frontend myFrontend;
+	private View myView;
 	
 	public double sendText(String s) throws InstantiationException, IllegalAccessException {
 		myBackend.parse(s);
 		return myBackend.parse(s);
 	}
 
-	public void instantiate(Backend be, Frontend fe) {
+	public void instantiate(Backend be, View v) {
 		myBackend = be;
-		myFrontend = fe;
+		myView = v;
+	}
+	
+	public void move(double amount, int id) {
+		myView.getCanvas().move(amount, id);
+	}
+	
+	public void rotate(double angle, int id) {
+		myView.getCanvas().rotate(angle, id);
+	}
+	
+	public void setHeading(double angle, int id){
+		myView.getCanvas().setHeading(angle, id);
+	}
+	
+	public void setXY(double x, double y, int id){
+		
 	}
 	
 	// backend to frontend
