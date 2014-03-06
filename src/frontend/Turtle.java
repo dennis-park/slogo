@@ -16,6 +16,8 @@ public class Turtle {
 	private double myHeading;
 	private static double DEFAULT_HEADING = 90.0;
 
+	private boolean FLAG_ACTIVE;
+	
 	public Turtle(double x, double y) {
 		this(x, y, DEFAULT_HEADING);
 	}
@@ -26,6 +28,7 @@ public class Turtle {
 		myX = x;
 		myY = y;
 		myHeading = heading;
+		FLAG_ACTIVE = true;
 	}
 	
 	public Turtle(double x, double y, double heading, Image image) {
@@ -35,6 +38,15 @@ public class Turtle {
 		myY = y;
 		myHeading = heading;
 		myImage = image;
+		FLAG_ACTIVE = true;
+	}
+	
+	public boolean isActive() {
+		return FLAG_ACTIVE;
+	}
+	
+	public void toggle() {
+		FLAG_ACTIVE = !FLAG_ACTIVE;
 	}
 	
 	public int getID() {
@@ -77,11 +89,6 @@ public class Turtle {
 	        g.drawRect((int)myX,(int)myY,4,4);
 		}
 		g.drawImage(myImage, (int)myX, (int)myY, Color.WHITE, null);
-	}
-
-	public boolean isActive() {
-		// TODO Auto-generated method stub
-		return false;
 	}
 	
 }
