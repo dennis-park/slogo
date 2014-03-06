@@ -39,7 +39,7 @@ public class TurtleManager {
 		}
 	}
 	
-	private void makeActive(Turtle t) {
+	public void makeActive(Turtle t) {
 		t.toggle();
 	}
 	
@@ -57,7 +57,9 @@ public class TurtleManager {
 		ArrayList<Turtle> turtles = new ArrayList<Turtle>(myTurtleMap.values());
 		return turtles;
 	}
-	
-	
+
+	public Map<Integer, Turtle> getTurtleMap() {
+		return myTurtleMap;
+	}
 
 }

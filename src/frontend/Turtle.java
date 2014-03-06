@@ -18,10 +18,13 @@ public class Turtle {
 
 	private boolean FLAG_ACTIVE;
 	
+	public Turtle(int id) {
+		this(200,200); // loaded dummy vals for dimensions
+		myID = id;
+	}
 	public Turtle(double x, double y) {
 		this(x, y, DEFAULT_HEADING);
 	}
-
 	public Turtle(double x, double y, double heading) {
 		myPrevX = x;
 		myPrevY = y;
