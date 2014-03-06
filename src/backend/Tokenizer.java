@@ -13,7 +13,7 @@ public class Tokenizer {
 		return string.trim().replaceAll("[\\t\\n\\r]"," ").replaceAll(" +", " ");
 	}
 
-	public String[] tokenize(String string){
-		return trimWhiteSpace(string.toUpperCase()).split("\\s+");
+	public String[] tokenize(String command){
+		return trimWhiteSpace(command.toUpperCase()).split("\\s+");
 	}
 }

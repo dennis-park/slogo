@@ -13,14 +13,24 @@ public class Parser {
 	private static final String OPERANDS = "[+-/%~*]";
 	private CommandFactory myCommands;
 	private LinkedList<String> currentTokens;
+	private String myLanguage;
 	private static final String LEFTBRACKET = "[";
 	private static final String RIGHTBRACKET = "]";
 
 	public Parser() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
-		myCommands = new CommandFactory();
+		myCommands = new CommandFactory(myLanguage);
 		currentTokens = new LinkedList<String>();
 	}
 
+	/**
+	 * 
+	 * @param tokens, String array of commands and parameters
+	 * @param language, language in which commands/parameters were entered
+	 * @return Queue of commands, translated into commands that the commands of the 
+	 * commands package will respond to
+	 * @throws InstantiationException
+	 * @throws IllegalAccessException
+	 */
 	public Queue<Command> parse(String[] tokens) throws InstantiationException, IllegalAccessException{
 		generateQueue(tokens);
 		LinkedList<Command> commands = new LinkedList<Command>();
@@ -34,12 +44,12 @@ public class Parser {
 		}
 		return commands;
 	}
-
+	
 	private Command defineCommand(String s) throws InstantiationException, IllegalAccessException{
 		Command c;
 		//		String commandName = currentTokens.remove();
 		if(myCommands.hasCommand(s)){
-			c= myCommands.getCommand(s);
+			c = myCommands.getCommand(s);
 			completeCommand(c);
 			return c;
 		}

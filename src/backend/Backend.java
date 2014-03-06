@@ -17,10 +17,12 @@ public class Backend {
 		myExecutor = new Executor();
 	}
 	
-	public double parse(String string) throws InstantiationException, IllegalAccessException{ //Will probably need to change for error checking returns
-		return myExecutor.executeCommands(myParser.parse(myTokenizer.tokenize(string)));
+	public double parse(String command, String language) throws InstantiationException, IllegalAccessException{ 
+		//Will probably need to change for error checking returns
+		return myExecutor.executeCommands(myParser.parse(myTokenizer.tokenize(command)));
 		
-		//return new LinkedList<String>(); //May need to make a command class. Will have to figure out api with turtle. All this api stuff
+		//return new LinkedList<String>(); 
+		//May need to make a command class. Will have to figure out api with turtle. All this api stuff
 	}
 
 
