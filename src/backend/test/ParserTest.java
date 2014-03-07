@@ -26,7 +26,7 @@ public class ParserTest {
 		Parser parse = new Parser(var);
 		Command fd = new ForwardCommand();
 		fd.addArgumentDouble(50.0);
-		String[] fd50 = {"QJ","50"};
+		String[] fd50 = {"FD","50"};
 		parse.parse(fd50, language);
 		assertEquals(parse.parse(fd50, language).remove(), fd);
 	}
