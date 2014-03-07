@@ -20,6 +20,7 @@ public class Variable extends Command {
 	}
 	
 	public double execute(){
+		System.out.println(variables.get(name));
 		return variables.get(name);
 	}
 }

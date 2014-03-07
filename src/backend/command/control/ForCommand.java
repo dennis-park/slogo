@@ -9,13 +9,14 @@ public class ForCommand extends Command {
 		super(myParameterCount);
 	}
 	public double execute(){
+		double returnVal =0.0;
 		double start = myParameters.get(0).getCommand().get(1).execute();
 		double end = myParameters.get(0).getCommand().get(2).execute();
 		double increment = myParameters.get(0).getCommand().get(3).execute();
 		for(double i = start; i < end; i+=increment){
 			myParameters.get(0).getCommand().get(0).getCommand().setValue(i);
-			myParameters.get(1).execute();
+			returnVal = myParameters.get(1).execute();
 		}
-		return 0.0; 
+		return returnVal; 
 	}
 }

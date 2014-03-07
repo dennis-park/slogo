@@ -12,11 +12,12 @@ public class DoTimesCommand extends Command {
 //		myParameters[0].getCommand().get(0); //variable
 //		myParameters[0].getCommand().get(1).execute(); // limit
 //		myParameters[1].execute(); //Commands to be executed 
+		double returnVal = 0.0;
 		double limit = myParameters.get(0).getCommand().get(1).execute();
 		for(double i =0; i < limit; i++){
 			myParameters.get(0).getCommand().get(0).getCommand().setValue(i);
-			myParameters.get(1).execute();
+			returnVal = myParameters.get(1).execute();
 		}
-		return 0.0; //change to return final command run after refactoring
+		return returnVal; //change to return final command run after refactoring
 	}
 }
