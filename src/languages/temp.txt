@@ -1,38 +1,37 @@
 #
 # Turtle Commands
 #
-Forward = devant,dev
-Backward = derriere,der
-Left = gauche,gc
-Right = droite,dr
-SetHeading = definirentete,defett
-SetTowards = vers
-SetPosition = positionexy,aller
-PenDown = styloactif,sac
-PenUp = styloinactif,sic
-ShowTurtle = montrertortue,mt
-HideTurtle = cachertortue,ct
-Home = maison
-ClearScreen = effacerecran,ee
+Forward = adelante,at
+Backward = trasero,tr
+Left = dejado,dj
+Right = derecho,dr
+SetHeading = establecerpartidas,estapart
+SetTowards = hacia
+SetPosition = establecerxy
+PenDown = plumaabajo,pa
+PenUp = plumahasta,ph
+ShowTurtle = mostrartortuga,mt
+HideTurtle = ocultartaruga,ot
+Home = casa
+ClearScreen = claropantalla,cp
 #
 # Turtle Queries
 #
-XCoordinate = corx
-YCoordinate = cory
-Heading = entete
-IsPenDown = styloactif?,styloactifp
-IsShowing = visible?,visiblep
+XCor = xcor
+YCor = ycor
+Heading = titulo
+IsPenDown = lumaabajo?,lumaabajop
+IsShowing = demostacion?,demostacionp
 #
 # Math Operations
 #
-Sum = somme,+
-Difference = difference,-
-Product = produit,*
-Quotient = quotient,/
-Remainder = reste,%
-Minus = moins,~
-Random = aleatoire
-# should these be translated?
+Sum = suma,+
+Difference = diff,-
+Product = produto,*
+Quotient = cociente,/
+Remainder = resto,%
+Minus = menos,~
+Random = azar
 Sine = sin
 Cosine = cos
 Tangent = tan
@@ -42,44 +41,44 @@ Power = pow
 #
 # Boolean Operations
 #
-LessThan = inferieur?,inferieurp
-GreaterThan = superieur?,superieurp
-Equal = egal?,egalp
-NotEqual = different?,differentp
-And = et
-Or = ou
-Not = non
+LessThan = menos?,menosp
+GreaterThan = mayor?,mayorp
+Equal = igual?,igualp
+NotEqual = noesigual?,noesigual
+And = y
+Or = o
+Not = no
 #
 # Variables, Control, and User-Defined Commands
 #
-MakeVariable = def
-Repeat = repete
-DoTimes = dotimes
-For = pour
+MakeVariable = hacer,establar
+Repeat = repetir
+DoTimes = hacertiempos
+For = para
 If = si
-IfElse = sinon
-MakeUserInstruction = fait
+IfElse = sibien
+MakeUserInstruction = en
 #
 # Display Commands
 #
-SetBackground = deffonddecran,dfde
-SetPenColor = defcouleurdustylo,dcds
-SetPenSize = deftailledustylo,dts
-SetShape = defimage,di
-SetPalette = defpalette
-GetPenColor = couleurdustylo,cds
-GetShape = image,im
-Stamp = stamp
-ClearStamps = effacerstamps
+SetBackground = ponerelfondo,pef
+SetPenColor = establarplumacolor,epc
+SetPenSize = plumatamano,pt
+SetShape = establarforma,ef
+SetPalette = establarpaleta,ep
+GetPenColor = colorpluma,cp
+GetShape = forma
+Stamp = sello
+ClearStamps = corrarsello
 #
 # Multiple Turtle Commands
 #
 ID = id
-Tell = dire
-TellEven = direpair
-TellOdd = direimpair
-Ask = demande
-AskWith = demanderavec
+Tell = decir
+TellEven = dicirincluso
+TellOdd = decirimpar
+Ask = pedir
+AskWith = pedircon
 #
 # Syntax
 #
