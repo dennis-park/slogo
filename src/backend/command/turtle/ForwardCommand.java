@@ -16,7 +16,6 @@ public class ForwardCommand extends Command {
 	public double execute(){
 		double myFinalArgument = myParameters.get(0).execute();
 		myController.move(myFinalArgument, myTurtleID);
-		System.out.println(myTurtleID + " should have moved forward " + myFinalArgument);
 		return myFinalArgument;
 	}
 
