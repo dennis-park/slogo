@@ -47,6 +47,9 @@ public class Turtle {
 	public boolean isActive() {
 		return FLAG_ACTIVE;
 	}
+	public boolean isShown() {
+		return true;
+	}
 	
 	public void toggle() {
 		FLAG_ACTIVE = !FLAG_ACTIVE;

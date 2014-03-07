@@ -24,55 +24,79 @@ public class MenuView extends JMenuBar{
 	private JMenu myHelp;
 	private Canvas myCanvas;
 
-	//ignore for now
+	
 	public MenuView(View v) {
 		myView = v;
 		myCanvas = v.CANVAS;
 		addMenus();
 	}
 	
+	//ignore for now
 	public MenuView(String title) {
 		super();
-		
+
 	}
 
 	private void addMenus() {
-        this.add(createFilesMenu());
-        this.add(createPreferencesMenu());
-        this.add(createHelpMenu());
-    }
+		this.add(createFilesMenu());
+		this.add(createPreferencesMenu());
+		this.add(createHelpMenu());
+	}
 
 	private JMenu createHelpMenu() {
 		myHelp = new JMenu("Help");
-        
+		final JMenuItem HELP_HTML = new JMenuItem("Help");
+		HELP_HTML.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+	                String url = 
+	                        "http://www.cs.duke.edu/courses/compsci308/current/assign/03_slogo/commands.php";
+	                java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+	            }
+	            catch (java.io.IOException error) {
+	                System.out.println(error.getMessage());
+	            }
+			}
+		});
 		return myHelp;
 	}
 
-    private JMenu createPreferencesMenu() {
-    	myPreferences = new JMenu("Preferences");
-        
-    	final JMenuItem PREF_COLOR = new JMenuItem("Change pen color");
-    	PREF_COLOR.addActionListener(new ActionListener() {
-    		@Override
-    		public void actionPerformed(ActionEvent e)
+	private JMenu createPreferencesMenu() {
+		myPreferences = new JMenu("Preferences");
+
+		final JMenuItem PREF_LOAD = new JMenuItem("Load preferences");
+		PREF_LOAD.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//TODO 
+			}
+		});
+		
+		final JMenuItem PREF_SAVE = new JMenuItem("Save preferences");
+		PREF_SAVE.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//TODO
+			}
+		});
+		
+		final JMenuItem PREF_COLOR = new JMenuItem("Change pen color");
+		PREF_COLOR.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e)
 			{
 				JColorChooser.showDialog(new JFrame(), "Pick your color", Color.PINK);
 			}
-    	});
-    	
-		return myPreferences;
-	}
+		});
 
-    
-	private JMenu createFilesMenu() {
-        myFiles = new JMenu("Files");
-        
-        final JMenuItem FILES_LOAD = new JMenuItem("Load file");
-        FILES_LOAD.addActionListener(new ActionListener() {
+		final JMenuItem PREF_IMAGE = new JMenuItem("Change turtle image");
+		PREF_IMAGE.addActionListener(new ActionListener() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFileChooser chooser = new JFileChooser();
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				JFileChooser chooser = new JFileChooser();
 				int returnVal = chooser.showOpenDialog(myCanvas);
 				if (returnVal == JFileChooser.APPROVE_OPTION) {
 					BufferedImage img = null;
@@ -80,40 +104,66 @@ public class MenuView extends JMenuBar{
 						img = ImageIO.read(new File(chooser.getSelectedFile().getAbsolutePath()));
 						myCanvas.changeTurtle(img);
 					} catch (IOException e1) {
+						//TODO
 					}
-				}           
-            }
-        });
-        
-        final JMenuItem FILES_EXIT = new JMenuItem("EXIT");
-        FILES_EXIT.addActionListener(new ActionListener() {
+				}
+			}           
+		});
+		return myPreferences;
+	}
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(FILES_EXIT, "Exit-->booyah!");
-            }
-        });
-        
-        return myFiles;
-    }
 
-    protected void initUI() {
-        JFrame frame = new JFrame(MenuView.class.getSimpleName());
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(this);
-        frame.pack();
-        frame.setVisible(true);
-    }
+	private JMenu createFilesMenu() {
+		myFiles = new JMenu("Files");
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
+		final JMenuItem FILES_LOAD = new JMenuItem("Load file");
+		FILES_LOAD.addActionListener(new ActionListener() {
 
-            @Override
-            public void run() {
-                new MenuView(myView).initUI();
-            }
-        });
-    }
-    
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		final JMenuItem FILES_SAVE = new JMenuItem("Save file");
+		FILES_SAVE.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				myView.saveFile();
+			}
+		});
+
+		final JMenuItem FILES_EXIT = new JMenuItem("EXIT");
+		FILES_EXIT.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				myView.quit();
+				JOptionPane.showMessageDialog(FILES_EXIT, "Exit-->booyah!");
+			}
+		});
+
+		return myFiles;
+	}
+
+	protected void initUI() {
+		JFrame frame = new JFrame(MenuView.class.getSimpleName());
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.add(this);
+		frame.pack();
+		frame.setVisible(true);
+	}
+
+	public static void main(String[] args) {
+		SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				new MenuView(myView).initUI();
+			}
+		});
+	}
+
 
 }

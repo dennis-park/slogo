@@ -228,6 +228,16 @@ public class View extends JFrame{
 	public void clearCommands () {
 		myHistoryTextArea.append("");
 	}
+
+	public void quit() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void saveFile() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }
