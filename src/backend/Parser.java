@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 
 import backend.command.CommandFactory;
 import backend.command.Command;
+import backend.command.variable.Variable;
 
 public class Parser {
 	private static final String NUMBER = "-?[0-9]+\\.?[0-9]*";
@@ -43,7 +44,10 @@ public class Parser {
 		generateQueue(tokens);
 		LinkedList<Command> commands = new LinkedList<Command>();
 		while(!currentTokens.isEmpty()){ //clean up this loop later, could possibly refactor with later similar loop. Look into it.
-			if(Pattern.matches(WORD, currentTokens.peek()) || Pattern.matches(OPERANDS,currentTokens.peek()))
+			if(Pattern.matches(VARIABLE, currentTokens.peek())){ //checking if is variable
+				commands.add(defineVariable(currentTokens.remove()));
+			}
+			else if(Pattern.matches(WORD, currentTokens.peek()) || Pattern.matches(OPERANDS,currentTokens.peek()))
 				commands.add(defineCommand(currentTokens.remove()));
 			else{
 				//numbers
@@ -53,9 +57,13 @@ public class Parser {
 		return commands;
 	}
 	
+	private Command defineVariable(String s){
+		return new Variable(s, variables);
+
+	}
+	
 	private Command defineCommand(String s) throws InstantiationException, IllegalAccessException{
 		Command c;
-//		String commandName = currentTokens.remove();
 		if(myCommands.hasCommand(s)){
 			c = myCommands.getCommand(s);
 			completeCommand(c);
@@ -76,7 +84,10 @@ public class Parser {
 			}
 			else{
 				token = currentTokens.remove();
-				if(token != null && Pattern.matches(NUMBER, token)){
+				if(token != null && Pattern.matches(VARIABLE, token)){
+					c.addArgumentCommand(defineVariable(token));
+				}
+				else if(token != null && Pattern.matches(NUMBER, token)){
 					c.addArgumentDouble(Double.parseDouble(token));
 				}
 				else if((token != null && Pattern.matches(WORD, token) || Pattern.matches(OPERANDS,token)) || (token.equals(LEFTBRACKET))){

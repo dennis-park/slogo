@@ -3,8 +3,10 @@ package backend.command.variable;
 import backend.command.Command;
 
 public class Make extends Command{
-
+	private final static int myParameterCount = 2;
+	
 	public Make(){
+		super(myParameterCount);
 	}
 	
 	public double execute(){

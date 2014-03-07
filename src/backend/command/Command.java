@@ -61,7 +61,7 @@ public class Command {//A zero parameter class
 	}
 
 
-	public double setValue(Double execute) {
+	public double setValue(double execute) {
 		return 0.0;
 	}
 	public Parameter get(int index){
