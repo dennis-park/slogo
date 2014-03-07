@@ -1,7 +1,6 @@
 package backend;
 
 import java.util.HashMap;
-import java.util.List;
 
 import slogo.Controller;
 
@@ -40,12 +39,5 @@ public class Backend {
 		//May need to make a command class. Will have to figure out api with turtle. All this api stuff
 	}
 
-	public void commandActiveTurtles(List<Integer> activeTurtles) {
-		for(int turtle: activeTurtles) {
-//			if() {
-//				
-//			}
- 		}
-	}
 
 }

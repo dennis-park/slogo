@@ -253,7 +253,7 @@ public class ParserTest {
 	}
 	
 	@Test
-	public void testDoTimes() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+	public void testFor() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Executor execute = new Executor();
 		HashMap<String, Double> var = new HashMap<String, Double>();
 		Parser parse = new Parser(var);

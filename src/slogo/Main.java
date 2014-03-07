@@ -7,7 +7,7 @@ import backend.Backend;
 import frontend.View;
 
 public class Main {
-		
+
 	public static View VIEW;
 
 	public static void main(String[]args) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
@@ -17,7 +17,7 @@ public class Main {
 		VIEW =  new View(c, new Dimension(500,500));
 		final Backend be = new Backend(c);
 		c.instantiate(be, VIEW);
-		
+
 
 		// Initialize GUI
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {

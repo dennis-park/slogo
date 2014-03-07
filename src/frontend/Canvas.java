@@ -47,7 +47,7 @@ public class Canvas extends JPanel {
 	public void rotate(double angle, int id) {
 		myView.updateHeading(turtles.get(id).getHeading());
 	}
-	
+
 	public void setHeading(double newHeading, int id){
 		myView.updateHeading(turtles.get(id).getHeading());
 	}
