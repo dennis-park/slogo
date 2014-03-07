@@ -1,41 +1,53 @@
 package slogo;
 
+import java.awt.Color;
+
+import frontend.View;
 import backend.Backend;
-import frontend.Frontend;
-import frontend.TurtleManager;
 
 public class Controller {
 
-	private TurtleManager myTurtleManager;
 	private Backend myBackend;
-	private Frontend myFrontend;
+	private View myView;
 
 	public double sendText(String s) throws InstantiationException, IllegalAccessException {
 		myBackend.parse(s);
 		return myBackend.parse(s);
 	}
 
-	public void instantiate(Backend be, Frontend fe) {
+	public void instantiate(Backend be, View v) {
 		myBackend = be;
-		myFrontend = fe;
+		myView = v;
 	}
 
-	public void update() {
-		// turtle list
-		// parse and evaluate commands
+	public void move(double amount, int id) {
+		myView.getCanvas().getTurtle(id).move(amount);
 	}
 
+	public void rotate(double angle, int id) {
+		myView.getCanvas().getTurtle(id).rotate(angle);
+	}
 
-	// COMMANDS TO BACKEND TO PARSE & EVAL
-	     // and TO VIEW TO UPDATE (or both)
-	// move
-	// rotate
-	// set heading
-	// set xy (move turtle)
-	// pen
-	// show/hide
-	// clear
+	public void setHeading(double angle, int id){
+		myView.getCanvas().getTurtle(id).setHeading(angle);
+		myView.getCanvas().repaint();
+	}
 
+	public void setXY(double x, double y, int id){
+		myView.getCanvas().getTurtle(id).setXY(x, y);
+	}
+
+	public void togglePen(boolean toggle, int id){
+		myView.getCanvas().getTurtle(id).getPen().toggle(toggle);
+	}
+
+	public void setPenColor(Color c, int id){
+		myView.getCanvas().getTurtle(id).getPen().changeColor(c);
+	}
+
+	public void clearAll() {
+		myView.getCanvas().clear();
+	}
 
 	// frontend to backend
 	// variables
