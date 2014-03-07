@@ -22,6 +22,7 @@ public class Controller {
 
 	public void move(double amount, int id) {
 		myView.getCanvas().getTurtle(id).move(amount);
+		System.out.println(id + " should have moved " + amount);
 	}
 
 	public void rotate(double angle, int id) {

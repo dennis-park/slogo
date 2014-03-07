@@ -12,6 +12,7 @@ public class Backend {
 	private Tokenizer myTokenizer;
 	private Parser myParser;
 	private Executor myExecutor;
+	private Controller myController;
 	private String myLanguage = "english"; //default is English
 	private HashMap<String, Double> variables;
 	
@@ -20,7 +21,7 @@ public class Backend {
 		myTokenizer = new Tokenizer();
 		myParser = new Parser(variables);
 		myExecutor = new Executor();
-
+		myController = c;
 	}
 	
 	/**
@@ -33,7 +34,7 @@ public class Backend {
 	 */
 	public double parse(String command) throws InstantiationException, IllegalAccessException{ 
 		//Will probably need to change for error checking returns
-		return myExecutor.executeCommands(myParser.parse(myTokenizer.tokenize(command), myLanguage));
+		return myExecutor.executeCommands(myParser.parse(myTokenizer.tokenize(command), myLanguage), myController);
 		
 		//return new LinkedList<String>(); 
 		//May need to make a command class. Will have to figure out api with turtle. All this api stuff

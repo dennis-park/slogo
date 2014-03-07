@@ -40,7 +40,6 @@ public class CommandFactory {
 			for(String key : commands.keySet()) {
 				if(key.equals(token)) {
 					className = commands.get(key);
-					System.out.println("\nkey: " + className);
 				}
 			}
 			Class c = Class.forName(className);

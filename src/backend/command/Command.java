@@ -3,6 +3,8 @@ package backend.command;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import slogo.Controller;
+
 
 /**
  * The Command superclass provides a framework for the different
@@ -14,6 +16,8 @@ public class Command {//A zero parameter class
 	protected ArrayList<Parameter> myParameters;
 	protected int myParameterCount;
 	protected int repcount;
+	protected Controller myController;
+	protected int myTurtleID;
 	protected int currentParameters; //maybe not needed
 	protected HashMap<String, Double> variables;
 	
@@ -29,7 +33,10 @@ public class Command {//A zero parameter class
 		myParameterCount = parameterCount;
 	}
 	
-
+	public void setController(Controller controller) {
+		myController = controller;
+	}
+	
 	public void addArgumentDouble(Double d) {
 		myParameters.add(new Parameter(d));
 		currentParameters++;
