@@ -30,6 +30,7 @@ public class Command {//A zero parameter class
 		this();
 		myParameterCount = parameterCount;
 	}
+	
 
 	public void addArgumentDouble(Double d) {
 		myParameters.add(new Parameter(d));
@@ -71,13 +72,5 @@ public class Command {//A zero parameter class
 	
 	public void setVariables(HashMap<String, Double> var){
 		variables = var;
-	}
-	
-	public void setController(Controller c) {
-		myController = c;
-	}
-	
-	public void setTurtleID(int ID) {
-		myTurtleID = ID;
 	}
 }

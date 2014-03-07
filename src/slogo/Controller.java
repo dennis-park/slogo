@@ -67,19 +67,6 @@ public class Controller {
 		myView.getCanvas().clear();
 	}
 	
-	/**
-	 * Returns the list of all existing turtles.
-	 * @return list of all turtles (NOT of the turtles' IDs)
-	 */
-	public List<Turtle> getAllTurtles() {
-		return myView.getCanvas().getAllTurtles();
-	}
-	
-	/**
-	 * Reads the list of all turtles, and puts the IDs of those turtles
-	 * into a new list of integers.
-	 * @return
-	 */
 	public List<Integer> getAllTurtleIds() {
 		List<Integer> allTurtleIds = new ArrayList<Integer>();
 		List<Turtle> allTurtles = myView.getCanvas().getAllTurtles();
