@@ -38,7 +38,7 @@ public class Parser {
 	 */
 	public Queue<Command> parse(String[] tokens, String language) throws InstantiationException, IllegalAccessException {
 		try {
-			myCommands = new CommandFactory(variables, language);
+			myCommands = new CommandFactory(variables, userCommands, language);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -98,6 +98,12 @@ public class Parser {
 					//return error, should not happen
 				}
 			}
+		}
+	}
+	
+	private void defineUserCommand(Command c){
+		if(c.getClass().toString().endsWith("ToCommand")){
+			
 		}
 	}
 

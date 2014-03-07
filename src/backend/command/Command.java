@@ -16,6 +16,7 @@ public class Command {//A zero parameter class
 	protected int repcount;
 	protected int currentParameters; //maybe not needed
 	protected HashMap<String, Double> variables;
+	protected HashMap<String, Command> userCommands;
 	
 	public Command(){
 		myParameterCount = 0;
@@ -70,5 +71,9 @@ public class Command {//A zero parameter class
 	
 	public void setVariables(HashMap<String, Double> var){
 		variables = var;
+	}
+	
+	public void setUserCommands(HashMap<String, Command> udc){
+		userCommands = udc;
 	}
 }

@@ -52,6 +52,18 @@ public class ParserTest {
 		parse.parse(rt50, language);
 		assertEquals(parse.parse(rt50, language).remove(), rt);
 	}
+	
+	@Test
+	public void testFDFD() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		Parser parse = new Parser(var);
+		Command rt = new ForwardCommand();
+		Command rt1 = new ForwardCommand();
+		rt1.addArgumentDouble(50.0);
+		rt.addArgumentCommand(rt1);
+		String[] rt50 = {"FD","FD","50"};
+		parse.parse(rt50, language);
+		assertEquals(parse.parse(rt50, language).remove(), rt);
+	}
 
 	@Test
 	public void testMultipleCommands() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
