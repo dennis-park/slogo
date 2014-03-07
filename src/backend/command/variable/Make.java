@@ -1,13 +1,13 @@
 package backend.command.variable;
 
-import backend.command.Command2Parameter;
+import backend.command.Command;
 
-public class Make extends Command2Parameter{
+public class Make extends Command{
 
 	public Make(){
 	}
 	
 	public double execute(){
-		return myParameters[0].getCommand().setValue(myParameters[1].execute());
+		return myParameters.get(0).getCommand().setValue(myParameters.get(1).execute());
 	}
 }

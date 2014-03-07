@@ -1,12 +1,17 @@
 package backend.command.booleanops;
 
-import backend.command.Command2Parameter;
+import backend.command.Command;
 
-public class EqualCommand extends Command2Parameter {
+public class EqualCommand extends Command {
+	private static final int myParameterCount = 2;
+	
+	public EqualCommand(){
+		super(myParameterCount);
+	}
 	
 	@Override
 	public double execute() {
-		return (myParameters[0].execute().equals(myParameters[1].execute())) ? 1 : 0;
+		return (myParameters.get(0).execute().equals(myParameters.get(1).execute())) ? 1 : 0;
 	}
 
 }

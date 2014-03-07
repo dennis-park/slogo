@@ -1,14 +1,18 @@
 package backend.command.math;
 
-import backend.command.Command2Parameter;
+import backend.command.Command;
 
-public class RemainderCommand extends Command2Parameter {
+public class RemainderCommand extends Command {
+	private static final int myParameterCount = 2;
 	
+	public RemainderCommand(){
+		super(myParameterCount);
+	}
 	@Override
 	public double execute(){
-		if(currentParameters != myArgumentCount)
+		if(currentParameters != myParameterCount)
 			return 0;//error
-		return (int) (myParameters[0].execute() % myParameters[1].execute());
+		return (int) (myParameters.get(0).execute() % myParameters.get(1).execute());
 	}
 
 }

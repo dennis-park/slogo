@@ -1,11 +1,16 @@
 package backend.command.booleanops;
 
-import backend.command.Command1Parameter;
+import backend.command.Command;
 
-public class NotCommand extends Command1Parameter {
+public class NotCommand extends Command {
+	private final static int myParameterCount = 1;
+	
+	public NotCommand(){
+		super(myParameterCount);
+	}
 
 	@Override
 	public double execute() {
-		return ((myArgument.execute() == 0.0)) ? 1 : 0;
+		return ((myParameters.get(0).execute() == 0.0)) ? 1 : 0;
 	}
 }
