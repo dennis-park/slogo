@@ -22,6 +22,7 @@ public class Controller {
 	public void instantiate(Backend be, View v) {
 		myBackend = be;
 		myView = v;
+		be.setActiveTurtleIDs(this);
 	}
 
 	public void addTurtle() {
@@ -34,6 +35,7 @@ public class Controller {
 	
 	public void move(double amount, int id) {
 		myView.getCanvas().getTurtle(id).move(amount);
+		System.out.println("should have gotten here");
 	}
 
 	public void rotate(double angle, int id) {

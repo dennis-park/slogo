@@ -15,9 +15,6 @@ public class Main {
 		// Initialize both frontend and backend
 		final Controller c = new Controller();
 		VIEW =  new View(c, new Dimension(500,500));
-		final Backend be = new Backend(c);
-		c.instantiate(be, VIEW);
-
 
 		// Initialize GUI
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
@@ -25,6 +22,10 @@ public class Main {
 				createAndShowGUI();
 			}
 		});
+		
+		final Backend be = new Backend(c);
+		c.instantiate(be, VIEW);
+
 	}
 
 	private static void createAndShowGUI() {

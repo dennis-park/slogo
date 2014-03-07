@@ -24,7 +24,7 @@ public class Canvas extends JPanel {
 		WIDTH_OFFSET = DEFAULT_WIDTH/2;
 		HEIGHT_OFFSET = DEFAULT_HEIGHT/2;
 		setBorder(BorderFactory.createLineBorder(Color.black));
-		DEFAULT_TURTLE = new Turtle(DEFAULT_WIDTH/2, DEFAULT_HEIGHT/2, turtles.size()+1);
+		DEFAULT_TURTLE = new Turtle(DEFAULT_WIDTH/2, DEFAULT_HEIGHT/2, turtles.size());
 		turtles.add(DEFAULT_TURTLE);
 	}
 
@@ -61,7 +61,7 @@ public class Canvas extends JPanel {
 	}
 
 	public void addTurtle() {
-		turtles.add(new Turtle(DEFAULT_WIDTH/2, DEFAULT_HEIGHT/2, turtles.size()+1));
+		turtles.add(new Turtle(DEFAULT_WIDTH/2, DEFAULT_HEIGHT/2, turtles.size()));
 		repaint();
 	}
 

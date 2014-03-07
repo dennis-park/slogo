@@ -13,7 +13,7 @@ public class Backend {
 	private Parser myParser;
 	private Executor myExecutor;
 	private Controller myController;
-	private List<Integer> myActiveTurtleIds;
+	private List<Integer> myActiveTurtleIDs;
 	private String myLanguage = "english"; //default is English
 	private HashMap<String, Double> variables;
 	
@@ -23,11 +23,14 @@ public class Backend {
 		myParser = new Parser(variables);
 		myExecutor = new Executor();
 		myController = controller;
-		myActiveTurtleIds = myController.getAllTurtleIds();
 	}
 	
 	public void setLanguage(String language) {
 		myLanguage = language;
+	}
+	
+	public void setActiveTurtleIDs(Controller c) {
+		myActiveTurtleIDs = c.getAllTurtleIds();
 	}
 	
 	/**
@@ -43,7 +46,7 @@ public class Backend {
 		//Will probably need to change for error checking returns
 		checkTurtlesExist();
 		double returnVal = 0.0;
-		for(int Id : myActiveTurtleIds) {
+		for(int Id : myActiveTurtleIDs) {
 			returnVal = myExecutor.executeCommands(myParser.parse
 					(myTokenizer.tokenize(command), myLanguage), myController, Id);
 		}
@@ -57,7 +60,7 @@ public class Backend {
 	 */
 	public void checkTurtlesExist() {
 		List<Integer> allTurtles = myController.getAllTurtleIds();
-		for(int id : myActiveTurtleIds) {
+		for(int id : myActiveTurtleIDs) {
 			if(!allTurtles.contains(id)) {
 				myController.addTurtle(id);
 				System.out.println("Created a new turtle with ID " + id);
