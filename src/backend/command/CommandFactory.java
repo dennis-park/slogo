@@ -8,11 +8,13 @@ import backend.PropertiesParser;
 
 public class CommandFactory {
 	private Map<String, String> commands;
+	private HashMap<String, Double> variables;
 	private String myLanguage;
 
-	public CommandFactory(String language) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+	public CommandFactory(HashMap<String, Double> var, String language) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		myLanguage = language;
 		commands = new HashMap<String, String>();
+		variables = var;
 		PropertiesParser parser = new PropertiesParser();
 		try {
 			parser.read(myLanguage, commands);
@@ -36,7 +38,7 @@ public class CommandFactory {
 			}
 			Class c = Class.forName(className);
 			Command newCommand = (Command) c.newInstance();
-			//maybe pass in instance of backend/controller/whatever here
+			newCommand.setVariables(variables);//maybe pass in instance of backend/controller/whatever here
 			return newCommand;
 		} catch (ClassNotFoundException e) {
 			System.out.println("This command is not in the library of commands.");

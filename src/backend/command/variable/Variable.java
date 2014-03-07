@@ -8,17 +8,17 @@ public class Variable extends Command {
 	
 	public Variable(String var){
 		name = var;
-		if(!Backend.variables.containsKey(name)){
-			Backend.variables.put(name, 0.0);
+		if(!variables.containsKey(name)){
+			variables.put(name, 0.0);
 		}
 	}
 	
 	public double setValue(double val){
-		Backend.variables.put(name, val);
+		variables.put(name, val);
 		return val;
 	}
 	
 	public double execute(){
-		return Backend.variables.get(name);
+		return variables.get(name);
 	}
 }

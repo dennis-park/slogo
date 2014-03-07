@@ -1,6 +1,7 @@
 package backend.command;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 /**
@@ -14,6 +15,7 @@ public class Command {//A zero parameter class
 	protected int myParameterCount;
 	protected int repcount;
 	protected int currentParameters; //maybe not needed
+	protected HashMap<String, Double> variables;
 	
 	public Command(){
 		myParameterCount = 0;
@@ -64,5 +66,9 @@ public class Command {//A zero parameter class
 	}
 	public Parameter get(int index){
 		return myParameters.get(index);
+	}
+	
+	public void setVariables(HashMap<String, Double> var){
+		variables = var;
 	}
 }
