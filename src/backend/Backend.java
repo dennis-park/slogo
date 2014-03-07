@@ -13,13 +13,14 @@ public class Backend {
 	private Parser myParser;
 	private Executor myExecutor;
 	private String myLanguage = "english"; //default is English
-	public static HashMap<String, Double> variables;
+	private HashMap<String, Double> variables;
 	
 	public Backend(Controller c) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
-		myTokenizer = new Tokenizer();
-		myParser = new Parser();
-		myExecutor = new Executor();
 		variables = new HashMap<String, Double>();
+		myTokenizer = new Tokenizer();
+		myParser = new Parser(variables);
+		myExecutor = new Executor();
+
 	}
 	
 	/**

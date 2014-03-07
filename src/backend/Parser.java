@@ -1,5 +1,6 @@
 package backend;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.regex.Pattern;
@@ -11,13 +12,15 @@ public class Parser {
 	private static final String NUMBER = "-?[0-9]+\\.?[0-9]*";
 	private static final String WORD = "[a-zA-z_]+(\\?)?";
 	private static final String OPERANDS = "[+-/%~*]";
+	private static final String VARIABLE = ":[a-zA-z]+";
 	private CommandFactory myCommands;
 	private LinkedList<String> currentTokens;
 	private static final String LEFTBRACKET = "[";
 	private static final String RIGHTBRACKET = "]";
+	private HashMap<String, Double> variables;
 
-	public Parser() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
-//		myCommands = new CommandFactory();
+	public Parser(HashMap<String, Double> var) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		variables = var;
 		currentTokens = new LinkedList<String>();
 	}
 
@@ -33,7 +36,7 @@ public class Parser {
 	 */
 	public Queue<Command> parse(String[] tokens, String language) throws InstantiationException, IllegalAccessException {
 		try {
-			myCommands = new CommandFactory(language);
+			myCommands = new CommandFactory(variables, language);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
