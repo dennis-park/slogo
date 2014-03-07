@@ -11,19 +11,20 @@ import java.util.ArrayList;
  */
 public class Command {//A zero parameter class
 	protected ArrayList<Parameter> myParameters;
-	protected int myArgumentCount;
+	protected int myParameterCount;
 	protected int repcount;
 	protected int currentParameters; //maybe not needed
 	
 	public Command(){
-		myArgumentCount = 0;
+		myParameterCount = 0;
 		repcount =1;
 		myParameters = new ArrayList<Parameter>();
+		currentParameters =0;
 	}
 	
 	public Command(int parameterCount){
 		this();
-		myArgumentCount = parameterCount;
+		myParameterCount = parameterCount;
 	}
 	
 
@@ -43,7 +44,7 @@ public class Command {//A zero parameter class
 	
 	
 	public int getArgumentCount(){
-		return myArgumentCount;
+		return myParameterCount;
 	}
 	
 	public void setRepCount(int i){

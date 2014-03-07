@@ -1,14 +1,19 @@
 package backend.command.math;
 
-import backend.command.Command2Parameter;
+import backend.command.Command;
 
-public class QuotientCommand extends Command2Parameter {
+public class QuotientCommand extends Command{
+	private static final int myParameterCount = 2;
+	
+	public QuotientCommand(){
+		super(myParameterCount);
+	}
 	
 	@Override
 	public double execute(){
-		if(currentParameters != myArgumentCount)
+		if(currentParameters != myParameterCount)
 			return 0;//error
-		return myParameters[0].execute() / myParameters[1].execute();
+		return myParameters.get(0).execute() / myParameters.get(1).execute();
 	}
 
 }

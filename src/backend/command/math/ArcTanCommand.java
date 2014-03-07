@@ -1,12 +1,17 @@
 package backend.command.math;
 
-import backend.command.Command1Parameter;
+import backend.command.Command;
 
-public class ArcTanCommand extends Command1Parameter {
+public class ArcTanCommand extends Command {
+	private final static int myParameterCount = 1;
+	
+	public ArcTanCommand(){
+		super(myParameterCount);
+	}
 	
 	@Override
 	public double execute() {
-		return Math.atan(myArgument.execute() * Math.PI / 180);
+		return Math.atan(myParameters.get(0).execute() * Math.PI / 180);
 	}
 
 }

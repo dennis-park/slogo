@@ -4,29 +4,17 @@ import java.util.ArrayList;
 
 
 public class Bracket extends Command {
-	private ArrayList<Parameter> commands;
 	private ArrayList<Double> values; 
 	
 	public Bracket(){
-		commands = new ArrayList<Parameter>();
+		super();
 		values = new ArrayList<Double>();
-		myArgumentCount = Integer.MAX_VALUE;
-	}
-	
-	@Override
-	public void addArgumentDouble(Double d) {
-		// Should not happen. throw an error
-		
-	}
-
-	@Override
-	public void addArgumentCommand(Command c) {
-		commands.add(new Parameter(c));
+		myParameterCount = Integer.MAX_VALUE;
 	}
 
 	@Override
 	public double execute() {
-		for(Parameter p : commands){
+		for(Parameter p : myParameters){
 			p.setRepCount(repcount);
 			values.add(p.execute());
 		}
@@ -36,19 +24,10 @@ public class Bracket extends Command {
 			return values.get(values.size()-2);
 	}
 	
-	public void setRepCount(int i){
-		super.setRepCount(i);
-		for(Parameter p : commands)
-			p.setRepCount(i);
-	}
-	
+
 	public boolean equals(Object obj){
 		Bracket s = (Bracket)obj;
-		return this.commands.equals(s.commands);
+		return this.myParameters.equals(s.myParameters);
 	}
-	
-	public Parameter get(int index){
-		return commands.get(index);
-	}
-	
+
 }

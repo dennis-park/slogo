@@ -2,7 +2,7 @@ package backend.command;
 
 public class BracketClose extends Command {
 	public BracketClose(){
-		myArgumentCount =0;
+		myParameterCount =0;
 	}
 	
 	public boolean equals(Object obj){
