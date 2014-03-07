@@ -17,16 +17,8 @@ public class CommandFactory {
 	//Need some sort of xml or whatever data form parser to take in data in this format.
 
 //	public CommandFactory() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-	public CommandFactory(String language) throws InstantiationException, IllegalAccessException, ClassNotFoundException {	
-
-<<<<<<< HEAD
-//		commands = new HashMap<String, String>();
-//		XMLParser reader = new XMLParser();
-//		reader.read("src\\backend\\command\\BuiltInCommands.xml", commands);
-		
-=======
 	public CommandFactory(HashMap<String, Double> var, String language) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
->>>>>>> 557d5b9b3377d101e5b14e346575858aaee34efd
+
 		myLanguage = language;
 		commands = new HashMap<String, String>();
 		variables = var;
