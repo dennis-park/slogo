@@ -47,6 +47,7 @@ public class Command {//A zero parameter class
 	}
 	
 	public void setRepCount(int i){
+		repcount = i;
 		for(Parameter p: myParameters){
 			p.setRepCount(i);
 		}
