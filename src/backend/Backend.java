@@ -2,7 +2,6 @@ package backend;
 
 import java.util.HashMap;
 import java.util.List;
-
 import slogo.Controller;
 
 /**
@@ -14,6 +13,7 @@ public class Backend {
 	private Parser myParser;
 	private Executor myExecutor;
 	private Controller myController;
+	private List<Integer> myActiveTurtleIds;
 	private String myLanguage = "english"; //default is English
 	private HashMap<String, Double> variables;
 	
@@ -23,6 +23,7 @@ public class Backend {
 		myParser = new Parser(variables);
 		myExecutor = new Executor();
 		myController = controller;
+		myActiveTurtleIds = myController.getAllTurtleIds();
 	}
 	
 	public void setLanguage(String language) {
@@ -40,28 +41,26 @@ public class Backend {
 	 */
 	public double parse(String command) throws InstantiationException, IllegalAccessException{ 
 		//Will probably need to change for error checking returns
-		checkTurtlesExist(activeTurtles);
+		checkTurtlesExist();
 		double returnVal = 0.0;
-		for(int Id : activeTurtles) {
+		for(int Id : myActiveTurtleIds) {
 			returnVal = myExecutor.executeCommands(myParser.parse
-					(myTokenizer.tokenize(command), myLanguage));
+					(myTokenizer.tokenize(command), myLanguage), myController, Id);
 		}
 		return returnVal;
-		
-		//return new LinkedList<String>(); 
 		//May need to make a command class. Will have to figure out api with turtle. All this api stuff
 	}
-	
-	public void setActiveTurtles(List<Integer> activeTurtles) {
-		
-	}
 
-	public void checkTurtlesExist(List<Integer> activeTurtles) {
+	/**
+	 * Checks to make sure that all turtles in the list of active turtle IDs
+	 * are existing turtles (they are in the master list of turtles)
+	 */
+	public void checkTurtlesExist() {
 		List<Integer> allTurtles = myController.getAllTurtleIds();
-		for(int id : activeTurtles) {
+		for(int id : myActiveTurtleIds) {
 			if(!allTurtles.contains(id)) {
 				myController.addTurtle(id);
-				System.out.println("creating a new turtle with ID " + id);
+				System.out.println("Created a new turtle with ID " + id);
 			}
 		}
 	}
