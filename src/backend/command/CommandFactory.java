@@ -6,12 +6,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 import backend.PropertiesParser;
+//import backend.XMLParser;
 
 public class CommandFactory {
 	private Map<String, String> commands;
 	private HashMap<String, Double> variables;
 	private String myLanguage;
 	
+	//private HashMap<String, String> commands;
+	//Need some sort of xml or whatever data form parser to take in data in this format.
+
+//	public CommandFactory() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 	public CommandFactory(HashMap<String, Double> var, String language) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 
 		myLanguage = language;
@@ -43,6 +48,7 @@ public class CommandFactory {
 			newCommand.setVariables(variables);//maybe pass in instance of backend/controller/whatever here
 			return newCommand;
 		} catch (ClassNotFoundException e) {
+			System.out.println("This command is not in the library of commands.");
 			e.printStackTrace();
 		}
 		return null;

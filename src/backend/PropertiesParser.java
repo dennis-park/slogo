@@ -26,6 +26,7 @@ public class PropertiesParser {
 		
 		for(Object key : properties.keySet()) {
 			String command = key.toString();
+			System.out.println("command: " + command);
 			String classPath = properties.getProperty(command).toString();
 			commands.put(command.toUpperCase(), classPath);
 		}
