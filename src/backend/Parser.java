@@ -19,6 +19,7 @@ public class Parser {
 	private static final String LEFTBRACKET = "[";
 	private static final String RIGHTBRACKET = "]";
 	private HashMap<String, Double> variables;
+	private HashMap<String, Command> userCommands;
 
 	public Parser(HashMap<String, Double> var) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		variables = var;
