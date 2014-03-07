@@ -4,7 +4,11 @@ import java.util.Queue;
 
 import backend.command.Command;
 
-//Translates the parse tree into commands for the turtle
+/**
+ * Translates the parse tree into commands for the turtle by calling the execute method on 
+ * every command in the queue of commands.
+ * 
+ */
 public class Executor { //Will need to add some error checking code most likely
 	public Executor(){
 		
