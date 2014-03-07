@@ -3,6 +3,8 @@ package backend.command;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import backend.command.control.UserDefinedCommand;
+
 
 /**
  * The Command superclass provides a framework for the different
@@ -16,7 +18,7 @@ public class Command {//A zero parameter class
 	protected int repcount;
 	protected int currentParameters; //maybe not needed
 	protected HashMap<String, Double> variables;
-	protected HashMap<String, Command> userCommands;
+	protected HashMap<String, UserDefinedCommand> userCommands;
 	
 	public Command(){
 		myParameterCount = 0;
@@ -73,7 +75,7 @@ public class Command {//A zero parameter class
 		variables = var;
 	}
 	
-	public void setUserCommands(HashMap<String, Command> udc){
-		userCommands = udc;
+	public void setUserCommands(HashMap<String, UserDefinedCommand> userCommands2){
+		userCommands = userCommands2;
 	}
 }

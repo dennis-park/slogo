@@ -7,6 +7,8 @@ import java.util.regex.Pattern;
 
 import backend.command.CommandFactory;
 import backend.command.Command;
+import backend.command.control.ToCommand;
+import backend.command.control.UserDefinedCommand;
 import backend.command.variable.Variable;
 
 public class Parser {
@@ -19,10 +21,11 @@ public class Parser {
 	private static final String LEFTBRACKET = "[";
 	private static final String RIGHTBRACKET = "]";
 	private HashMap<String, Double> variables;
-	private HashMap<String, Command> userCommands;
+	private HashMap<String, UserDefinedCommand> userCommands;
 
-	public Parser(HashMap<String, Double> var) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+	public Parser(HashMap<String, Double> var, HashMap<String, UserDefinedCommand> udc) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		variables = var;
+		userCommands = udc;
 		currentTokens = new LinkedList<String>();
 	}
 
@@ -78,6 +81,7 @@ public class Parser {
 		int numArguments = c.getArgumentCount();
 		int count =0;
 		String token = "emptyList";
+		defineUserCommand(c);
 		while(((count <numArguments) || isLeftBracket(c, count)) && isNotRightBracket(token, c)){
 			count++;
 			if(currentTokens.isEmpty()){
@@ -103,7 +107,8 @@ public class Parser {
 	
 	private void defineUserCommand(Command c){
 		if(c.getClass().toString().endsWith("ToCommand")){
-			
+			ToCommand def = (ToCommand)c;
+			def.setName(currentTokens.remove());
 		}
 	}
 
