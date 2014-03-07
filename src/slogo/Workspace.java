@@ -19,20 +19,20 @@ public class Workspace {
 	}
 
 	// execute commands here
-	
+
 	public void initWorkspace() {
 		myTurtles = myTurtleManager.getTurtleMap();
 	}
 	public void update() {
         myTurtleManager.update();
     }
-	
+
 	public Turtle getTurtle(int id) {
 		if (myTurtles.containsKey(id))
 			return myTurtles.get(id);
 		return null;
 	}
-	
+
     public Turtle getTurtle () {
         return myTurtleManager.getCurrentTurtle();
     }
@@ -45,7 +45,7 @@ public class Workspace {
         myTurtleManager.add(new Turtle(id)); // change to fit appropriate constructor
         update();
     }
-	
+
     public void activateTurtle(int id) {
         myTurtleManager.makeActive(myTurtles.get(id));
         update();

@@ -30,10 +30,10 @@ public class MenuView extends JMenuBar{
 		myCanvas = v.CANVAS;
 		addMenus();
 	}
-	
+
 	public MenuView(String title) {
 		super();
-		
+
 	}
 
 	private void addMenus() {

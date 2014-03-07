@@ -25,22 +25,18 @@ import javax.swing.JTextArea;
 
 import slogo.Controller;
 
-@SuppressWarnings("serial")
 public class View extends JFrame{
 	private JTabbedPane myTabs;
 	private int myWorkspaceCount = 0;
+	private Dimension myBounds;
 	private ResourceBundle myResources;
+	private String myTitle;
 	private Controller myController;
-	private JLabel myPosition, myHeading, myId;
 
-	public static int DEFAULT_ID = 0;
+
 	public static final double DEFAULT_UNIT = 1.0; 
-	private static int DEFAULT_WIDTH = 500;
-	private static int DEFAULT_HEIGHT = 500;
-	private static int WIDTH_OFFSET = DEFAULT_WIDTH/2;
-	private static int HEIGHT_OFFSET = DEFAULT_HEIGHT/2;
 
-	public static final Canvas CANVAS = new Canvas(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	public static final Canvas CANVAS = new Canvas();
 
 	public static final JTextArea CONSOLE = new JTextArea(5, 15);
 
@@ -48,7 +44,6 @@ public class View extends JFrame{
 	public static final JButton RUN = new JButton("Run");
 	public static final JButton PEN = new JButton("Change Pen Color");
 	public static final JButton TURTLE = new JButton("Upload A Turtle Image");
-	public static final JButton ADD_TURTLE = new JButton("Add a Turtle");
 	public static final JButton FD = new JButton("Foward");
 	public static final JButton BK = new JButton("Backward");
 	public static final JButton LT = new JButton("Left");
@@ -56,72 +51,60 @@ public class View extends JFrame{
 
 	//private List<Workspace> myWorkSpaces = new ArrayList<Workspace>();
 
-	public View (Controller c, Dimension bounds) {
+	public View (Frontend fe, Controller c, Dimension bounds) {
+		myBounds = bounds;
+		myTitle = "";
 		//myResources = ResourceBundle.getBundle();
 		myTabs = new JTabbedPane();
 		myController = c;
 		this.getContentPane().add(myTabs);
 
-		JComponent infoPanel = makeInfoPanel();
-		// JComponent commandHistory = makeCommandHistory();
-		JComponent movementButtons = makeMovementButtons();
-		JComponent consolePanel = makeConsolePanel();
+		//other methods after refactoring ie. initGUI()
 
-		CANVAS.setView(this);
+		JPanel p = new JPanel();
+		JPanel p1 = new JPanel();
+		JPanel p2 = new JPanel();
+
+		p.setLayout(new BorderLayout());
+		p1.setLayout(new GridLayout(0,1));
+		p2.setLayout(new GridLayout(2,2));
+
+		p.add(CONSOLE);
+
+		p1.add(RUN);
+		p1.add(PEN);
+		p1.add(TURTLE);
+
+		p2.add(FD);
+		p2.add(BK);
+		p2.add(LT);
+		p2.add(RT);
 
 		this.add(CANVAS, BorderLayout.NORTH);
-		this.add(consolePanel, BorderLayout.CENTER);
-		this.add(movementButtons, BorderLayout.SOUTH);
-		this.add(infoPanel, BorderLayout.EAST);
+		this.add(p, BorderLayout.WEST);
+		this.add(p1, BorderLayout.EAST);
+		this.add(p2, BorderLayout.SOUTH);
 		CANVAS.setEnabled(isEnabled());
 		buttonListeners();
 	}
 
-	private JComponent makeConsolePanel() {
-		JPanel myConsolePanel = new JPanel();
-		JPanel myConsole = new JPanel();
-		JPanel myControls = new JPanel();
-
-		myConsolePanel.setLayout(new BorderLayout());
-		myControls.setLayout(new GridLayout (0,1));
-
-		myConsole.add(CONSOLE);
-		myControls.add(RUN);
-		myControls.add(PEN);
-		myControls.add(TURTLE);
-		myControls.add(ADD_TURTLE);
-
-		myConsolePanel.add(myConsole, BorderLayout.WEST);
-		myConsolePanel.add(myControls, BorderLayout.EAST);
-
-		return myConsolePanel;
-	}
-
-	private JComponent makeMovementButtons() {
-		JPanel myMovementButtons = new JPanel();
-		myMovementButtons.setLayout(new GridLayout(2,2));
-		myMovementButtons.add(FD);
-		myMovementButtons.add(BK);
-		myMovementButtons.add(LT);
-		myMovementButtons.add(RT);
-		return myMovementButtons;
-	}
+	private JLabel myPosition, myHeading;
+	private Turtle myTurtle;
+	private JTextArea myInfo;
 
 	private JComponent makeInfoPanel() {
 		JPanel myTurtleInfo = new JPanel();
-		myTurtleInfo.setLayout(new GridLayout(3,0));	
+		myTurtleInfo.setLayout(new BorderLayout());	
+		myInfo = new JTextArea();
 
 		myPosition = new JLabel();
 		myHeading = new JLabel();
-		myId = new JLabel();
-
-		updateId(CANVAS.getTurtle(DEFAULT_ID).getId());
-		updateHeading(CANVAS.getTurtle(DEFAULT_ID).getHeading());
-		updatePosition(CANVAS.getTurtle(DEFAULT_ID).getX()-(WIDTH_OFFSET), HEIGHT_OFFSET-CANVAS.getTurtle(DEFAULT_ID).getY());
 
 		myTurtleInfo.add(myPosition);
 		myTurtleInfo.add(myHeading);
-		myTurtleInfo.add(myId);
+
+		updateHeading(myTurtle.getHeading());
+		updatePosition(myTurtle.getX(), myTurtle.getY());
 
 		return myTurtleInfo;
 	}
@@ -151,16 +134,12 @@ public class View extends JFrame{
 		return myCommandHistory;
 	}
 
-	private void updateId(int id) {
-		myId.setText("Turtle Id = " + id);
+	private void updatePosition(double x, double y) {
+		myInfo.setText("Position: x=" + x + "\t y=" + y);
 	}
 
-	public void updatePosition(double x, double y) {
-		myPosition.setText("<html> Turtle x = " + x + "<br/>" + "Turtle y = " + y + "</html>");
-	}
-
-	public void updateHeading(double heading) {
-		myHeading.setText("Heading = " + heading);
+	private void updateHeading(double heading) {
+		myInfo.setText("Heading=" + heading);
 	}
 
 	private void buttonListeners() {
@@ -186,10 +165,7 @@ public class View extends JFrame{
 
 			public void actionPerformed(ActionEvent e)
 			{
-				Color newColor = JColorChooser.showDialog(new JFrame(), "Pick your color", Color.PINK);
-				if (newColor != null) {
-				    CANVAS.getTurtle(DEFAULT_ID).getPen().changeColor(newColor);
-				}
+				JColorChooser.showDialog(new JFrame(), "Pick your color", Color.PINK);
 			}
 		});
 
@@ -203,19 +179,10 @@ public class View extends JFrame{
 					BufferedImage img = null;
 					try {
 						img = ImageIO.read(new File(chooser.getSelectedFile().getAbsolutePath()));
-						CANVAS.getTurtle(DEFAULT_ID).changeTurtle(img);
-						CANVAS.repaint();
+						CANVAS.changeTurtle(img);
 					} catch (IOException e1) {
 					}
 				}            
-			}
-		});
-
-		ADD_TURTLE.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e)
-			{
-				CANVAS.addTurtle();
 			}
 		});
 
@@ -223,8 +190,7 @@ public class View extends JFrame{
 
 			public void actionPerformed(ActionEvent e)
 			{
-				CANVAS.getTurtle(DEFAULT_ID).move(DEFAULT_UNIT);
-				CANVAS.repaint();
+				CANVAS.move(DEFAULT_UNIT);
 			}
 		});
 
@@ -232,9 +198,7 @@ public class View extends JFrame{
 
 			public void actionPerformed(ActionEvent e)
 			{
-				CANVAS.getTurtle(DEFAULT_ID).move(-DEFAULT_UNIT);
-				CANVAS.repaint();
-				
+				CANVAS.move(-DEFAULT_UNIT);
 			}
 		});
 
@@ -242,8 +206,7 @@ public class View extends JFrame{
 
 			public void actionPerformed(ActionEvent e)
 			{
-				CANVAS.getTurtle(DEFAULT_ID).rotate(-DEFAULT_UNIT);
-				CANVAS.repaint();
+				CANVAS.rotate(DEFAULT_UNIT);
 			}
 		});
 
@@ -251,8 +214,7 @@ public class View extends JFrame{
 
 			public void actionPerformed(ActionEvent e)
 			{
-				CANVAS.getTurtle(DEFAULT_ID).rotate(DEFAULT_UNIT);
-				CANVAS.repaint();
+				CANVAS.rotate(-DEFAULT_UNIT);
 			}
 		});
 	}
@@ -266,12 +228,6 @@ public class View extends JFrame{
 	public void clearCommands () {
 		myHistoryTextArea.append("");
 	}
-	
-<<<<<<< HEAD
-	public Canvas getCanvas(){
-		return CANVAS;
-	}
-=======
 
->>>>>>> controller
+
 }
