@@ -1,88 +1,84 @@
 #
 # Turtle Commands
 #
-qianjin = backend.command.turtle.ForwardCommand
-qj = backend.command.turtle.ForwardCommand
-houtui = backend.command.turtle.BackCommand
-ht = backend.command.turtle.BackCommand
-zuozhuan = backend.command.turtle.TurnLeftCommand
-zz = backend.command.turtle.TurnLeftCommand
-Right = youzhuan,yz
-SetHeading = dingjiaodu,jd
-SetTowards = chaoxiang
-SetPosition = weizhi
-PenDown = luobi,lb
-PenUp = taibi,tb
-ShowTurtle = xianshi,xs
-HideTurtle = yinshen,ys
-Home = jia
-ClearScreen = qingping,qp
+Forward = adelante,at
+Backward = trasero,tr
+Left = dejado,dj
+Right = derecho,dr
+SetHeading = establecerpartidas,estapart
+SetTowards = hacia
+SetPosition = establecerxy
+PenDown = plumaabajo,pa
+PenUp = plumahasta,ph
+ShowTurtle = mostrartortuga,mt
+HideTurtle = ocultartaruga,ot
+Home = casa
+ClearScreen = claropantalla,cp
 #
 # Turtle Queries
 #
-XCoordinate = xzuobiao
-YCoordinate = yzuobiao
-Heading = jiaodu
-IsPenDown = luobi?,luobip
-IsShowing = xianshi?,xianship
+XCor = xcor
+YCor = ycor
+Heading = titulo
+IsPenDown = lumaabajo?,lumaabajop
+IsShowing = demostacion?,demostacionp
 #
 # Math Operations
 #
-Sum = jia,+
-Difference = jian,-
-Product = cheng,*
-Quotient = chu,/
-Remainder = yushu,%
-Minus = fu,~
-Random = suiji
-Sine = zhengxian
-Cosine = yuxian
-Tangent = zhengqie
-ArcTangent = fanzhengqie
-NaturalLog = ziranduishu
-Power = mi
-
+Sum = suma,+
+Difference = diff,-
+Product = produto,*
+Quotient = cociente,/
+Remainder = resto,%
+Minus = menos,~
+Random = azar
+Sine = sin
+Cosine = cos
+Tangent = tan
+ArcTangent = atan
+NaturalLog = log
+Power = pow
 #
 # Boolean Operations
 #
-LessThan = xiao?,xiaop
-GreaterThan = da?,dap
-Equal = deng?,dengp
-NotEqual = budeng?,budengp
-And = he
-Or = huo
-Not = bu
+LessThan = menos?,menosp
+GreaterThan = mayor?,mayorp
+Equal = igual?,igualp
+NotEqual = noesigual?,noesigual
+And = y
+Or = o
+Not = no
 #
 # Variables, Control, and User-Defined Commands
 #
-MakeVariable = zuo,she
-Repeat = chongfu
-DoTimes = zuocishu
-For = dang
-If = ruguo
-IfElse = qitaruguo
-MakeUserInstruction = zidingyi
+MakeVariable = hacer,establar
+Repeat = repetir
+DoTimes = hacertiempos
+For = para
+If = si
+IfElse = sibien
+MakeUserInstruction = en
 #
 # Display Commands
 #
-SetBackground = shebeijing,sbj
-SetPenColor = shebiyanse,sbys
-SetPenSize = shebicuxi,sbcx
-SetShape = shexingzhuang,sxz
-SetPalette = shehuaban
-GetPenColor = biyanse,bys
-GetShape = xingzhuang,xz
-Stamp = yinji
-ClearStamps = qingchuyinji
+SetBackground = ponerelfondo,pef
+SetPenColor = establarplumacolor,epc
+SetPenSize = plumatamano,pt
+SetShape = establarforma,ef
+SetPalette = establarpaleta,ep
+GetPenColor = colorpluma,cp
+GetShape = forma
+Stamp = sello
+ClearStamps = corrarsello
 #
 # Multiple Turtle Commands
 #
-ID = shenfen
-Tell = gaosu
-TellEven = gaosuoushu
-TellOdd = gaosujishu
-Ask = minglin
-AskWith = tiaojianminglin
+ID = id
+Tell = decir
+TellEven = dicirincluso
+TellOdd = decirimpar
+Ask = pedir
+AskWith = pedircon
 #
 # Syntax
 #
@@ -92,4 +88,3 @@ ListStart = [
 ListEnd = ]
 GroupStart = (
 GroupEnd = )
-
