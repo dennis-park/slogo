@@ -27,7 +27,6 @@ import slogo.Controller;
 
 @SuppressWarnings("serial")
 public class View extends JFrame{
-
 	private JTabbedPane myTabs;
 	private int myWorkspaceCount = 0;
 	private ResourceBundle myResources;
@@ -268,7 +267,11 @@ public class View extends JFrame{
 		myHistoryTextArea.append("");
 	}
 	
+<<<<<<< HEAD
 	public Canvas getCanvas(){
 		return CANVAS;
 	}
+=======
+
+>>>>>>> controller
 }

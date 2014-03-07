@@ -1,12 +1,18 @@
 package slogo;
 
+<<<<<<< HEAD
 import java.awt.Color;
 
 import frontend.View;
+=======
+>>>>>>> controller
 import backend.Backend;
+import frontend.Frontend;
+import frontend.TurtleManager;
 
 public class Controller {
 	
+	private TurtleManager myTurtleManager;
 	private Backend myBackend;
 	private View myView;
 	
@@ -24,9 +30,27 @@ public class Controller {
 		myView.getCanvas().getTurtle(id).move(amount);
 	}
 	
+<<<<<<< HEAD
 	public void rotate(double angle, int id) {
 		myView.getCanvas().getTurtle(id).rotate(angle);
 	}
+=======
+	public void update() {
+		// turtle list
+		// parse and evaluate commands
+	}
+	
+	
+	// COMMANDS TO BACKEND TO PARSE & EVAL
+	     // and TO VIEW TO UPDATE (or both)
+	// move
+	// rotate
+	// set heading
+	// set xy (move turtle)
+	// pen
+	// show/hide
+	// clear
+>>>>>>> controller
 	
 	public void setHeading(double angle, int id){
 		myView.getCanvas().getTurtle(id).setHeading(angle);

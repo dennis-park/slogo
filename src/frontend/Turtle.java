@@ -15,6 +15,7 @@ public class Turtle {
 
 	private static int DEFAULT_WIDTH = 10;
 	private static int DEFAULT_HEIGHT = 10;
+<<<<<<< HEAD
 
 	private static double myHeading = 270.0;
 
@@ -29,6 +30,29 @@ public class Turtle {
 		myY = y;
 		myHeading = heading;
 		myPen = new Pen(this);
+=======
+	private int myID;
+	
+	private double myHeading;
+	private static double DEFAULT_HEADING = 90.0;
+
+	private boolean FLAG_ACTIVE;
+	
+	public Turtle(int id) {
+		this(200,200); // loaded dummy vals for dimensions
+		myID = id;
+	}
+	public Turtle(double x, double y) {
+		this(x, y, DEFAULT_HEADING);
+	}
+	public Turtle(double x, double y, double heading) {
+		myPrevX = x;
+		myPrevY = y;
+		myX = x;
+		myY = y;
+		myHeading = heading;
+		FLAG_ACTIVE = true;
+>>>>>>> controller
 	}
 
 	public Turtle(double x, double y, double heading, Image image, int id) {
@@ -37,7 +61,23 @@ public class Turtle {
 		myY = y;
 		myHeading = heading;
 		myImage = image;
+<<<<<<< HEAD
 		myPen = new Pen(this);
+=======
+		FLAG_ACTIVE = true;
+	}
+	
+	public boolean isActive() {
+		return FLAG_ACTIVE;
+	}
+	
+	public void toggle() {
+		FLAG_ACTIVE = !FLAG_ACTIVE;
+	}
+	
+	public int getID() {
+		return myID;
+>>>>>>> controller
 	}
 
 	public double getX() {
