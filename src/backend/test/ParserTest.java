@@ -17,7 +17,7 @@ import backend.command.turtle.ForwardCommand;
 import backend.command.turtle.TurnRightCommand;
 
 public class ParserTest {
-	
+
 	private String language = "english";
 	private HashMap<String, Double> var = new HashMap<String, Double>();
 	
@@ -26,11 +26,10 @@ public class ParserTest {
 		Parser parse = new Parser(var);
 		Command fd = new ForwardCommand();
 		fd.addArgumentDouble(50.0);
-		String[] fd50 = {"FD","50"};
+		String[] fd50 = {"QJ","50"};
 		parse.parse(fd50, language);
 		assertEquals(parse.parse(fd50, language).remove(), fd);
 	}
-
 
 	@Test
 	public void testRight() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
