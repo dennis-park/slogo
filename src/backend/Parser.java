@@ -36,7 +36,8 @@ public class Parser {
 	 * @throws IllegalAccessException
 	 * @throws ClassNotFoundException 
 	 */
-	public Queue<Command> parse(String[] tokens, String language) throws InstantiationException, IllegalAccessException {
+	public Queue<Command> parse(String[] tokens, String language) 
+			throws InstantiationException, IllegalAccessException {
 		try {
 			myCommands = new CommandFactory(variables, language);
 		} catch (Exception e) {
