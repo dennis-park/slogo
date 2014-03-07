@@ -13,7 +13,7 @@ public class ForCommand extends Command {
 		double start = myParameters.get(0).getCommand().get(1).execute();
 		double end = myParameters.get(0).getCommand().get(2).execute();
 		double increment = myParameters.get(0).getCommand().get(3).execute();
-		for(double i = start; i < end; i+=increment){
+		for(double i = start; i <= end; i+=increment){
 			myParameters.get(0).getCommand().get(0).getCommand().setValue(i);
 			returnVal = myParameters.get(1).execute();
 		}
