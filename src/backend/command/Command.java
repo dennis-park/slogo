@@ -38,10 +38,18 @@ public class Command {//A zero parameter class
 	
 	public void setController(Controller controller) {
 		myController = controller;
+		for(Parameter p: myParameters){
+			if(!p.isNumber())
+				p.getCommand().setController(controller);
+		}
 	}
 	
 	public void setTurtleID(int ID) {
 		myTurtleID = ID;
+		for(Parameter p: myParameters){
+			if(!p.isNumber())
+				p.getCommand().setTurtleID(ID);
+		}
 	}
 	
 	public void addArgumentDouble(Double d) {

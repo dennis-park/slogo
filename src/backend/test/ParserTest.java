@@ -167,9 +167,10 @@ public class ParserTest {
 	@Test
 	public void testBracket2()throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser(var, udc);
+		Executor execute = new Executor();
 		Tokenizer token = new Tokenizer();
 		String[] b = token.tokenize("[ fd 50 sum sum 10 20 30 ]");
-		assertEquals(60.0, parse.parse(b, language).remove().execute(), 0.01);
+		assertEquals(60.0, execute.executeCommands(parse.parse(b, language), controller, 1), 0.01);
 	}
 	
 	@Test

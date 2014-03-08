@@ -16,7 +16,7 @@ public class Executor { //Will need to add some error checking code most likely
 			Command command = commands.remove();
 			command.setTurtleID(ID);
 			command.setController(controller);
-			return command.execute();
+			returnValue =  command.execute();
 		}
 		return returnValue;
 	}
