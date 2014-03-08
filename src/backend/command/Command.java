@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import slogo.Controller;
+import backend.command.control.UserDefinedCommand;
 
+	
 
 /**
  * The Command superclass provides a framework for the different
@@ -20,6 +22,7 @@ public class Command {//A zero parameter class
 	protected int myTurtleID;
 	protected int currentParameters; //maybe not needed
 	protected HashMap<String, Double> variables;
+	protected HashMap<String, UserDefinedCommand> userCommands;
 	
 	public Command(){
 		myParameterCount = 0;
@@ -79,7 +82,15 @@ public class Command {//A zero parameter class
 		return myParameters.get(index);
 	}
 	
+	public int getParameterSize(){
+		return myParameters.size();
+	}
+	
 	public void setVariables(HashMap<String, Double> var){
 		variables = var;
+	}
+	
+	public void setUserCommands(HashMap<String, UserDefinedCommand> userCommands2){
+		userCommands = userCommands2;
 	}
 }
