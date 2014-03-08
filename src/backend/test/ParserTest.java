@@ -169,7 +169,7 @@ public class ParserTest {
 		Parser parse = new Parser(var, udc);
 		Executor execute = new Executor();
 		Tokenizer token = new Tokenizer();
-		String[] b = token.tokenize("[ fd 50 sum sum 10 20 30 ]");
+		String[] b = token.tokenize("[ sum 50 0 sum sum 10 20 30 ]");
 		assertEquals(60.0, execute.executeCommands(parse.parse(b, language), controller, 1), 0.01);
 	}
 	
@@ -177,7 +177,7 @@ public class ParserTest {
 	public void testBracket3() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser(var, udc);
 		Tokenizer token = new Tokenizer();
-		String[] b = token.tokenize("[ fd [ sum sum 10 20 30 ] ]");
+		String[] b = token.tokenize("[ sum [ sum sum 10 20 30 ] 0 ]");
 		assertEquals(60.0, parse.parse(b, language).remove().execute(), 0.01);
 	}
 	
@@ -185,7 +185,7 @@ public class ParserTest {
 	public void testBracket4() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Parser parse = new Parser(var, udc);
 		Tokenizer token = new Tokenizer();
-		String[] b = token.tokenize("[ [ ] FD 50 ]");
+		String[] b = token.tokenize("[ [ ] sum 50 0 ]");
 		assertEquals(50.0, parse.parse(b, language).remove().execute(), 0.01);
 	}
 	
