@@ -28,6 +28,10 @@ public class Backend {
 		myController = controller;
 	}
 	
+	public void setLanguage(String language) {
+		myLanguage = language;
+	}
+	
 	/**
 	 * Takes in a string of commands and sends the string off to the parser.
 	 * This method must be called after the method that sets the language.
@@ -42,9 +46,7 @@ public class Backend {
 		for(int ID : activeTurtleIDs) {
 			returnVal = myExecutor.executeCommands(myParser.parse(myTokenizer.tokenize(command), myLanguage), myController, ID);
 		}
-		myController.resyncActiveTurtleIDs();
 		return returnVal;
-		
 	}
 
 }

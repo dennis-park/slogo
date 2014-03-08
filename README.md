@@ -52,7 +52,8 @@ Known Bugs:
 ===
 As of 3/8/14: The ability to recognize comments is not yet implemented; multiple 
 turtle commands are not yet implemented (the commands just execute on all existing
-turtles, rather than on user-selected turtles only).
+turtles, rather than on user-selected turtles only); when commands are run, the
+user must add a new turtle in order to see the effects of the previous command.
 
 Extra Features:
 ===

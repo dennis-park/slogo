@@ -4,6 +4,12 @@ import backend.command.Command;
 
 public class SetXYCommand extends Command {
 	
+	private final static int myParameterCount = 2;
+	
+	public SetXYCommand(){
+		super(myParameterCount);
+	}
+	
 	@Override
 	public double execute() {
 		double newX = myParameters.get(0).execute();

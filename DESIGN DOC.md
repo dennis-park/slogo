@@ -76,18 +76,9 @@ Four main components:
 To Add a New Command:
 ===
 
-1) In the command package of the Backend package, create a class for the command in the appropriate sub-package.
+1) In the command package of the Backend package, create a class for the command in the appropriate sub-package, and make sure it extends Command.
 
-2) Be sure that the class extends either Command, Command1Parameter, or Command2Parameter; if it takes more than 2 parameters, a new superclass for commands that take 3 parameters will have to be created.
+2) Be sure to implement the method execute() in your new command class, which should return a double value as appropriate.
 
-3) Be sure to implement the method execute() in your new command class, which should return a double value as appropriate.
-
-4) In the CommandFactory class, add to the commands HashMap as appropriate; be sure to choose sensible calls as keys for the map.
-
-5) Use ParserTest in the test package to test your new command; add new tests as you see fit.
-
-in browser UML : 
-http://www.asciiflow.com/#Draw
-https://www.draw.io
-http://www.genmymodel.com/ (collab)
+3) Add the command string(s) and the class path to the language properties files
 

@@ -17,7 +17,12 @@ public class Controller {
 	private List<Integer> myActiveTurtleIDs;
 
 	public double sendText(String s) throws InstantiationException, IllegalAccessException {
+		resyncActiveTurtleIDs(); //for now, just ensure that all existing turtles are active
 		return myBackend.parse(s, myActiveTurtleIDs);
+	}
+	
+	public void sendLanguage(String language) {
+		myBackend.setLanguage(language);
 	}
 
 	public void instantiate(Backend be, View v) {
@@ -51,12 +56,22 @@ public class Controller {
 		myView.getCanvas().clear();
 	}
 	
-	/**
-	 * very crude method, useful mostly only for testing purposes...will need to
-	 * replace with something more refined and more responsive to user input
-	 */
+	
+	
 	public void resyncActiveTurtleIDs() {
 		myActiveTurtleIDs = myView.getCanvas().getAllTurtleIDs();
+	}
+	
+	public void syncActiveTurtleIDs(List<Integer> newActiveTurtleIDs) {
+		myActiveTurtleIDs = newActiveTurtleIDs;
+	}
+	
+	public void addToActiveTurtleIDs(double id) {
+		myActiveTurtleIDs.add((int) id);
+	}
+	
+	public void deleteFromActiveTurtleID(double id) {
+		myActiveTurtleIDs.remove((int) id);
 	}
 	
 	public double getX(int id) {
@@ -85,6 +100,10 @@ public class Controller {
 	
 	public void setPenColor(double colorIndex, int id){
 		myView.getCanvas().getTurtle(id).getPen().changeColor(new Color((int)colorIndex));
+	}
+	
+	public void addTurtle(double id) {
+		myView.getCanvas().addTurtle((int)id);
 	}
 
 }

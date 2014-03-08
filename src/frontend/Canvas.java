@@ -64,6 +64,10 @@ public class Canvas extends JPanel {
 		turtles.add(new Turtle(DEFAULT_WIDTH/2, DEFAULT_HEIGHT/2, turtles.size()));
 		repaint();
 	}
+	
+	public void addTurtle(int id) {
+		turtles.add(new Turtle(DEFAULT_WIDTH/2, DEFAULT_HEIGHT/2, id));
+	}
 
 	public void clear() {
 		turtles.removeAll(turtles);
