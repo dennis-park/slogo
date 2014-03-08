@@ -274,4 +274,36 @@ public class ParserTest {
 		assertEquals(4.0, execute.executeCommands(parse.parse(b, language)), 0.01);
 	}
 
+	@Test
+	public void testDefineCommands1() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		Executor execute = new Executor();
+		HashMap<String, Double> var = new HashMap<String, Double>();
+		HashMap<String, UserDefinedCommand> udc = new HashMap<String, UserDefinedCommand>();
+		Parser parse = new Parser(var, udc);
+		Tokenizer token = new Tokenizer();
+		String[] b = token.tokenize("to test [ :testVar ] [ :testVar ]  test 4");
+		assertEquals(4.0, execute.executeCommands(parse.parse(b, language)), 0.01);		
+	}
+	
+	@Test
+	public void testDefineCommands2() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		Executor execute = new Executor();
+		HashMap<String, Double> var = new HashMap<String, Double>();
+		HashMap<String, UserDefinedCommand> udc = new HashMap<String, UserDefinedCommand>();
+		Parser parse = new Parser(var, udc);
+		Tokenizer token = new Tokenizer();
+		String[] b = token.tokenize("to test [ :testVar :testVarb ] [ sum :testVar :testVarb ]  test 2 2");
+		assertEquals(4.0, execute.executeCommands(parse.parse(b, language)), 0.01);		
+	}
+	
+	@Test
+	public void testDefineCommands3() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		Executor execute = new Executor();
+		HashMap<String, Double> var = new HashMap<String, Double>();
+		HashMap<String, UserDefinedCommand> udc = new HashMap<String, UserDefinedCommand>();
+		Parser parse = new Parser(var, udc);
+		Tokenizer token = new Tokenizer(); //2 + 3 + 2 = 7 
+		String[] b = token.tokenize("to test [ :testVar :testVarb ] [ sum :testVar :testVarb ]  to testA [ :b :c ] [ sum sum test 1 :b test 2 1 :c ] testA 1 2");
+		assertEquals(7.0, execute.executeCommands(parse.parse(b, language)), 0.01);		
+	}
 }

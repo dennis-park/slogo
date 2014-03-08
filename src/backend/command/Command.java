@@ -71,6 +71,10 @@ public class Command {//A zero parameter class
 		return myParameters.get(index);
 	}
 	
+	public int getParameterSize(){
+		return myParameters.size();
+	}
+	
 	public void setVariables(HashMap<String, Double> var){
 		variables = var;
 	}
