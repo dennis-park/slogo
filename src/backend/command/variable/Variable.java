@@ -8,19 +8,19 @@ public class Variable extends Command {
 	
 	public Variable(String varName, HashMap<String, Double> var){
 		name = varName;
-		variables = var;
-		if(!variables.containsKey(name)){
-			variables.put(name, 0.0);
+		myVariables = var;
+		if(!myVariables.containsKey(name)){
+			myVariables.put(name, 0.0);
 		}
 	}
 	
 	public double setValue(double val){
-		variables.put(name, val);
+		myVariables.put(name, val);
 		return val;
 	}
 	
 	public double execute(){
-		System.out.println(variables.get(name));
-		return variables.get(name);
+		System.out.println(myVariables.get(name));
+		return myVariables.get(name);
 	}
 }

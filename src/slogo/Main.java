@@ -6,6 +6,9 @@ import backend.Backend;
 
 import frontend.View;
 
+/**
+ * Initializes the GUI.
+ */
 public class Main {
 
 	public static View VIEW;

@@ -10,7 +10,7 @@ public class RemainderCommand extends Command {
 	}
 	@Override
 	public double execute(){
-		if(currentParameters != myParameterCount)
+		if(myCurrentParameters != myParameterCount)
 			return 0;//error
 		return (int) (myParameters.get(0).execute() % myParameters.get(1).execute());
 	}

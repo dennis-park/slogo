@@ -11,48 +11,53 @@ import backend.command.control.ToCommand;
 import backend.command.control.UserDefinedCommand;
 import backend.command.variable.Variable;
 
+/**
+ * 
+ * @author Grace
+ *
+ */
 public class Parser {
 	private static final String NUMBER = "-?[0-9]+\\.?[0-9]*";
 	private static final String WORD = "[a-zA-z_]+(\\?)?";
 	private static final String OPERANDS = "[+-/%~*]";
 	private static final String VARIABLE = ":[a-zA-z]+";
 	private CommandFactory myCommands;
-	private LinkedList<String> currentTokens;
+	private LinkedList<String> myCurrentTokens;
 	private static final String LEFTBRACKET = "[";
 	private static final String RIGHTBRACKET = "]";
-	private HashMap<String, Double> variables;
-	private HashMap<String, UserDefinedCommand> userCommands;
+	private HashMap<String, Double> myVariables;
+	private HashMap<String, UserDefinedCommand> myUserCommands;
 
 	public Parser(HashMap<String, Double> var, HashMap<String, UserDefinedCommand> udc) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
-		variables = var;
-		userCommands = udc;
-		currentTokens = new LinkedList<String>();
+		myVariables = var;
+		myUserCommands = udc;
+		myCurrentTokens = new LinkedList<String>();
 	}
 
 	/**
-	 * 
-	 * @param tokens, a String array of commands and parameters
-	 * @param language, the language in which commands/parameters were entered
-	 * @return Queue of commands, translated into commands that the commands of the 
-	 * commands package will respond to
+	 * Takes a string of tokens and the language being used, and 
+	 * @param tokens a String array of commands and parameters
+	 * @param language the language in which commands/parameters were entered
+	 * @return a queue of commands
 	 * @throws InstantiationException
 	 * @throws IllegalAccessException
 	 * @throws ClassNotFoundException 
 	 */
-	public Queue<Command> parse(String[] tokens, String language) throws InstantiationException, IllegalAccessException {
+	public Queue<Command> parse(String[] tokens, String language) 
+			throws InstantiationException, IllegalAccessException {
 		try {
-			myCommands = new CommandFactory(variables, userCommands, language);
+			myCommands = new CommandFactory(myVariables, myUserCommands, language);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		generateQueue(tokens);
 		LinkedList<Command> commands = new LinkedList<Command>();
-		while(!currentTokens.isEmpty()){ //clean up this loop later, could possibly refactor with later similar loop. Look into it.
-			if(Pattern.matches(VARIABLE, currentTokens.peek())){ //checking if is variable
-				commands.add(defineVariable(currentTokens.remove()));
+		while(!myCurrentTokens.isEmpty()){ //clean up this loop later, could possibly refactor with later similar loop. Look into it.
+			if(Pattern.matches(VARIABLE, myCurrentTokens.peek())){ //checking if is variable
+				commands.add(defineVariable(myCurrentTokens.remove()));
 			}
-			else if(Pattern.matches(WORD, currentTokens.peek()) || Pattern.matches(OPERANDS,currentTokens.peek()))
-				commands.add(defineCommand(currentTokens.remove()));
+			else if(Pattern.matches(WORD, myCurrentTokens.peek()) || Pattern.matches(OPERANDS,myCurrentTokens.peek()))
+				commands.add(defineCommand(myCurrentTokens.remove()));
 			else{
 				//numbers
 				//Should not be reached. error state. No commands probably
@@ -62,8 +67,7 @@ public class Parser {
 	}
 	
 	private Command defineVariable(String s){
-		return new Variable(s, variables);
-
+		return new Variable(s, myVariables);
 	}
 	
 	private Command defineCommand(String s) throws InstantiationException, IllegalAccessException{
@@ -74,21 +78,21 @@ public class Parser {
 			return c;
 		}
 		//Display error message
-		return null; //command not built in or is undefined, an error
+		return null;
 	}
 
 	private void completeCommand(Command c) throws InstantiationException, IllegalAccessException {
 		int numArguments = c.getArgumentCount();
-		int count =0;
+		int count = 0;
 		String token = "emptyList";
 		defineUserCommand(c);
 		while(((count <numArguments) || isLeftBracket(c, count)) && isNotRightBracket(token, c)){
 			count++;
-			if(currentTokens.isEmpty()){
+			if(myCurrentTokens.isEmpty()){
 				//Display error message
 			}
 			else{
-				token = currentTokens.remove();
+				token = myCurrentTokens.remove();
 				if(token != null && Pattern.matches(VARIABLE, token)){
 					c.addArgumentCommand(defineVariable(token));
 				}
@@ -108,12 +112,12 @@ public class Parser {
 	private void defineUserCommand(Command c){
 		if(c.getClass().toString().endsWith("ToCommand")){
 			ToCommand def = (ToCommand)c;
-			def.setName(currentTokens.remove());
+			def.setName(myCurrentTokens.remove());
 		}
 	}
 
 	private boolean isLeftBracket(Command c, int count) {
-		return (!currentTokens.isEmpty() && currentTokens.peek().equals(LEFTBRACKET) || c.getClass().toString().endsWith("Bracket")) 
+		return (!myCurrentTokens.isEmpty() && myCurrentTokens.peek().equals(LEFTBRACKET) || c.getClass().toString().endsWith("Bracket")) 
 				&& count < c.getArgumentCount();
 	}
 
@@ -124,7 +128,7 @@ public class Parser {
 
 	private void generateQueue(String[] tokens){
 		for(String s: tokens){
-			currentTokens.add(s);
+			myCurrentTokens.add(s);
 		}
 	}
 

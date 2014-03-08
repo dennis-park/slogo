@@ -14,15 +14,15 @@ public class ToCommand extends Command{
 	
 	public void addArgumentCommand(Command c){
 		myParameters.add(new Parameter(c));
-		currentParameters++;
-		if(currentParameters == myParameterCount){
+		myCurrentParameters++;
+		if(myCurrentParameters == myParameterCount){
 			execute();
 		}
 	}
 	
 	public double execute(){
 		UserDefinedCommand newCommand = new UserDefinedCommand(commandName, myParameters.get(0).getCommand(), myParameters.get(1).getCommand());
-		userCommands.put(commandName, newCommand);
+		myUserCommands.put(commandName, newCommand);
 		return 1.0;
 		//Might need some errorchecking here for illdefined commands?
 	}	

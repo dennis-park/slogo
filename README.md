@@ -8,16 +8,23 @@ Back End: Grace Chen, Willy Chen
 
 Date Started: Thurs 2/20/14
 
-Date Finished: 
+Date Finished: Sat 3/8/14
 
-Approx. Hours Spent:
+Approx. Hours Spent: oh my goodness
 
 
 Division of Workload:
 ===
 
+BACKEND:
+
+Grace: the bulk of Part 2 commands, languages (formatting/parsing properties files), 
+enabling commanding multiple turtles
+
 Sources Consulted:
 ===
+Google Translate (for the unfinished languages, as well as fixing existing 
+translations)
 
 Important Files:
 ===
@@ -38,12 +45,14 @@ one?)
 
 Misc. Information About Using the Program:
 ===
+The Controller class, also in the slogo package of the src folder, is the point of 
+contact between the Frontend and Backend.
 
 Known Bugs:
 ===
-As of 2/28/14: (Backend) when ParserTest is run using symbols as commands instead of 
-proper string names (i.e. using "+" instead of "SUM"), the test enters some sort of
-infinite loop. Looking into it.
+As of 3/8/14: The ability to recognize comments is not yet implemented; multiple 
+turtle commands are not yet implemented (the commands just execute on all existing
+turtles, rather than on user-selected turtles only).
 
 Extra Features:
 ===

@@ -4,6 +4,6 @@ import backend.command.Command;
 
 public class RepcountCommand extends Command {
 	public double execute(){
-		return repcount;
+		return myRepcount;
 	}
 }

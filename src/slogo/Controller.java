@@ -6,6 +6,10 @@ import java.util.List;
 import frontend.View;
 import backend.Backend;
 
+/**
+ * Accessible by backend, used to call commands on turtles given the turtle IDs and parameters 
+ * appropriate to a specific command.
+ */
 public class Controller {
 
 	private Backend myBackend;
@@ -82,10 +86,5 @@ public class Controller {
 	public void setPenColor(double colorIndex, int id){
 		myView.getCanvas().getTurtle(id).getPen().changeColor(new Color((int)colorIndex));
 	}
-	
-	// frontend to backend
-	// variables
-	// user defined commands
-
 
 }

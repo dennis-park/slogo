@@ -9,49 +9,57 @@ import backend.PropertiesParser;
 //import backend.XMLParser;
 import backend.command.control.UserDefinedCommand;
 
+/**
+ * Creates instances of commands.
+ */
 public class CommandFactory {
-	private Map<String, String> commands;
-	private HashMap<String, Double> variables;
-	private HashMap<String, UserDefinedCommand> userCommands;
+	private Map<String, String> myCommands;
+	private HashMap<String, Double> myVariables;
+	private HashMap<String, UserDefinedCommand> myUserCommands;
 	private String myLanguage;
 	
-	//private HashMap<String, String> commands;
-	//Need some sort of xml or whatever data form parser to take in data in this format.
-
-//	public CommandFactory() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-	public CommandFactory(HashMap<String, Double> var,HashMap<String, UserDefinedCommand> udc, String language) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-
+	public CommandFactory(HashMap<String, Double> var, HashMap<String, UserDefinedCommand> udc, String language) 
+			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		
 		myLanguage = language;
-		commands = new HashMap<String, String>();
-		variables = var;
-		userCommands = udc;
+		myCommands = new HashMap<String, String>();
+		myVariables = var;
+		myUserCommands = udc;
 		PropertiesParser parser = new PropertiesParser();
 		try {
-			parser.read(myLanguage, commands);
+			parser.read(myLanguage, myCommands);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public boolean hasCommand(String token){
-		return (commands.containsKey(token) || userCommands.containsKey(token));
+		return (myCommands.containsKey(token) || myUserCommands.containsKey(token));
 	}
 	
+	/**
+	 * Determines whether the given token is a valid class name, and returns the instance
+	 * of the Command if it is.
+	 * @param token - a string that may or may not be a valid command
+	 * @return a Command if the token is a valid command
+	 * @throws InstantiationException
+	 * @throws IllegalAccessException
+	 */
 	public Command getCommand(String token) throws InstantiationException, IllegalAccessException{
 		try {
 			String className = "";	
-			for(String key : commands.keySet()) {
+			for(String key : myCommands.keySet()) {
 				if(key.equals(token)) {
-					className = commands.get(key);
+					className = myCommands.get(key);
 				}
 			}
-			if(userCommands.containsKey(token)){
-				return userCommands.get(token).initialize();
+			if(myUserCommands.containsKey(token)){
+				return myUserCommands.get(token).initialize();
 			}
 			Class c = Class.forName(className);
 			Command newCommand = (Command) c.newInstance();
-			newCommand.setVariables(variables);//maybe pass in instance of backend/controller/whatever here
-			newCommand.setUserCommands(userCommands);
+			newCommand.setVariables(myVariables);
+			newCommand.setUserCommands(myUserCommands);
 			return newCommand;
 		} catch (ClassNotFoundException e) {
 			System.out.println("This command is not in the library of commands.");

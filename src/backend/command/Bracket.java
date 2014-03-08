@@ -2,26 +2,29 @@ package backend.command;
 
 import java.util.ArrayList;
 
-
+/**
+ * Allows backend to recognize an opening square bracket as the beginning of a chain of commands
+ * which are somehow related/packaged together
+ */
 public class Bracket extends Command {
-	private ArrayList<Double> values; 
+	private ArrayList<Double> myValues; 
 	
 	public Bracket(){
 		super();
-		values = new ArrayList<Double>();
+		myValues = new ArrayList<Double>();
 		myParameterCount = Integer.MAX_VALUE;
 	}
 
 	@Override
 	public double execute() {
 		for(Parameter p : myParameters){
-			p.setRepCount(repcount);
-			values.add(p.execute());
+			p.setRepCount(myRepcount);
+			myValues.add(p.execute());
 		}
-		if(values.size() < 2)
+		if(myValues.size() < 2)
 			return 0;
 		else
-			return values.get(values.size()-2);
+			return myValues.get(myValues.size()-2);
 	}
 	
 

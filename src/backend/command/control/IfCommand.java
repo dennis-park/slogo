@@ -10,7 +10,7 @@ public class IfCommand extends Command{
 	}
 
 	public double execute(){
-//		if(currentParameters != myArgumentCount) //&& !myParameters[0].isNumber() && !myParameters[1].getCommand().getClass().toString().endsWith("Bracket")
+//		if(myCurrentParameters != myArgumentCount) //&& !myParameters[0].isNumber() && !myParameters[1].getCommand().getClass().toString().endsWith("Bracket")
 //			return 0.0;//error message
 		if(myParameters.get(0).execute() != 0)
 			return myParameters.get(1).execute();

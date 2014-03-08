@@ -222,7 +222,7 @@ public class ParserTest {
 		Parser parse = new Parser(var, udc);
 		Tokenizer token = new Tokenizer();
 		String[] b = token.tokenize("REPEAT 20 REPCOUNT");
-		String[] c = token.tokenize("REPEAT 5 [ sum 10 repcount ]");
+		String[] c = token.tokenize("REPEAT 5 [ sum 10 myRepcount ]");
 		assertEquals(20.0, parse.parse(b, language).remove().execute(), 0.01);
 		assertEquals(15.0, parse.parse(c, language).remove().execute(), 0.01);
 	}

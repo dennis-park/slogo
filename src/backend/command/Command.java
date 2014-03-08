@@ -2,36 +2,33 @@ package backend.command;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import slogo.Controller;
 import backend.command.control.UserDefinedCommand;
 
-	
-
 /**
  * The Command superclass provides a framework for the different
- * methods that can be called by the user. This superclass is to be
- * used for commands that take no parameters; subclasses of Command
- * are commands that take one or more parameters.
+ * commands that can be called by the user. The number of parameters must
+ * be specified in order for a command to be instantiated; otherwise it will
+ * be assumed that the command has no parameters.
  */
 public class Command {//A zero parameter class
 	protected ArrayList<Parameter> myParameters;
 	protected int myParameterCount;
-	protected int repcount;
+	protected int myRepcount;
 	protected Controller myController;
 	protected int myTurtleID;
-	protected int currentParameters; //maybe not needed
-	protected HashMap<String, Double> variables;
-	protected HashMap<String, UserDefinedCommand> userCommands;
+	protected int myCurrentParameters; //maybe not needed
+	protected HashMap<String, Double> myVariables;
+	protected HashMap<String, UserDefinedCommand> myUserCommands;
 	
-	public Command(){
+	public Command() {
 		myParameterCount = 0;
-		repcount =1;
+		myRepcount = 1;
 		myParameters = new ArrayList<Parameter>();
-		currentParameters =0;
+		myCurrentParameters = 0;
 	}
 	
-	public Command(int parameterCount){
+	public Command(int parameterCount) {
 		this();
 		myParameterCount = parameterCount;
 	}
@@ -54,12 +51,12 @@ public class Command {//A zero parameter class
 	
 	public void addArgumentDouble(Double d) {
 		myParameters.add(new Parameter(d));
-		currentParameters++;
+		myCurrentParameters++;
 	}
 	
 	public void addArgumentCommand(Command c) {
 		myParameters.add(new Parameter(c));
-		currentParameters++;
+		myCurrentParameters++;
 	}
 	
 	public double execute() {
@@ -67,13 +64,13 @@ public class Command {//A zero parameter class
 	}
 	
 	
-	public int getArgumentCount(){
+	public int getArgumentCount() {
 		return myParameterCount;
 	}
 	
-	public void setRepCount(int i){
-		repcount = i;
-		for(Parameter p: myParameters){
+	public void setRepCount(int i) {
+		myRepcount = i;
+		for(Parameter p: myParameters) {
 			p.setRepCount(i);
 		}
 	}
@@ -86,19 +83,19 @@ public class Command {//A zero parameter class
 	public double setValue(double execute) {
 		return 0.0;
 	}
-	public Parameter get(int index){
+	public Parameter get(int index) {
 		return myParameters.get(index);
 	}
 	
-	public int getParameterSize(){
+	public int getParameterSize() {
 		return myParameters.size();
 	}
 	
-	public void setVariables(HashMap<String, Double> var){
-		variables = var;
+	public void setVariables(HashMap<String, Double> var) {
+		myVariables = var;
 	}
 	
-	public void setUserCommands(HashMap<String, UserDefinedCommand> userCommands2){
-		userCommands = userCommands2;
+	public void setUserCommands(HashMap<String, UserDefinedCommand> userCommands2) {
+		myUserCommands = userCommands2;
 	}
 }
