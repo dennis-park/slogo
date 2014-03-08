@@ -43,10 +43,6 @@ public class Controller {
 		myView.getCanvas().getTurtle(id).getPen().toggle(toggle);
 	}
 
-	public void setPenColor(Color c, int id){
-		myView.getCanvas().getTurtle(id).getPen().changeColor(c);
-	}
-
 	public void clearAll() {
 		myView.getCanvas().clear();
 	}
@@ -73,6 +69,18 @@ public class Controller {
 	
 	public double getHeading(int id) {
 		return myView.getCanvas().getTurtle(id).getHeading();
+	}
+	
+	public boolean isPenUp(int id) {
+		return myView.getCanvas().getTurtle(id).getPen().isPenUp();
+	}
+	
+	public double getColorIndex(int id) {
+		return myView.getCanvas().getTurtle(id).getPen().getColorComponents();
+	}
+	
+	public void setPenColor(double colorIndex, int id){
+		myView.getCanvas().getTurtle(id).getPen().changeColor(new Color((int)colorIndex));
 	}
 	
 	// frontend to backend

@@ -9,8 +9,11 @@ public class SetShapeCommand extends Command{
 		super(myParameterCount);
 	}
 	public double execute(){
+		double shapeIndex = myParameters.get(0).execute();
 		//Call to controller to get shape index
 		//call to controller to change shape of turtle to color index[myArgument/myParameter]
-		return myParameters.get(0).execute();
+		
+		//myController.setShape(shapeIndex, myTurtleID);
+		return shapeIndex;
 	}
 }

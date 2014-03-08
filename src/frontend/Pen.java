@@ -26,9 +26,17 @@ public class Pen {
 	public void toggle(boolean toggle){
 		PEN_UP = toggle;
 	}
+	
+	public boolean isPenUp() {
+		return PEN_UP;
+	}
 
 	public void changeColor(Color c) {
 		myColor = c;
+	}
+	
+	public double getColorComponents() {
+		return myColor.getRGB();
 	}
 
 	public void paint(Graphics g) {

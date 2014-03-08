@@ -9,8 +9,8 @@ public class SetPenColorCommand extends Command{
 		super(myParameterCount);
 	}
 	public double execute(){
-		//Call to controller to get color index
-		//call to controller to change color of pen to color index[myArgument/myParameter]
-		return myParameters.get(0).execute();
+		double colorIndex = myParameters.get(0).execute();
+		myController.setPenColor(colorIndex, myTurtleID);
+		return colorIndex;
 	}
 }
