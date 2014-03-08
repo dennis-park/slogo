@@ -6,7 +6,7 @@ public class PenDownCommand extends Command {
 	
 	@Override
 	public double execute() {
-		//Turtle.penDown();
+		myController.togglePen(true, myTurtleID);
 		return 1;
 	}
 	

@@ -10,16 +10,10 @@ public class SetHeadingCommand extends Command {
 	}
 	
 	public double execute() {
-		double myFinalArgument = myParameters.get(0).execute();
-		//double currentHeading = Turtle.getHeading();
-		//Turtle.setHeading(myFinalArgument);
-		//return myFinalArgument - currentHeading;
-		
-		//return number of degrees changed (clockwise), NOT abs value of 
-		//change in heading
-		
-		//for now:
-		return myFinalArgument;
+		double finalArgument = myParameters.get(0).execute();
+		double currentHeading = myController.getHeading(myTurtleID);
+		myController.setHeading(finalArgument, myTurtleID);
+		return finalArgument - currentHeading;
 	}
 
 }

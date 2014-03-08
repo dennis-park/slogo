@@ -14,12 +14,9 @@ public class BackCommand extends Command {
 	}
 	
 	public double execute() {
-		double myFinalArgument = myParameters.get(0).execute();
-//		Turtle.moveBack(myFinalArgument);
-//		return myFinalArgument;
-		
-		//for now:
-		return myFinalArgument;
+		double finalArgument = myParameters.get(0).execute();
+		myController.move(-1 * finalArgument, myTurtleID);
+		return -1 * finalArgument;
 	}
 
 	public boolean equals(Object obj) { //Code for testing purposes, 

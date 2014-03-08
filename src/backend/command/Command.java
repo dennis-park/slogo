@@ -37,6 +37,10 @@ public class Command {//A zero parameter class
 		myController = controller;
 	}
 	
+	public void setTurtleID(int ID) {
+		myTurtleID = ID;
+	}
+	
 	public void addArgumentDouble(Double d) {
 		myParameters.add(new Parameter(d));
 		currentParameters++;

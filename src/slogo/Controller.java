@@ -1,6 +1,7 @@
 package slogo;
 
 import java.awt.Color;
+import java.util.List;
 
 import frontend.View;
 import backend.Backend;
@@ -9,20 +10,20 @@ public class Controller {
 
 	private Backend myBackend;
 	private View myView;
+	private List<Integer> myActiveTurtleIDs;
 
 	public double sendText(String s) throws InstantiationException, IllegalAccessException {
-		myBackend.parse(s);
-		return myBackend.parse(s);
+		return myBackend.parse(s, myActiveTurtleIDs);
 	}
 
 	public void instantiate(Backend be, View v) {
 		myBackend = be;
 		myView = v;
+		myActiveTurtleIDs = v.getCanvas().getAllTurtleIDs();
 	}
 
 	public void move(double amount, int id) {
 		myView.getCanvas().getTurtle(id).move(amount);
-		System.out.println(id + " should have moved " + amount);
 	}
 
 	public void rotate(double angle, int id) {
@@ -49,7 +50,31 @@ public class Controller {
 	public void clearAll() {
 		myView.getCanvas().clear();
 	}
-
+	
+	/**
+	 * very crude method, useful mostly only for testing purposes...will need to
+	 * replace with something more refined and more responsive to user input
+	 */
+	public void resyncActiveTurtleIDs() {
+		myActiveTurtleIDs = myView.getCanvas().getAllTurtleIDs();
+	}
+	
+	public double getX(int id) {
+		return myView.getCanvas().getTurtle(id).getX();
+	}
+	
+	public double getY(int id) {
+		return myView.getCanvas().getTurtle(id).getY();
+	}
+	
+	public void moveToHome(int id) {
+		myView.getCanvas().getTurtle(id).setXY(0, 0);
+	}
+	
+	public double getHeading(int id) {
+		return myView.getCanvas().getTurtle(id).getHeading();
+	}
+	
 	// frontend to backend
 	// variables
 	// user defined commands

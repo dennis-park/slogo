@@ -12,8 +12,6 @@ public class TurnLeftCommand extends Command {
 	@Override
 	public double execute() {
 		double myFinalArgument = myParameters.get(0).execute();
-//		Turtle.turnLeft(myFinalArgument);
-//		return myFinalArgument;
 		
 		//for now:
 		return myFinalArgument;

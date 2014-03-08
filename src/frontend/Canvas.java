@@ -70,5 +70,13 @@ public class Canvas extends JPanel {
 		turtles.add(DEFAULT_TURTLE);
 		repaint();
 	}
+	
+	public List<Integer> getAllTurtleIDs() {
+		List<Integer> answer = new ArrayList<Integer>();
+		for(Turtle t : turtles) {
+			answer.add(t.getId());
+		}
+		return answer;
+	}
 
 }

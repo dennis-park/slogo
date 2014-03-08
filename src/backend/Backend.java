@@ -1,6 +1,7 @@
 package backend;
 
 import java.util.HashMap;
+import java.util.List;
 
 import slogo.Controller;
 
@@ -16,12 +17,12 @@ public class Backend {
 	private String myLanguage = "english"; //default is English
 	private HashMap<String, Double> variables;
 	
-	public Backend(Controller c) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+	public Backend(Controller controller) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		variables = new HashMap<String, Double>();
 		myTokenizer = new Tokenizer();
 		myParser = new Parser(variables);
 		myExecutor = new Executor();
-		myController = c;
+		myController = controller;
 	}
 	
 	/**
@@ -32,9 +33,15 @@ public class Backend {
 	 * @throws InstantiationException
 	 * @throws IllegalAccessException
 	 */
-	public double parse(String command) throws InstantiationException, IllegalAccessException{ 
+	public double parse(String command, List<Integer> activeTurtleIDs) throws InstantiationException, IllegalAccessException{ 
 		//Will probably need to change for error checking returns
-		return myExecutor.executeCommands(myParser.parse(myTokenizer.tokenize(command), myLanguage), myController);
+		double returnVal = 0.0;
+		for(int ID : activeTurtleIDs) {
+			returnVal = myExecutor.executeCommands(myParser.parse(myTokenizer.tokenize(command), myLanguage), myController, ID);
+		}
+		myController.resyncActiveTurtleIDs(); //should be replaced by a method that changes the contents of the list of active turtles
+											//based on user input such as when users want to stop sending commands to certain turtles
+		return returnVal;
 		
 		//return new LinkedList<String>(); 
 		//May need to make a command class. Will have to figure out api with turtle. All this api stuff

@@ -6,12 +6,9 @@ public class ClearScreenCommand extends Command {
 	
 	@Override
 	public double execute() {
-		//double dist = calculateDistance(Turtle.getX, 0.0, Turtle.getY, 0.0);
-		//Turtle.clearScreen();
-		//return dist;
-		
-		//for now, just returning 0:
-		return 0;
+		double dist = calculateDistance(myController.getX(myTurtleID), 0, myController.getY(myTurtleID), 0);
+		myController.clearAll();
+		return dist;
 	}
 
 }
