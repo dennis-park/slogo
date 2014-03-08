@@ -6,10 +6,7 @@ public class HeadingQuery extends Command {
 	
 	@Override
 	public double execute() {
-		//return Turtle.getHeading();
-		
-		//for now:
-		return 0;
+		return myController.getHeading(myTurtleID);
 	}
 
 }

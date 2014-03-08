@@ -6,10 +6,7 @@ public class PenDownQuery extends Command {
 	
 	@Override
 	public double execute() {
-		//return Turtle.isPenUp() ? 0 : 1;
-		
-		//for now:
-		return 1;
+		return myController.isPenUp(myTurtleID) ? 0 : 1;
 	}
 
 }

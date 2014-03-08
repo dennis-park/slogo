@@ -11,12 +11,9 @@ public class TurnRightCommand extends Command {
 	
 	@Override
 	public double execute() {
-		double myFinalArgument = myParameters.get(0).execute();
-//		Turtle.turnRight(myFinalArgument);
-//		return myFinalArgument;
-		
-		//for now:
-		return myFinalArgument;
+		double finalArgument = myParameters.get(0).execute();
+		myController.rotate(finalArgument, myTurtleID);
+		return finalArgument;
 	}
 	
 	public boolean equals(Object o) { //Code for testing purposes, 

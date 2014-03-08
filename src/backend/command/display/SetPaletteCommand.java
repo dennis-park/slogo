@@ -10,10 +10,11 @@ public class SetPaletteCommand extends Command {
 	}
 	
 	public double execute(){
-		myParameters.get(0); //Color index
-		myParameters.get(1); //r
-		myParameters.get(2); //g
-		myParameters.get(3); //b
-		return 0.0;
+		double colorIndex = myParameters.get(0).execute(); //Color index
+		double r = myParameters.get(1).execute(); //r
+		double g = myParameters.get(2).execute(); //g
+		double b = myParameters.get(3).execute(); //b
+		//myController.updatePalette(colorIndex, r, g, b);
+		return colorIndex;
 	}
 }

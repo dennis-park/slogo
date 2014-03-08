@@ -6,9 +6,6 @@ public class XCorQuery extends Command {
 
 	@Override
 	public double execute() {
-		//return Turtle.getX();
-		
-		//for now:
-		return 0;
+		return myController.getX(myTurtleID);
 	}
 }
