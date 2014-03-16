@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
@@ -30,12 +31,13 @@ public class View extends JFrame{
 
 	private JTabbedPane myTabs;
 	private int myWorkspaceCount = 0;
-	private ResourceBundle myResources;
+	private ArrayList<View> myWorkspaces;
 	private Controller myController;
 	private JLabel myPosition, myHeading, myId;
 
 	public static int DEFAULT_ID = 0;
 	public static final double DEFAULT_UNIT = 1.0; 
+	private static Dimension DEFAULT_BOUNDS = new Dimension(500,500);
 	private static int DEFAULT_WIDTH = 500;
 	private static int DEFAULT_HEIGHT = 500;
 	private static int WIDTH_OFFSET = DEFAULT_WIDTH/2;
@@ -83,6 +85,7 @@ public class View extends JFrame{
 		myTabs = new JTabbedPane();
 		myTabs.addTab("Tab 1", MASTER);
 		this.getContentPane().add(myTabs);
+		myTabs.setSelectedIndex(myWorkspaceCount-1);
 		
 		buttonListeners();
 		
@@ -294,9 +297,11 @@ public class View extends JFrame{
 	public Canvas getCanvas(){
 		return CANVAS;
 	}
-
+	
 	public void createNewWorkspace() {
-		// TODO Auto-generated method stub
-		
+		myWorkspaceCount++;
+		View v = new View(myController, DEFAULT_BOUNDS);
+		myTabs.addTab("Workspace " + myWorkspaceCount, v);
+		myWorkspaces.add(v);
 	}
 }

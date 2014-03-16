@@ -52,7 +52,7 @@ public class MenuView extends JMenuBar{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				myView.createNewWorkspace();
 			}
 		});
 		
