@@ -43,28 +43,44 @@ public class MenuView extends JMenuBar{
 		this.add(createHelpMenu());
 	}
 
-	private JMenu createHelpMenu() {
-		myHelp = new JMenu("Help");
-		final JMenuItem HELP_HTML = new JMenuItem("Help");
-		HELP_HTML.addActionListener(new ActionListener() {
-			
+	private JMenu createFilesMenu() {
+		myFiles = new JMenu("Files");
+		myFiles.setMnemonic('F');
+		
+		final JMenuItem FILES_LOAD = new JMenuItem("Load file");
+		FILES_LOAD.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {
-	                String url = 
-	                        "http://www.cs.duke.edu/courses/compsci308/current/assign/03_slogo/commands.php";
-	                java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
-	            }
-	            catch (java.io.IOException error) {
-	                System.out.println(error.getMessage());
-	            }
+				
 			}
 		});
-		return myHelp;
-	}
+		
+		final JMenuItem FILES_SAVE = new JMenuItem("Save file");
+		FILES_SAVE.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				myView.saveFile();
+			}
+		});
+
+		final JMenuItem FILES_EXIT = new JMenuItem("EXIT");
+		FILES_EXIT.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				myView.quit();
+				JOptionPane.showMessageDialog(FILES_EXIT, "Exit-->booyah!");
+			}
+		});
+
+		return myFiles;
+	}
+	
 	private JMenu createPreferencesMenu() {
 		myPreferences = new JMenu("Preferences");
+		myPreferences.setMnemonic('P');
 
 		final JMenuItem PREF_LOAD = new JMenuItem("Load preferences");
 		PREF_LOAD.addActionListener(new ActionListener() {
@@ -111,40 +127,27 @@ public class MenuView extends JMenuBar{
 		});
 		return myPreferences;
 	}
-
-
-	private JMenu createFilesMenu() {
-		myFiles = new JMenu("Files");
-
-		final JMenuItem FILES_LOAD = new JMenuItem("Load file");
-		FILES_LOAD.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
+	
+	private JMenu createHelpMenu() {
+		myHelp = new JMenu("Help");
+		myHelp.setMnemonic('H');
 		
-		final JMenuItem FILES_SAVE = new JMenuItem("Save file");
-		FILES_SAVE.addActionListener(new ActionListener() {
-
+		final JMenuItem HELP_HTML = new JMenuItem("Help");
+		HELP_HTML.addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				myView.saveFile();
+				try {
+	                String url = 
+	                        "http://www.cs.duke.edu/courses/compsci308/current/assign/03_slogo/commands.php";
+	                java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+	            }
+	            catch (java.io.IOException error) {
+	                System.out.println(error.getMessage());
+	            }
 			}
 		});
-
-		final JMenuItem FILES_EXIT = new JMenuItem("EXIT");
-		FILES_EXIT.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				myView.quit();
-				JOptionPane.showMessageDialog(FILES_EXIT, "Exit-->booyah!");
-			}
-		});
-
-		return myFiles;
+		return myHelp;
 	}
 
 	protected void initUI() {
