@@ -116,7 +116,7 @@ public class View extends JFrame{
 		myHeading = new JLabel();
 		myId = new JLabel();
 
-		updateId(CANVAS.getTurtle(DEFAULT_ID).getId());
+		updateId(CANVAS.getTurtle(DEFAULT_ID).getID());
 		updateHeading(CANVAS.getTurtle(DEFAULT_ID).getHeading());
 		updatePosition(CANVAS.getTurtle(DEFAULT_ID).getX()-(WIDTH_OFFSET), HEIGHT_OFFSET-CANVAS.getTurtle(DEFAULT_ID).getY());
 

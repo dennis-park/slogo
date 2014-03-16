@@ -56,7 +56,7 @@ public class Turtle {
 		return myHeading;
 	}
 
-	public int getId() {
+	public int getID() {
 		return myId;
 	}
 

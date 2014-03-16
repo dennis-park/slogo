@@ -27,22 +27,22 @@ public class TurtleManager {
 	
 	public void move(double offset) {
 		for (Turtle t : myTurtleMap.values()) {
-			if(t.isActive())
+			if(t.isShown())
 				t.move(offset);
 		}
 	}
 	
 	public void rotate(double heading) {
 		for (Turtle t : myTurtleMap.values()) {
-			if(t.isActive())
+			if(t.isShown())
 				t.rotate(heading);
 		}
 	}
-	
-	public void makeActive(Turtle t) {
-		t.toggle();
-	}
-	
+//	
+//	public void makeActive(Turtle t) {
+//		t.toggle();
+//	}
+//	
 	private Turtle myCurr;
 	
 	public Turtle getCurrentTurtle() {

@@ -80,7 +80,7 @@ public class Canvas extends JPanel {
 	public List<Integer> getAllTurtleIDs() {
 		List<Integer> answer = new ArrayList<Integer>();
 		for(Turtle t : turtles) {
-			answer.add(t.getId());
+			answer.add(t.getID());
 		}
 		return answer;
 	}
