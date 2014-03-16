@@ -294,4 +294,9 @@ public class View extends JFrame{
 	public Canvas getCanvas(){
 		return CANVAS;
 	}
+
+	public void createNewWorkspace() {
+		// TODO Auto-generated method stub
+		
+	}
 }
