@@ -29,6 +29,7 @@ public class MenuView extends JMenuBar{
 		myView = v;
 		myCanvas = v.CANVAS;
 		addMenus();
+		setVisible(true);
 	}
 	
 	//ignore for now
@@ -75,6 +76,10 @@ public class MenuView extends JMenuBar{
 			}
 		});
 
+		myFiles.add(FILES_LOAD);
+		myFiles.add(FILES_SAVE);
+		myFiles.add(FILES_EXIT);
+		
 		return myFiles;
 	}
 	
@@ -125,6 +130,11 @@ public class MenuView extends JMenuBar{
 				}
 			}           
 		});
+		
+		myPreferences.add(PREF_LOAD);
+		myPreferences.add(PREF_SAVE);
+		myPreferences.add(PREF_COLOR);
+		
 		return myPreferences;
 	}
 	
@@ -132,8 +142,8 @@ public class MenuView extends JMenuBar{
 		myHelp = new JMenu("Help");
 		myHelp.setMnemonic('H');
 		
-		final JMenuItem HELP_HTML = new JMenuItem("Help");
-		HELP_HTML.addActionListener(new ActionListener() {
+		final JMenuItem HELP_COMMANDS = new JMenuItem("Help");
+		HELP_COMMANDS.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -147,6 +157,9 @@ public class MenuView extends JMenuBar{
 	            }
 			}
 		});
+		
+		myHelp.add(HELP_COMMANDS);
+		
 		return myHelp;
 	}
 
