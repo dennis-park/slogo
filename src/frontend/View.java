@@ -49,6 +49,7 @@ public class View extends JFrame{
 	public static final JButton RUN = new JButton("Run");
 	public static final JButton PEN = new JButton("Change Pen Color");
 	public static final JButton TURTLE = new JButton("Upload A Turtle Image");
+	public static final JButton TAB = new JButton("Add Tab");
 	public static final JButton ADD_TURTLE = new JButton("Add a Turtle");
 	public static final JButton FD = new JButton("Foward");
 	public static final JButton BK = new JButton("Backward");
@@ -59,9 +60,9 @@ public class View extends JFrame{
 
 	public View (Controller c, Dimension bounds) {
 		//myResources = ResourceBundle.getBundle();
-		myTabs = new JTabbedPane();
+		
 		myController = c;
-		this.getContentPane().add(myTabs);
+		
 
 		JComponent infoPanel = makeInfoPanel();
 		// JComponent commandHistory = makeCommandHistory();
@@ -69,12 +70,20 @@ public class View extends JFrame{
 		JComponent consolePanel = makeConsolePanel();
 
 		CANVAS.setView(this);
-
-		this.add(CANVAS, BorderLayout.NORTH);
-		this.add(consolePanel, BorderLayout.CENTER);
-		this.add(movementButtons, BorderLayout.SOUTH);
-		this.add(infoPanel, BorderLayout.EAST);
+		
+		JPanel MASTER = new JPanel();
+		MASTER.setLayout(new BorderLayout());
+		
+		MASTER.add(CANVAS, BorderLayout.NORTH);
+		MASTER.add(consolePanel, BorderLayout.CENTER);
+		MASTER.add(movementButtons, BorderLayout.SOUTH);
+		MASTER.add(infoPanel, BorderLayout.EAST);
 		CANVAS.setEnabled(isEnabled());
+		
+		myTabs = new JTabbedPane();
+		myTabs.addTab("Tab 1", MASTER);
+		this.getContentPane().add(myTabs);
+		
 		buttonListeners();
 	}
 
