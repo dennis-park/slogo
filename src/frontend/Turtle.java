@@ -40,6 +40,10 @@ public class Turtle {
 		myPen = new Pen(this);
 	}
 
+	public boolean isShown() {
+		return true;
+	}
+	
 	public double getX() {
 		return myX;
 	}

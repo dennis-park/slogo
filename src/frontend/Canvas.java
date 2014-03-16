@@ -2,9 +2,11 @@ package frontend;
 
 import javax.swing.JPanel;
 import javax.swing.BorderFactory;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,6 +83,11 @@ public class Canvas extends JPanel {
 			answer.add(t.getId());
 		}
 		return answer;
+	}
+
+	public void changeTurtle(BufferedImage img) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
