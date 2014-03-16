@@ -35,7 +35,6 @@ public class MenuView extends JMenuBar{
 	//ignore for now
 	public MenuView(String title) {
 		super();
-
 	}
 
 	private void addMenus() {

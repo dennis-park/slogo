@@ -85,6 +85,10 @@ public class View extends JFrame{
 		this.getContentPane().add(myTabs);
 		
 		buttonListeners();
+		
+		pack();
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	private JComponent makeConsolePanel() {
