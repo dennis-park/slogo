@@ -19,10 +19,10 @@ public class TurtleManager {
 	}
 	
 	public void add(Turtle t) {
-		myTurtleMap.put(t.getID(), t);
+		myTurtleMap.put(t.getId(), t);
 	}
 	public void remove(Turtle t) {
-		myTurtleMap.put(t.getID(), null);
+		myTurtleMap.put(t.getId(), null);
 	}
 	
 	public void move(double offset) {
