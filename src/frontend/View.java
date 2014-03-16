@@ -10,7 +10,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -34,6 +33,7 @@ public class View extends JFrame{
 	private ArrayList<View> myWorkspaces;
 	private Controller myController;
 	private JLabel myPosition, myHeading, myId;
+	private JFileChooser myChooser;
 
 	public static int DEFAULT_ID = 0;
 	public static final double DEFAULT_UNIT = 1.0; 
@@ -86,6 +86,8 @@ public class View extends JFrame{
 		myTabs.addTab("Tab 1", MASTER);
 		this.getContentPane().add(myTabs);
 		myTabs.setSelectedIndex(myWorkspaceCount-1);
+		
+		myChooser = new JFileChooser(System.getProperties().getProperty(null));
 		
 		buttonListeners();
 		
@@ -154,7 +156,7 @@ public class View extends JFrame{
 		myCommandHistory.setLayout(new BorderLayout());
 
 		//replace getName = command list
-		myHistory = new JLabel(myResources.getString(getName()));
+		myHistory = new JLabel("Command History");
 
 		myCommandHistory.add(myHistory, BorderLayout.CENTER);
 		myHistoryTextArea = new JTextArea(DEFAULT_FIELD, DEFAULT_FIELD);
@@ -303,5 +305,9 @@ public class View extends JFrame{
 		View v = new View(myController, DEFAULT_BOUNDS);
 		myTabs.addTab("Workspace " + myWorkspaceCount, v);
 		myWorkspaces.add(v);
+	}
+
+	public JFileChooser getChooser() {
+		return myChooser;
 	}
 }

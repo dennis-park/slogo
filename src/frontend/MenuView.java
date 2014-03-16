@@ -43,6 +43,10 @@ public class MenuView extends JMenuBar{
 		this.add(createHelpMenu());
 	}
 
+	private JFileChooser getFileChooser() {
+		return myView.getChooser();
+	}
+	
 	private JMenu createFilesMenu() {
 		myFiles = new JMenu("Files");
 		myFiles.setMnemonic('F');
@@ -90,7 +94,7 @@ public class MenuView extends JMenuBar{
 		PREF_LOAD.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//TODO 
+				
 			}
 		});
 		
