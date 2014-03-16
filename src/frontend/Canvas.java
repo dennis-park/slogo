@@ -42,18 +42,6 @@ public class Canvas extends JPanel {
 		}
 	} 
 
-	public void move(double amount, int id) {
-		myView.updatePosition(turtles.get(id).getX()-WIDTH_OFFSET, HEIGHT_OFFSET-turtles.get(id).getY());
-	}
-
-	public void rotate(double angle, int id) {
-		myView.updateHeading(turtles.get(id).getHeading());
-	}
-
-	public void setHeading(double newHeading, int id){
-		myView.updateHeading(turtles.get(id).getHeading());
-	}
-
 	public Turtle getTurtle(int id) {
 		return turtles.get(id);
 	}

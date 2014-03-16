@@ -26,12 +26,12 @@ public class TabPanel extends JPanel{
 	
 	private JLabel myPosition, myHeading, myId;
 	
-	public static int DEFAULT_ID = 0;
-	public static final double DEFAULT_UNIT = 1.0; 
-	private static int DEFAULT_WIDTH = 500;
-	private static int DEFAULT_HEIGHT = 500;
-	private static int WIDTH_OFFSET = DEFAULT_WIDTH/2;
-	private static int HEIGHT_OFFSET = DEFAULT_HEIGHT/2;
+	private int DEFAULT_ID = 0;
+	private double DEFAULT_UNIT = 1.0; 
+	private int DEFAULT_WIDTH = 500;
+	private int DEFAULT_HEIGHT = 500;
+	private int WIDTH_OFFSET = DEFAULT_WIDTH/2;
+	private int HEIGHT_OFFSET = DEFAULT_HEIGHT/2;
 	
 	private Controller myController;
 	private View myView;
@@ -191,6 +191,7 @@ public class TabPanel extends JPanel{
 			public void actionPerformed(ActionEvent e)
 			{
 				CANVAS.getTurtle(DEFAULT_ID).move(DEFAULT_UNIT);
+				updatePosition(CANVAS.getTurtle(DEFAULT_ID).getX()-WIDTH_OFFSET, HEIGHT_OFFSET-CANVAS.getTurtle(DEFAULT_ID).getY());
 				CANVAS.repaint();
 			}
 		});
@@ -200,6 +201,7 @@ public class TabPanel extends JPanel{
 			public void actionPerformed(ActionEvent e)
 			{
 				CANVAS.getTurtle(DEFAULT_ID).move(-DEFAULT_UNIT);
+				updatePosition(CANVAS.getTurtle(DEFAULT_ID).getX()-WIDTH_OFFSET, HEIGHT_OFFSET-CANVAS.getTurtle(DEFAULT_ID).getY());
 				CANVAS.repaint();
 
 			}
@@ -210,6 +212,7 @@ public class TabPanel extends JPanel{
 			public void actionPerformed(ActionEvent e)
 			{
 				CANVAS.getTurtle(DEFAULT_ID).rotate(-DEFAULT_UNIT);
+				updateHeading(CANVAS.getTurtle(DEFAULT_ID).getHeading());
 				CANVAS.repaint();
 			}
 		});
@@ -219,6 +222,7 @@ public class TabPanel extends JPanel{
 			public void actionPerformed(ActionEvent e)
 			{
 				CANVAS.getTurtle(DEFAULT_ID).rotate(DEFAULT_UNIT);
+				updateHeading(CANVAS.getTurtle(DEFAULT_ID).getHeading());
 				CANVAS.repaint();
 			}
 		});
