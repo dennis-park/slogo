@@ -1,3 +1,12 @@
+Changes to the Frontend Design
+===
+
+1) Initially, the canvas contained all the turtles the commands would tell the canvas to move the turtle. Instead, the turtles just live in the canvas, but commands call the turtles movements directly.
+
+2) In order to support tabs we had to create a TabPane class that instantiates the entire interface.
+
+3) The Frontend.java was basically renamed to View.java and doesn't really exist or doesn't really have anything in it.
+
 Changes to the Frontend-Backend API
 ===
 
