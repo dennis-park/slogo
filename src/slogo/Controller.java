@@ -18,7 +18,9 @@ public class Controller {
 
 	public double sendText(String s) throws InstantiationException, IllegalAccessException {
 		resyncActiveTurtleIDs(); //for now, just ensure that all existing turtles are active
-		return myBackend.parse(s, myActiveTurtleIDs);
+		double parse = myBackend.parse(s, myActiveTurtleIDs);
+		myView.getCanvas().repaint();
+		return parse;
 	}
 	
 	public void sendLanguage(String language) {
