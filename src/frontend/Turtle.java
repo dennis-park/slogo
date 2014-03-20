@@ -16,10 +16,12 @@ public class Turtle {
 	private static int DEFAULT_WIDTH = 10;
 	private static int DEFAULT_HEIGHT = 10;
 
-	private static double myHeading = 270.0;
+	private double myHeading = 270.0;
 
 	public Turtle(double x, double y, int id) {
-		this(x, y, myHeading, id);
+		myId = id;
+		myX = x;
+		myY = y;
 		myPen = new Pen(this);
 	}
 

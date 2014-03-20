@@ -27,7 +27,7 @@ public class MenuView extends JMenuBar{
 	
 	public MenuView(View v) {
 		myView = v;
-		myCanvas = v.CANVAS;
+		myCanvas = v.getCanvas();
 		addMenus();
 		setVisible(true);
 	}
