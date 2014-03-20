@@ -183,6 +183,4 @@ public class MenuView extends JMenuBar{
 			}
 		});
 	}
-
-
 }
