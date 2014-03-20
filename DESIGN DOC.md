@@ -13,10 +13,12 @@ Overview
 ==
 There are 3 primary modules in our SLogo projecta: Backend.java, View.java and the Controller.java.
 
-+View.java+
++View.java
+
+
 The view consists of the canvas, turtle, textarea for commands and all the buttons that the user can use to quickly test out the fucntionality of Slogo. The View can hold multiple TabPane.java classes, and each of those modules load the entire user interface. The user interface contains one Canvas.java class that can hold as many Turtle.java classes as the user wants and instantiates all the fucntional buttons as well as the textarea and the panel containing information about the turtle. When the user enters text in the textarea and presses the run button, the information from the textarea gets passed into the Controller.java class.
 
-+Controller.java+
++Controller.java
 The controller handles the communication between the view and the backend. There is a method that passes the string to the backend and mutiple methods that pass backend commands to the current canvas and the current activated turtle. The view takes the command from there are executes them.
 
 +Backend.java+
