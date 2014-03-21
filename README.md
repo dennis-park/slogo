@@ -17,20 +17,21 @@ Approx. Hours Spent: ~50 hours
 Division of Workload:
 ===
 
-FRONTEND:
+**FRONTEND**
 
 Ashley and Dennis: View, Swing components (Menu, Buttons, Tabs, Listeners, Canvas), objects that live in the workspace, corresponding manager/control classes
 
-BACKEND:
+**BACKEND**
 
-Willy: 
-Grace: the bulk of Part 2 commands, languages (formatting/parsing properties files), 
+Willy and Grace: the bulk of Part 2 commands, languages (formatting/parsing properties files), 
 enabling commanding multiple turtles
 
 Sources Consulted:
 ===
 [Google Translate](translate.google.com)
+
 [Stackoverflow](http://stackoverflow.com/questions)
+
 [Java Swing Tutorials](http://docs.oracle.com/javase/tutorial/uiswing/)
 
 Important Files:
