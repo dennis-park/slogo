@@ -1,4 +1,4 @@
-SLogo README file
+#SLogo README
 =====
 
 Front End: Dennis Park, Ashley Qian
@@ -14,7 +14,7 @@ Approx. Hours Spent: ~50 hours
 
 [Link to project repository](https://github.com/duke-compsci308-spring2014/slogo_team11)
 
-Division of Workload:
+###Division of Workload:
 ===
 
 **FRONTEND**
@@ -26,7 +26,7 @@ Ashley and Dennis: View, Swing components (Menu, Buttons, Tabs, Listeners, Canva
 Willy and Grace: the bulk of Part 2 commands, languages (formatting/parsing properties files), 
 enabling commanding multiple turtles
 
-Sources Consulted:
+###Sources Consulted:
 ===
 [Google Translate](translate.google.com)
 
@@ -34,7 +34,7 @@ Sources Consulted:
 
 [Java Swing Tutorials](http://docs.oracle.com/javase/tutorial/uiswing/)
 
-Important Files:
+###Important Files:
 ===
 "Main" class, which displays the GUI, is in the slogo package in the src folder.
 
@@ -43,7 +43,7 @@ tests the functionality of commands/operations, and TokenizerTest tests the
 functionality of the Tokenizer class, which breaks up a string of inputs into a string
 array of user-entered commands, parameters, etc.
 
-Required Data/Resource Files:
+###Required Data/Resource Files:
 ===
 In Backend, the CommandFactory class is where the HashMap of strings to strings, where
 the keys are valid commands (such as EQUAL? or EQUALP), and the values are the 
@@ -51,12 +51,12 @@ directory locations of the classes that contain the definitions of these command
 (CommandFactory isn't exactly a data or resource file, but sort of functions like 
 one?)
 
-Misc. Information About Using the Program:
+###Misc. Information About Using the Program:
 ===
 The Controller class, also in the slogo package of the src folder, is the point of 
 contact between the Frontend and Backend.
 
-Known Bugs:
+###Known Bugs:
 ===
 As of 3/8/14: The ability to recognize comments is not yet implemented; multiple 
 turtle commands are not yet implemented (the commands just execute on all existing
