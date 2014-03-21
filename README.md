@@ -6,25 +6,32 @@ Front End: Dennis Park, Ashley Qian
 Back End: Grace Chen, Willy Chen
 
 
-Date Started: Thurs 2/20/14
+Date Started: Thurs 02/20/14
 
-Date Finished: Sat 3/8/14
+Date Finished: Sat 03/08/14
 
-Approx. Hours Spent: oh my goodness
+Approx. Hours Spent: ~50 hours
 
+[Link to project repository](https://github.com/duke-compsci308-spring2014/slogo_team11)
 
 Division of Workload:
 ===
 
+FRONTEND:
+
+Ashley and Dennis: View, Swing components (Menu, Buttons, Tabs, Listeners, Canvas), objects that live in the workspace, corresponding manager/control classes
+
 BACKEND:
 
+Willy: 
 Grace: the bulk of Part 2 commands, languages (formatting/parsing properties files), 
 enabling commanding multiple turtles
 
 Sources Consulted:
 ===
-Google Translate (for the unfinished languages, as well as fixing existing 
-translations)
+[Google Translate](translate.google.com)
+[Stackoverflow](http://stackoverflow.com/questions)
+[Java Swing Tutorials](http://docs.oracle.com/javase/tutorial/uiswing/)
 
 Important Files:
 ===
@@ -54,6 +61,3 @@ As of 3/8/14: The ability to recognize comments is not yet implemented; multiple
 turtle commands are not yet implemented (the commands just execute on all existing
 turtles, rather than on user-selected turtles only); when commands are run, the
 user must add a new turtle in order to see the effects of the previous command.
-
-Extra Features:
-===
