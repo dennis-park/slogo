@@ -1,16 +1,24 @@
 package backend.command;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 import backend.PropertiesParser;
-//import backend.XMLParser;
 import backend.command.control.UserDefinedCommand;
 
 /**
- * Creates instances of commands.
+ * Creates an instance of the CommandFactory, taking a hashmap of strings to doubles
+ * (variables), a hashmap of strings to UserDefinedCommand objects (user commands), and 
+ * the programming language (i.e. English, Spanish) as a string. Automatically attempts to populate
+ * an empty hashmap of built-in command names to their class paths, using a parser (Parser.java) and
+ * the appropriate language properties file.
+ * @param var - hashmap of strings to doubles; a hashmap of variables
+ * @param udc - hashmap of strings to UserDefinedCommands; a hashmap of user-defined commands
+ * @param language - a string indicating the language in which SLogo commands will be typed
+ * @throws InstantiationException
+ * @throws IllegalAccessException
+ * @throws ClassNotFoundException
  */
 public class CommandFactory {
 	private Map<String, String> myCommands;
@@ -33,6 +41,12 @@ public class CommandFactory {
 		}
 	}
 	
+	/**
+	 * Returns true if the given token is a built-in command, or if the
+	 * given token is a user-defined command.
+	 * @param token - a token (string) that is possibly a command
+	 * @return boolean - whether the token is a command or not
+	 */
 	public boolean hasCommand(String token){
 		return (myCommands.containsKey(token) || myUserCommands.containsKey(token));
 	}
@@ -62,6 +76,7 @@ public class CommandFactory {
 			newCommand.setUserCommands(myUserCommands);
 			return newCommand;
 		} catch (ClassNotFoundException e) {
+			//Display error message
 			System.out.println("This command is not in the library of commands.");
 			e.printStackTrace();
 		}

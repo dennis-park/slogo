@@ -67,14 +67,14 @@ public class Controller {
 	public void syncActiveTurtleIDs(List<Integer> newActiveTurtleIDs) {
 		myActiveTurtleIDs = newActiveTurtleIDs;
 	}
-	
-	public void addToActiveTurtleIDs(double id) {
-		myActiveTurtleIDs.add((int) id);
-	}
-	
-	public void deleteFromActiveTurtleID(double id) {
-		myActiveTurtleIDs.remove((int) id);
-	}
+//	
+//	public void addToActiveTurtleIDs(double id) {
+//		myActiveTurtleIDs.add((int) id);
+//	}
+//	
+//	public void deleteFromActiveTurtleID(double id) {
+//		myActiveTurtleIDs.remove((int) id);
+//	}
 	
 	public double getX(int id) {
 		return myView.getCanvas().getTurtle(id).getX();

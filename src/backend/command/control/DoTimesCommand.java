@@ -8,10 +8,7 @@ public class DoTimesCommand extends Command {
 	public DoTimesCommand(){
 		super(myParameterCount);
 	}
-	public double execute(){
-//		myParameters[0].getCommand().get(0); //variable
-//		myParameters[0].getCommand().get(1).execute(); // limit
-//		myParameters[1].execute(); //Commands to be executed 
+	public double execute(){ 
 		double returnVal = 0.0;
 		double limit = myParameters.get(0).getCommand().get(1).execute();
 		for(double i =0; i < limit; i++){

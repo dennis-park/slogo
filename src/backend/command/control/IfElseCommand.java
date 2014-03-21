@@ -1,15 +1,14 @@
 package backend.command.control;
 
 import backend.command.Command;
-import backend.command.Parameter;
 
 public class IfElseCommand extends Command{
+	
 	private static final int myParameterCount = 3;
 
 	public IfElseCommand(){
 		super(myParameterCount);
 	}
-	
 	
 	@Override
 	public double execute() {
@@ -18,4 +17,5 @@ public class IfElseCommand extends Command{
 		else 
 			return myParameters.get(2).execute();
 	}
+	
 }

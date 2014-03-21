@@ -16,7 +16,7 @@ public class Executor { //Will need to add some error checking code most likely
 	 * @param commands a Queue of commands
 	 * @param controller the instance of the Controller
 	 * @param ID the ID of the turtle being commanded
-	 * @return the result of the last exeuted command
+	 * @return the result of the last executed command
 	 */
 	public double executeCommands(Queue<Command> commands, Controller controller, int ID){
 		double returnValue = 0.0;

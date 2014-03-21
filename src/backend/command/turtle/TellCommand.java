@@ -11,12 +11,14 @@ public class TellCommand extends Command {
 	public double execute() {
 		double returnVal = 0;
 		List<Integer> newActiveTurtleIDs = new ArrayList<Integer>();
-		for(int i = 0; i < myParameters.size(); i++) {
-			returnVal = myParameters.get(i).execute();
-			newActiveTurtleIDs.add((int)returnVal);
-			myController.addTurtle(returnVal);
-			System.out.println("should have added turtle space space space");
-		}
+		returnVal = myParameters.get(0).execute();
+//		for(int i = 0; i < myParameters.size(); i++) {
+//			returnVal = myParameters.get(i).execute();
+//			newActiveTurtleIDs.add((int)returnVal);
+//			myController.addTurtle(returnVal);
+//			System.out.println("should have added turtle " + returnVal);
+//		}
+//		System.out.println("size of newActiveTurtleIDs: " + newActiveTurtleIDs.size());
 		myController.syncActiveTurtleIDs(newActiveTurtleIDs);
 		return returnVal;
 	}

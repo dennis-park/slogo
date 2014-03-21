@@ -23,7 +23,7 @@ Ashley and Dennis: View, Swing components (Menu, Buttons, Tabs, Listeners, Canva
 
 **BACKEND**
 
-Willy and Grace: the bulk of Part 2 commands, languages (formatting/parsing properties files), 
+Grace: the bulk of Part 2 commands, languages (formatting/parsing properties files), 
 enabling commanding multiple turtles
 
 ###Sources Consulted:
@@ -58,7 +58,5 @@ contact between the Frontend and Backend.
 
 ###Known Bugs:
 ===
-As of 3/8/14: The ability to recognize comments is not yet implemented; multiple 
-turtle commands are not yet implemented (the commands just execute on all existing
-turtles, rather than on user-selected turtles only); when commands are run, the
-user must add a new turtle in order to see the effects of the previous command.
+As of 3/8/14: Multiple turtle commands are not yet implemented (the commands just 
+execute on all existing turtles, rather than on user-selected turtles only).

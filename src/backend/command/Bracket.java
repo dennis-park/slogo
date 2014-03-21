@@ -19,12 +19,15 @@ public class Bracket extends Command {
 	public double execute() {
 		for(Parameter p : myParameters){
 			p.setRepCount(myRepcount);
+			double pFinal = p.execute();
+			System.out.println("final value of p: " + pFinal);
 			myValues.add(p.execute());
 		}
 		if(myValues.size() < 2)
 			return 0;
-		else
-			return myValues.get(myValues.size()-2);
+		else {
+			return myValues.get(myValues.size() - 2);
+		}
 	}
 	
 

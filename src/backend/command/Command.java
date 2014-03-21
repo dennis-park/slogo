@@ -95,7 +95,7 @@ public class Command {//A zero parameter class
 		myVariables = var;
 	}
 	
-	public void setUserCommands(HashMap<String, UserDefinedCommand> userCommands2) {
-		myUserCommands = userCommands2;
+	public void setUserCommands(HashMap<String, UserDefinedCommand> userCommands) {
+		myUserCommands = userCommands;
 	}
 }

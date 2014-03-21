@@ -5,7 +5,7 @@ import backend.command.Parameter;
 
 public class ToCommand extends Command {
 	
-	private static final int myParameterCount = 2; //Takes in string immedaietly during parsing
+	private static final int myParameterCount = 2; //Takes in string immediately during parsing
 	private String commandName;
 	
 	public ToCommand(){
@@ -25,12 +25,10 @@ public class ToCommand extends Command {
 	}
 	
 	public double execute(){
-		UserDefinedCommand newCommand = new UserDefinedCommand(commandName, myParameters.get(0).getCommand(), myParameters.get(1).getCommand());
+		UserDefinedCommand newCommand = new UserDefinedCommand(commandName, 
+				myParameters.get(0).getCommand(), myParameters.get(1).getCommand());
 		myUserCommands.put(commandName, newCommand);
 		return 1.0;
-		//Might need some errorchecking here for illdefined commands?
 	}	
-	
-	
 	
 }
