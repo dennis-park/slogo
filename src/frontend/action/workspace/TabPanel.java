@@ -1,4 +1,4 @@
-package frontend;
+package frontend.action.workspace;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -20,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import frontend.Canvas;
+import frontend.View;
 import slogo.Controller;
 
 public class TabPanel extends JPanel{

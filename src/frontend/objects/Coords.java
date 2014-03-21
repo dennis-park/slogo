@@ -1,4 +1,4 @@
-package frontend;
+package frontend.objects;
 
 public class Coords {
 	private double myX;

@@ -1,4 +1,4 @@
-package frontend;
+package frontend.action.menu;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -16,6 +16,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+
+import frontend.Canvas;
+import frontend.View;
 
 public class MenuView extends JMenuBar{
 	private static View myView;

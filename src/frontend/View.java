@@ -22,6 +22,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 
+import frontend.action.menu.MenuView;
+import frontend.action.workspace.TabPanel;
 import slogo.Controller;
 
 @SuppressWarnings("serial")

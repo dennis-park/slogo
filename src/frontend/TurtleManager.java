@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import frontend.objects.Turtle;
+
 public class TurtleManager {
 	private Map<Integer, Turtle> myTurtleMap;
 	private HashMap<Integer, Boolean> myToggleMap;
