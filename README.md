@@ -26,6 +26,8 @@ Ashley and Dennis: View, Swing components (Menu, Buttons, Tabs, Listeners, Canva
 Grace: the bulk of Part 2 commands, languages (formatting/parsing properties files), 
 enabling commanding multiple turtles
 
+Willy: Parsing, the command classes. command instantiation, command execution, variables, user defined commands
+
 ###Sources Consulted:
 ===
 [Google Translate](translate.google.com)
